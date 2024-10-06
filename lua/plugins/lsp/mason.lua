@@ -26,15 +26,17 @@ return {
 
 		-- see https://github.com/williamboman/mason-lspconfig.nvim
 		mason_lspconfig.setup({
-			-- list of servers for mason to install
+			-- list of language servers for mason to install
 			ensure_installed = {
+				"eslint",
+				"ts_ls",
+				"angularls",
 				"tsp_server",
 				"html",
 				"cssls",
 				"tailwindcss",
 				"lua_ls",
 				"pyright",
-				"angularls",
 			},
 		})
 
