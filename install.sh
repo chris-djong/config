@@ -1,3 +1,9 @@
+# Install the latest neovim from appimage
+wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod +x ./nvim.appimage 
+sudo mv nvim.appimage /usr/bin/nvim
+
+
 # Install ripgrep for telescope live grep search
 sudo apt install -y ripgrep 
 # Install python3-venv for ruff formatting
