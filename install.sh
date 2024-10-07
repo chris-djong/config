@@ -1,6 +1,8 @@
 # Install the latest neovim from appimage
 wget https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod +x ./nvim.appimage 
+
+# To be able to run the appimage fuse is required
 sudo mv nvim.appimage /usr/bin/nvim
 
 
