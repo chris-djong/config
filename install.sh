@@ -20,3 +20,7 @@ cd ~/.local/share/fonts
 unzip Iosevka.zip
 rm Iosevka.zip
 fc-cache -fv
+
+# Create the symbolic link
+ln -s ~/config/.tmux.conf ~/.tmux.conf 
+ln -s ~/config/.config/nvim ~/.config/nvim
