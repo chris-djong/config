@@ -5,12 +5,18 @@ chmod +x ./nvim.appimage
 # To be able to run the appimage fuse is required
 sudo mv nvim.appimage /usr/bin/nvim
 
+# Install fusermount to run appimages
+sudo apt-get install -y fuse3
+
 # Install ripgrep for telescope live grep search
 sudo apt install -y ripgrep 
 # Make comamnd is required for nvim
 sudo apt-get install -y build-essential
 # Install python3-venv for ruff formatting
 sudo apt install -y python3-venv 
+
+# Install tmux
+sudo apt-get install tmux
 
 # Download the font and install it 
 sudo apt-get install -y wget
