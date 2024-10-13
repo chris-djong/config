@@ -29,4 +29,5 @@ fc-cache -fv
 
 # Create the symbolic link
 ln -s ~/config/.tmux.conf ~/.tmux.conf 
+mkdir -p ~/.config
 ln -s ~/config/.config/nvim ~/.config/nvim
