@@ -6,7 +6,7 @@ chmod +x ./nvim.appimage
 sudo mv nvim.appimage /usr/bin/nvim
 
 # Install fusermount to run appimages
-sudo apt-get install -y fuse3
+sudo apt-get install -y fuse3, libfuse2
 
 # Install ripgrep for telescope live grep search
 sudo apt install -y ripgrep 
