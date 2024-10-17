@@ -8,11 +8,11 @@ opt.number = true
 
 -- tabs & indentation
 opt.tabstop = 2 -- prettier default
-opt.shiftwidth = 2 
+opt.shiftwidth = 2
 opt.expandtab = true -- expand tab to spaces
-opt.autoindent = true -- copy indent from current line when starting a new line 
+opt.autoindent = true -- copy indent from current line when starting a new line
 
-opt.wrap = false;
+opt.wrap = false
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
@@ -22,11 +22,9 @@ opt.cursorline = true
 
 -- turn on colors for the terminal
 opt.termguicolors = true
-opt.background = "dark" -- use dark mode if available 
+opt.background = "dark" -- use dark mode if available
 opt.signcolumn = "yes"
 
 -- split windows
 opt.splitright = true
-opt.splitbelow = true 
-
-
+opt.splitbelow = true

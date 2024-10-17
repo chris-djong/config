@@ -20,3 +20,9 @@ keymap.set("n", "<leader>tx", "<cmd>tabclose<CR>", { desc = "Close current tab" 
 keymap.set("n", "<leader>tn", "<cmd>tabn<CR>", { desc = "Go to next tab" }) --  go to next tab
 keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) --  go to previous tab
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+
+-- disable arrow keys in normal mode 
+keymap.set("n", "<Up>", "<Nop>", { desc = "Close current tab" }) -- close current tab
+keymap.set("n", "<Down>", "<Nop>", { desc = "Go to next tab" }) --  go to next tab
+keymap.set("n", "<Left>", "<Nop>", { desc = "Go to previous tab" }) --  go to previous tab
+keymap.set("n", "<Right>", "<Nop>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
