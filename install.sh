@@ -8,6 +8,9 @@ sudo mv nvim.appimage /usr/bin/nvim
 # Install fusermount to run appimages
 sudo apt-get install -y fuse3, libfuse2
 
+# Curl is required as well 
+sudo apt-get install -y curl
+
 # Install ripgrep for telescope live grep search
 sudo apt install -y ripgrep 
 # Make comamnd is required for nvim
