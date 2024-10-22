@@ -26,7 +26,6 @@ return {
       -- list of language servers for mason to install
       ensure_installed = {
         "eslint",
-        "eslint_d",
         "ts_ls",
         "angularls",
         "tsp_server",
