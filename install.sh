@@ -30,6 +30,9 @@ unzip Iosevka.zip
 rm Iosevka.zip
 fc-cache -fv
 
+# Add Caps lock change to dconf 
+dconf write "/org/gnome/desktop/input-sources/xkb-options" "[ 'caps:swapescape']" `
+
 # Create the symbolic link
 ln -s ~/config/.tmux.conf ~/.tmux.conf 
 mkdir -p ~/.config
