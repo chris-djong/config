@@ -56,16 +56,23 @@ return {
         globalstatus = true,
       },
       sections = {
-        lualine_x = {
-          {
-            lazy_status.updates,
-            cond = lazy_status.has_updates,
-            color = { fg = "#ff9e64" },
-          },
-          { "fileformat" },
-          { "filetype" },
-        },
+        lualine_a = { 'mode' },
+        lualine_b = { 'branch' },
+        lualine_c = {},
+        lualine_x = { {
+          lazy_status.updates,
+          cond = lazy_status.has_updates,
+          color = { fg = "#ff9e64" },
+        }, 'fileformat', 'filetype' },
+        lualine_y = {},
+        lualine_z = { 'location' }
       },
+      winbar = {
+        lualine_a = { 'filename' },
+      },
+      inactive_winbar = {
+        lualine_b = { 'filename' },
+      }
     })
   end,
 }
