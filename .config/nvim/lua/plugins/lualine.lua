@@ -68,7 +68,8 @@ return {
         lualine_z = { 'location' }
       },
       winbar = {
-        lualine_a = { 'filename' },
+        lualine_a = { 'mode' },
+        lualine_b = { 'filename' },
       },
       inactive_winbar = {
         lualine_b = { 'filename' },
