@@ -22,8 +22,7 @@ sudo apt install -y python3-venv
 sudo apt-get install tmux
 
 # Download the font and install it 
-sudo apt-get install -y wget
-sudo apt-get install fontconfig
+sudo apt-get install -y wget unzip fontconfig	
 wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Iosevka.zip
 cd ~/.local/share/fonts
 unzip Iosevka.zip
