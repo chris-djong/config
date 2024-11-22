@@ -6,7 +6,7 @@ chmod +x ./nvim.appimage
 sudo mv nvim.appimage /usr/bin/nvim
 
 # Install fusermount to run appimages
-sudo apt-get install -y fuse3, libfuse2
+sudo apt-get install -y fuse3 libfuse2
 
 # Curl is required as well 
 sudo apt-get install -y curl
@@ -37,3 +37,6 @@ dconf write "/org/gnome/desktop/input-sources/xkb-options" "[ 'caps:swapescape']
 ln -s ~/config/.tmux.conf ~/.tmux.conf 
 mkdir -p ~/.config
 ln -s ~/config/.config/nvim ~/.config/nvim
+
+# Some global git config 
+git config --global core.editor "nvim"
