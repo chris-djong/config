@@ -36,7 +36,17 @@ dconf write "/org/gnome/desktop/input-sources/xkb-options" "[ 'caps:swapescape']
 # Create the symbolic link
 ln -s ~/config/.tmux.conf ~/.tmux.conf 
 mkdir -p ~/.config
-ln -s ~/config/.config/nvim ~/.config/nvim
+ln -s ~/config/.config/nvim ~/.config/nvimm
+
+# Create the bin directory in case it does not exist yet 
+mkdir -p ~/bin
 
 # Some global git config 
 git config --global core.editor "nvim"
+git config --global alias.st status
+git config --global alias.co commit
+
+# Setup some automatic bashrc things 
+grep -Fxv -f ~/.bashrc ~/config/.bashrc >> ~/.bashrc
+
+
