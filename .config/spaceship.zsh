@@ -1,8 +1,5 @@
 SPACESHIP_PROMPT_SEPARATE_LINE=false
 
-# User section
-SPACESHIP_USER_SHOW=true
-
 # The char before a prompt
 SPACESHIP_CHAR_SUFFIX=" "
 
@@ -18,9 +15,6 @@ SPACESHIP_GIT_STATUS_SHOW=false
 SPACESHIP_GIT_ORDER=(
   git_branch
 )
-
-SPACESHIP_CHAR_SHOW=true
-
 
 SPACESHIP_PROMPT_ORDER=(
   git            
