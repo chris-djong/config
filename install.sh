@@ -90,3 +90,5 @@ if [[ ! -d ~/.config/tmux/plugins/catppuccin/tmux ]]; then
   git clone -b v2.1.1 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
 fi
 
+echo "Installing tmux plugins"
+~/.tmux/plugins/tpm/scripts/install_plugins.sh
