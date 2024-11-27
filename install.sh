@@ -49,4 +49,10 @@ git config --global alias.co commit
 # Setup some automatic bashrc things 
 grep -Fxv -f ~/.bashrc ~/config/.bashrc >> ~/.bashrc
 
+# Setup tmux plugins
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# Tmux theme
+mkdir -p ~/.config/tmux/plugins/catppuccin
+git clone -b v2.1.1 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
 
