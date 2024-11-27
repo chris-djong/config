@@ -1,7 +1,6 @@
 source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-PS1='%F{blue}%~ %(?.%F{green}.%F{red})%#%f '
+source ~/.zsh/spaceship/spaceship.zsh
 
 export PATH="$HOME/bin:$PATH" 
 # Setup terminal history
@@ -16,7 +15,8 @@ setopt hist_verify
 
 # Better cd 
 eval "$(zoxide init bash)"
-alias cd="z"
+# alias cd="z" # TODO: Somehow this gives an error funcnest after some time
+
 # Better ls 
 alias ls="eza --icons=always"
 

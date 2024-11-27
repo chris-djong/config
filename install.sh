@@ -100,16 +100,24 @@ if [[ ! -d ~/.zsh/zsh-syntax-highlighting ]]; then
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 fi
 
+# Install spaceship prompt
+if [[ ! -d ~/.zsh/spaceship ]]; then
+    git clone --depth=1 https://github.com/spaceship-prompt/spaceship-prompt.git ~/.zsh/spaceship
+fi
+
 # Install zoxide
 sudo apt install zoxide
 
 # Install eza
-sudo mkdir -p /etc/apt/keyrings
-wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
-echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
-sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
-sudo apt update
-sudo apt install -y eza
+
+if ! command -v eza &> /dev/null; then
+  sudo mkdir -p /etc/apt/keyrings
+  wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+  echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
+  sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+  sudo apt update
+  sudo apt install -y eza
+fi
 
 # Create the symbolic link
 if [[ -L ~/.zshrc ]]; then
@@ -120,6 +128,19 @@ if [[ -f ~/.zshrc ]]; then
   mv ~/.zshrc ~/.zshrc.old
 fi
 ln -sf ~/config/.zshrc ~/.zshrc 
+mkdir -p ~/.config
+if [[ -L ~/.config/spaceship.toml ]]; then
+  unlink ~/.config/spaceship.toml
+fi
+if [[ -f  ~/.config/spaceship.zsh ]]; then
+  echo "Moving existing .config/spaceship.zsh to spaceship.zsh.old"
+  mv ~/.config/spaceship.zsh ~/.config/spaceship.zsh.old
+fi
+ln -sf ~/config/.config/spaceship.zsh ~/.config/spaceship.zsh
+
+spaceship remove docker
+spaceship remove docker_context
+
 
 # Make zsh the default shell
 chsh -s /bin/zsh
