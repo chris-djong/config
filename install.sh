@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Check if nvim is installed, and install it if it's not found
 if ! command -v nvim &> /dev/null; then
   # Install the latest neovim from appimage
@@ -92,3 +91,27 @@ fi
 
 echo "Installing tmux plugins"
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+
+sudo apt install zsh
+# Install the powerlevel10k theme
+if [[ ! -d ~/powerlevel10k ]]; then
+  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
+fi
+
+# Create the symbolic link
+if [[ -L ~/.zshrc ]]; then
+  unlink ~/.zshrc
+fi
+if [[ -f ~/.zshrc ]]; then
+  echo "Moving existing .zshrc to .zshrc.old"
+  mv ~/.zshrc ~/.zshrc.old
+fi
+ln -sf ~/config/.zshrc ~/.zshrc 
+
+# Make zsh the default shell
+chsh -s /bin/zsh
+
+echo "Installing CLI Tools"
+sudo apt install tldr
+sudo apt install fzf
+
