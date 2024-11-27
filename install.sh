@@ -38,6 +38,8 @@ ln -s ~/config/.tmux.conf ~/.tmux.conf
 mkdir -p ~/.config
 ln -s ~/config/.config/nvim ~/.config/nvimm
 
+ln -s ~/config/.wezterm.lua ~
+
 # Create the bin directory in case it does not exist yet 
 mkdir -p ~/bin
 

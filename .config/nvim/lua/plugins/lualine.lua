@@ -12,11 +12,11 @@ return {
       yellow = "#f9e2af",
       red = "#f38ba8",
       fg = "#c3ccdc",
-      bg = "#112638",
+      bg = "#2A2B3D",
       inactive_bg = "#2c3043",
     }
 
-    local my_lualine_theme = {
+    local theme = {
       normal = {
         a = { bg = colors.green, fg = colors.bg, gui = "bold" },
         b = { bg = colors.bg, fg = colors.fg },
@@ -52,7 +52,7 @@ return {
     -- configure lualine with modified theme
     lualine.setup({
       options = {
-        theme = my_lualine_theme,
+        theme = theme,
         globalstatus = true,
       },
       sections = {

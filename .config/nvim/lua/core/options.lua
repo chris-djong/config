@@ -7,16 +7,16 @@ opt.relativenumber = true
 opt.number = true
 
 -- tabs & indentation
-opt.tabstop = 2 -- prettier default
+opt.tabstop = 2       -- prettier default
 opt.shiftwidth = 2
-opt.expandtab = true -- expand tab to spaces
+opt.expandtab = true  -- expand tab to spaces
 opt.autoindent = true -- copy indent from current line when starting a new line
 
 opt.wrap = false
 
 -- search settings
 opt.ignorecase = true -- ignore case when searching
-opt.smartcase = true -- if you a mixed case is included in the search, automatically assume case sensitive
+opt.smartcase = true  -- if you a mixed case is included in the search, automatically assume case sensitive
 
 opt.cursorline = true
 
