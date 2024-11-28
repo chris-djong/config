@@ -1,4 +1,5 @@
 SPACESHIP_PROMPT_SEPARATE_LINE=false
+SPACESHIP_PROMPT_ADD_NEWLINE=false
 
 # The char before a prompt
 SPACESHIP_CHAR_SUFFIX=" "
@@ -18,6 +19,7 @@ SPACESHIP_GIT_ORDER=(
 
 SPACESHIP_PROMPT_ORDER=(
   git            
+  venv
   dir           
   char
 )

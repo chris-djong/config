@@ -22,6 +22,7 @@ alias ls="eza --icons=always"
 
 alias vi="nvim"
 alias vim="nvim"
-alias ls='ls --color=auto'
-alias ll='ls -lah --color=auto'
+alias ls='eza --color=auto --icons=always'
+alias ll='eza -lah --color=auto --icons=always'
 alias grep='grep --color=auto'
+alias set_env='source ./.venv/bin/activate'
