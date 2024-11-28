@@ -138,10 +138,6 @@ if [[ -f  ~/.config/spaceship.zsh ]]; then
 fi
 ln -sf ~/config/.config/spaceship.zsh ~/.config/spaceship.zsh
 
-spaceship remove docker
-spaceship remove docker_context
-
-
 # Make zsh the default shell
 chsh -s /bin/zsh
 
