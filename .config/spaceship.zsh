@@ -1,5 +1,6 @@
 SPACESHIP_PROMPT_SEPARATE_LINE=false
 SPACESHIP_PROMPT_ADD_NEWLINE=false
+SPACESHIP_PROMPT_FIRST_PREFIX_SHOW=true
 
 # The char before a prompt
 SPACESHIP_CHAR_SUFFIX=" "
@@ -17,9 +18,16 @@ SPACESHIP_GIT_ORDER=(
   git_branch
 )
 
+# VENV Section
+SPACESHIP_VENV_PREFIX="("
+SPACESHIP_VENV_SUFFIX=") "
+SPACESHIP_VENV_GENERIC_NAMES=()
+SPACESHIP_VENV_COLOR=yellow
+
+
 SPACESHIP_PROMPT_ORDER=(
-  git            
   venv
+  git            
   dir           
   char
 )
