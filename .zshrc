@@ -14,8 +14,11 @@ setopt hist_ignore_dups
 setopt hist_verify
 
 # Better cd 
-eval "$(zoxide init bash)"
-# alias cd="z" # TODO: Somehow this gives an error funcnest after some time
+eval "$(zoxide init zsh)"
+alias cd="z"
+
+# FZF keybinding 
+source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # Better ls 
 alias ls="eza --icons=always"
