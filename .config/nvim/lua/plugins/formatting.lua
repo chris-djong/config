@@ -19,7 +19,7 @@ return {
 				graphql = { "prettier" },
 				liquid = { "prettier" },
 				lua = { "stylua" },
-				python = { "ruff" },
+				python = { "ruff_format"  },
 			},
 			format_on_save = {
 				lsp_fallback = true,
