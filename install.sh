@@ -148,3 +148,14 @@ tar -xf fzf-0.56.3-linux_amd64.tar.gz
 mv fzf ~/bin 
 rm fzf-0.56.3-linux_amd64.tar.gz
 
+echo "Installing better find"
+sudo apt install fd-find
+ln -s $(which fdfind) ~/bin/fd
+
+# Better cat 
+sudo apt install bat
+ln -s /usr/bin/batcat ~/bin/bat
+mkdir -p "$(bat --config-dir)/themes"
+cd "$(bat --config-dir)/themes"
+curl -O https://raw.githubusercontent.com/folke/tokyonight.nvim/blob/main/extras/sublime/tokyonight_night.tmTheme
+bat cache --build
