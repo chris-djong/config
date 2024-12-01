@@ -147,6 +147,16 @@ wget https://github.com/junegunn/fzf/releases/download/v0.56.3/fzf-0.56.3-linux_
 tar -xf fzf-0.56.3-linux_amd64.tar.gz
 mv fzf ~/bin 
 rm fzf-0.56.3-linux_amd64.tar.gz
+# Setup GIT shortcuts for fzf. CTRL+G - CTRL+B
+# Create the symbolic link
+if [[ -L ~/.config/fzf-git.sh ]]; then
+  unlink ~/.config/fzf-git.sh
+fi
+if [[ -f ~/.config/fzf-git.sh ]]; then
+  echo "Moving existing fzf-git.sh to fzf-git.sh.old"
+  mv ~/.config/fzf-git.sh ~/.config/fzf-git.sh.old
+fi
+ln -sf ~/config/.config/fzf-git.sh ~/.config/fzf-git.sh 
 
 echo "Installing better find"
 sudo apt install fd-find
@@ -157,5 +167,5 @@ sudo apt install bat
 ln -s /usr/bin/batcat ~/bin/bat
 mkdir -p "$(bat --config-dir)/themes"
 cd "$(bat --config-dir)/themes"
-curl -O https://raw.githubusercontent.com/folke/tokyonight.nvim/blob/main/extras/sublime/tokyonight_night.tmTheme
+curl -O https://raw.githubusercontent.com/folke/tokyonight.nvim/refs/heads/main/extras/sublime/tokyonight_night.tmTheme
 bat cache --build
