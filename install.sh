@@ -97,12 +97,12 @@ if [[ ! -d ~/.zsh/zsh-autosuggestions ]]; then
   git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 fi
 if [[ ! -d ~/.zsh/zsh-syntax-highlighting ]]; then
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 fi
 
 # Install spaceship prompt
 if [[ ! -d ~/.zsh/spaceship ]]; then
-    git clone --depth=1 https://github.com/spaceship-prompt/spaceship-prompt.git ~/.zsh/spaceship
+  git clone --depth=1 https://github.com/spaceship-prompt/spaceship-prompt.git ~/.zsh/spaceship
 fi
 
 # Install zoxide
@@ -118,14 +118,6 @@ if ! command -v eza &> /dev/null; then
   sudo apt install -y eza
 fi
 
-# Create the symbolic link
-if [[ -L ~/.zshrc ]]; then
-  unlink ~/.zshrc
-fi
-if [[ -f ~/.zshrc ]]; then
-  echo "Moving existing .zshrc to .zshrc.old"
-  mv ~/.zshrc ~/.zshrc.old
-fi
 ln -sf ~/config/.zshrc ~/.zshrc 
 mkdir -p ~/.config
 if [[ -L ~/.config/spaceship.toml ]]; then
