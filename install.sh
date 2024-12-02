@@ -134,6 +134,7 @@ chsh -s /bin/zsh
 
 echo "Installing CLI Tools"
 sudo apt install tldr
+
 echo "Installing fzf"
 wget https://github.com/junegunn/fzf/releases/download/v0.56.3/fzf-0.56.3-linux_amd64.tar.gz
 tar -xf fzf-0.56.3-linux_amd64.tar.gz
