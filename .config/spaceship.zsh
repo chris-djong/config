@@ -18,6 +18,11 @@ SPACESHIP_GIT_ORDER=(
   git_branch
 )
 
+# Host section
+SPACESHIP_HOST_SHOW=true
+SPACESHIP_HOST_PREFIX=""
+SPACESHIP_HOST_SUFFIX=" - "
+
 # VENV Section
 SPACESHIP_VENV_PREFIX="("
 SPACESHIP_VENV_SUFFIX=") "
@@ -26,6 +31,7 @@ SPACESHIP_VENV_COLOR=yellow
 
 
 SPACESHIP_PROMPT_ORDER=(
+  host
   venv
   git            
   dir           
