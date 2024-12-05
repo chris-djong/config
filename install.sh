@@ -157,8 +157,9 @@ ln -s $(which fdfind) ~/bin/fd
 
 # Better cat 
 sudo apt install bat
+# There is a clash with bat link on debian, hence batcat
 ln -s /usr/bin/batcat ~/bin/bat
-mkdir -p "$(bat --config-dir)/themes"
-cd "$(bat --config-dir)/themes"
+mkdir -p "$(batcat --config-dir)/themes"
+cd "$(batcat --config-dir)/themes"
 curl -O https://raw.githubusercontent.com/folke/tokyonight.nvim/refs/heads/main/extras/sublime/tokyonight_night.tmTheme
-bat cache --build
+batcat cache --build
