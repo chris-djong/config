@@ -2,8 +2,14 @@ source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/spaceship/spaceship.zsh
 
-export PATH="$HOME/bin:$PATH" 
-# Setup terminal history
+export PATH="$HOME/bin:$HOME/.npm-global/bin:$HOME/.local/bin:$PATH" 
+
+# ADD ccache for FASTER builds!
+if [ -d /usr/lib/ccache ]; then
+    export CCACHE_SLOPPINESS="file_macro,time_macros"
+    export PATH=/usr/lib/ccache:$PATH
+fi
+
 
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
@@ -12,6 +18,9 @@ setopt share_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
+
+# Fuck
+eval "$(thefuck --alias)"
 
 # Better cd 
 eval "$(zoxide init zsh)"

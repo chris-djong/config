@@ -1,9 +1,13 @@
 # Just some info on how to install the LSP. Feel free to use the venv as well if you think that is better
-pip install basedpyright
-pip install ruff
-npm install vscode-langservers-extracted
-npm install @tailwindcss/language-server
-npm install @angular/language-server
-npm install eslint_d
-npm install typescript typescript-language-server
+# LSPs
+pip install --user basedpyright
+pip install --user ruff
+npm install -g vscode-langservers-extracted
+npm install -g @tailwindcss/language-server
+npm install -g @angular/language-server
+npm install -g eslint_d
+npm install -g typescript typescript-language-server
 
+# Formatters 
+pip install --user https://github.com/nvbn/thefuck/archive/master.zip
+pip install --user sqlfluff
