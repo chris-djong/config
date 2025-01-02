@@ -1,17 +1,9 @@
 return {
 	"neovim/nvim-lspconfig",
 	event = { "BufReadPre", "BufNewFile" },
-	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
-	},
 	config = function()
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
-
-		-- import cmp-nvim-lsp plugin
-    -- this one is used for autocompletion capabilities
-		local cmp_nvim_lsp = require("cmp_nvim_lsp")
-		local capabilities = cmp_nvim_lsp.default_capabilities()
 
 		local keymap = vim.keymap -- for conciseness
 
@@ -82,6 +74,7 @@ return {
     -- HTML 
     lspconfig.html.setup({})
     lspconfig.cssls.setup({})
-
+    -- CPP
+    lspconfig.clangd.setup({})
 	end,
 }
