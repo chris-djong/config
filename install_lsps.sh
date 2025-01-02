@@ -7,7 +7,9 @@ npm install -g @tailwindcss/language-server
 npm install -g @angular/language-server
 npm install -g eslint_d
 npm install -g typescript typescript-language-server
+apt install clangd
 
 # Formatters 
 pip install --user https://github.com/nvbn/thefuck/archive/master.zip
 pip install --user sqlfluff
+apt install clang-format

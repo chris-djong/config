@@ -21,6 +21,8 @@ return {
 				lua = { "stylua" },
 				python = { "ruff_format", "ruff_fix"  },
         sql = { "sqlfluff" }, 
+        cpp = { "clang-format" },
+
 			},
 			format_on_save = {
 				lsp_fallback = true,
