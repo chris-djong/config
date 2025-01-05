@@ -1,9 +1,14 @@
+-- LSP servers and clients communicate which features they support through "capabilities".
+--  By default, Neovim supports a subset of the LSP specification.
+--  With blink.cmp, Neovim has *more* capabilities which are communicated to the LSP servers.
+--  Explanation from TJ: https://youtu.be/m8C0Cq9Uv9o?t=1275
+--
+-- This can vary by config, but in general for nvim-lspconfig:
 return {
-	"neovim/nvim-lspconfig",
-	event = { "BufReadPre", "BufNewFile" },
-	config = function()
-		-- import lspconfig plugin
-		local lspconfig = require("lspconfig")
+  "neovim/nvim-lspconfig",
+  dependencies = { "saghen/blink.cmp" },
+  config = function()
+    local lspconfig = require('lspconfig')
 
 		local keymap = vim.keymap -- for conciseness
 
@@ -55,26 +60,22 @@ return {
 				keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 			end,
 		})
+    local capabilities = require('blink.cmp').get_lsp_capabilities()
+    local lspconfig = require('lspconfig')
 
-		-- Change the Diagnostic symbols in the sign column (gutter)
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
-
+    lspconfig['lua-ls'].setup({ capabilities = capabilities })
     -- Python
-    lspconfig.basedpyright.setup({})
-    lspconfig.ruff.setup({})
+    lspconfig.basedpyright.setup({ capabilities = capabilities})
+    lspconfig.ruff.setup({ capabilities = capabilities})
     -- Typescript/Javascript
-    lspconfig.angularls.setup({})
-    lspconfig.ts_ls.setup({})
-    lspconfig.eslint.setup({})
-    lspconfig.tailwindcss.setup({})
+    lspconfig.angularls.setup({ capabilities = capabilities})
+    lspconfig.ts_ls.setup({ capabilities = capabilities})
+    lspconfig.eslint.setup({ capabilities = capabilities})
+    lspconfig.tailwindcss.setup({ capabilities = capabilities})
     -- HTML 
-    lspconfig.html.setup({})
-    lspconfig.cssls.setup({})
+    lspconfig.html.setup({ capabilities = capabilities})
+    lspconfig.cssls.setup({ capabilities = capabilities})
     -- CPP
-    lspconfig.clangd.setup({})
-	end,
+    lspconfig.clangd.setup({ capabilities = capabilities})
+  end
 }
