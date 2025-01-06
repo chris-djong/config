@@ -62,8 +62,10 @@ return {
             },
             ["<C-k>"] = { "select_prev", "fallback" },
             ["<C-j>"] = { "select_next", "fallback" },
-            ["<C-up>"] = { "scroll_documentation_up", "fallback" },
-            ["<C-down>"] = { "scroll_documentation_down", "fallback" },
+            ["<C-up>"] = { "select_prev", "fallback" },
+            ["<C-down>"] = { "select_next", "fallback" },
+            ["<PageUp>"] = { "scroll_documentation_up", "fallback" },
+            ["<PageDown>"] = { "scroll_documentation_down", "fallback" },
         },
 
 

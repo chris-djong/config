@@ -63,20 +63,37 @@ return {
     local capabilities = require('blink.cmp').get_lsp_capabilities()
     local lspconfig = require('lspconfig')
 
+    local border = {
+      {"🭽", "FloatBorder"},
+      {"▔", "FloatBorder"},
+      {"🭾", "FloatBorder"},
+      {"▕", "FloatBorder"},
+      {"🭿", "FloatBorder"},
+      {"▁", "FloatBorder"},
+      {"🭼", "FloatBorder"},
+      {"▏", "FloatBorder"},
+    }
+
+    -- LSP settings (to enable border)
+    local handlers =  {
+      ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border}),
+      ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border }),
+    }
+
     -- Lua
-    lspconfig.lua_ls.setup({ capabilities = capabilities })
+    lspconfig.lua_ls.setup({ handlers = handlers, capabilities = capabilities })
     -- Python
-    lspconfig.basedpyright.setup({ capabilities = capabilities})
-    lspconfig.ruff.setup({ capabilities = capabilities})
+    lspconfig.basedpyright.setup({ handlers = handlers, capabilities = capabilities})
+    lspconfig.ruff.setup({ handlers = handlers, capabilities = capabilities})
     -- Typescript/Javascript
-    lspconfig.angularls.setup({ capabilities = capabilities})
-    lspconfig.ts_ls.setup({ capabilities = capabilities})
-    lspconfig.eslint.setup({ capabilities = capabilities})
-    lspconfig.tailwindcss.setup({ capabilities = capabilities})
+    lspconfig.angularls.setup({ handlers = handlers, capabilities = capabilities})
+    lspconfig.ts_ls.setup({ handlers = handlers, capabilities = capabilities})
+    lspconfig.eslint.setup({ handlers = handlers, capabilities = capabilities})
+    lspconfig.tailwindcss.setup({ handlers = handlers, capabilities = capabilities})
     -- HTML 
-    lspconfig.html.setup({ capabilities = capabilities})
-    lspconfig.cssls.setup({ capabilities = capabilities})
+    lspconfig.html.setup({ handlers = handlers, capabilities = capabilities})
+    lspconfig.cssls.setup({ handlers = handlers, capabilities = capabilities})
     -- CPP
-    lspconfig.clangd.setup({ capabilities = capabilities})
+    lspconfig.clangd.setup({ handlers = handlers, capabilities = capabilities})
   end
 }
