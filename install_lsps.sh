@@ -10,6 +10,6 @@ npm install -g typescript typescript-language-server
 apt install clangd
 
 # Formatters 
-pip install --user https://github.com/nvbn/thefuck/archive/master.zip
+npm install -g @johnnymorganz/stylua-bin
 pip install --user sqlfluff
 apt install clang-format
