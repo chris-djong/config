@@ -6,7 +6,8 @@
 
 { imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix ];
+      ./hardware-configuration.nix
+      <home-manager/nixos> ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true; boot.loader.efi.canTouchEfiVariables = 
@@ -75,8 +76,13 @@
   users.users.chris = { isNormalUser = true; description = "Chris"; extraGroups = [ 
     "networkmanager" "wheel" ]; packages = with pkgs; [
       kdePackages.kate
-    #  thunderbird
     ];
+  };
+
+  home-manager.users.chris = { pkgs, ...}: {
+    home.packages = [  ];
+    programs.bash.enable = true;
+    home.stateVersion = "24.11"; 
   };
 
   # Install firefox.
