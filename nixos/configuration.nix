@@ -16,6 +16,12 @@
   # networking.wireless.enable = true; # Enables wireless support via 
   # wpa_supplicant.
 
+  nix.gc = { 
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 7d";
+  };
+
   # Configure network proxy if necessary networking.proxy.default = 
   # "http://user:password@proxy:port/"; networking.proxy.noProxy = 
   # "127.0.0.1,localhost,internal.domain";
@@ -41,8 +47,8 @@
     desktopManager = {
         xfce.enable = true;
     };
-    displayManager.defaultSession = "xfce";
   };
+  services.displayManager.defaultSession = "xfce";
 
   # Configure console keymap
   console.keyMap = "us-acentos";
