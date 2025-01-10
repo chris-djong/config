@@ -6,8 +6,7 @@
 
 { imports =
     [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      <home-manager/nixos> ];
+      ./hardware-configuration.nix ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true; boot.loader.efi.canTouchEfiVariables = 
@@ -79,12 +78,6 @@
     ];
   };
 
-  home-manager.users.chris = { pkgs, ...}: {
-    home.packages = [  ];
-    programs.bash.enable = true;
-    home.stateVersion = "24.11"; 
-  };
-
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -95,6 +88,7 @@
   environment.systemPackages = with pkgs; [
     vim
     git
+    home-manager
  # Do not forget to add an editor to edit configuration.nix! The Nano editor 
   #  is also installed by default. wget
   ];
