@@ -1,5 +1,5 @@
 {
-  programs.starship = {
+  programs.spaceship-prompt = {
     enable = true;
     enableZshIntegration = true;
     settings = {

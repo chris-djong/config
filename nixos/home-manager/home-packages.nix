@@ -12,6 +12,6 @@
     fzf
     htop
     wget
-
+    ripgrep # better grep for telescope
   ];
 }
