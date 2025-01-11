@@ -129,9 +129,6 @@ tar -xf fzf-0.56.3-linux_amd64.tar.gz
 mv fzf ~/bin 
 rm fzf-0.56.3-linux_amd64.tar.gz
 
-# Setup GIT shortcuts for fzf. CTRL+G - CTRL+B
-create_symlink "~/config/.config/fzf-git.sh" "~/.config/fzf-git.sh" 
-
 echo "Installing better find"
 sudo apt install fd-find
 ln -s $(which fdfind) ~/bin/fd

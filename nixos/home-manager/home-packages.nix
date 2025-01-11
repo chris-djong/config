@@ -11,6 +11,7 @@
 
     # CLI utils
     fzf
+    fd
     btop
     wget
     ripgrep # better grep for telescope
