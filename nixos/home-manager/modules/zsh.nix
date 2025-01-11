@@ -9,6 +9,7 @@
      {
         vi = "nvim";
         vim = "nvim";
+	cd = "z";
 	set_env = ". .venv/bin/activate";
      };
 
