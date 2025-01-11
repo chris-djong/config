@@ -37,18 +37,20 @@
           inherit (host) hostname stateVersion;
         };
       }) {} hosts;
+    homeConfigurations = {
+      ${user} = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        extraSpecialArgs = {
+          inherit inputs homeStateVersion user;
+        };
 
-    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      extraSpecialArgs = {
-        inherit inputs homeStateVersion user;
+        modules = [
+          ./home-manager/home.nix
+        ];
+
+        # Define activationPackage for the user
+        activationPackage = home-manager.lib.activationPackage;
       };
-
-      modules = [
-        ./home-manager/home.nix
-      ];
-      
-      activationPackage = home-manager.lib.activationPackage;
     };
   };
 }
