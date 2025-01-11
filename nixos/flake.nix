@@ -29,7 +29,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.chris = import ./home-manager/home.nix; 
-            home-manager.specialArgs = {
+            home-manager.extraSpecialArgs = {
               inherit homeStateVersion user;
             };
           }
