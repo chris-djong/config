@@ -11,7 +11,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
     system = "x86_64-linux";
     homeStateVersion = "24.11";
     user = "chris";
@@ -31,26 +31,22 @@
     };
 
   in {
-    nixosConfigurations = nixpkgs.lib.foldl' (configs: host:
-      configs // {
-        "${host.hostname}" = makeSystem {
-          inherit (host) hostname stateVersion;
-        };
-      }) {} hosts;
-    homeConfigurations = {
-      ${user} = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = {
-          inherit inputs homeStateVersion user;
-        };
-
+    nixosConfigurations = {
+      hostname = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         modules = [
-          ./home-manager/home.nix
-        ];
+          ./configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.chris = import ./home-manager/home.nix;
 
-        # Define activationPackage for the user
-        activationPackage = home-manager.lib.activationPackage;
+            # Optionally, use home-manager.extraSpecialArgs to pass
+            # arguments to home.nix
+          }
+        ];
       };
-    };
+    }
   };
 }
