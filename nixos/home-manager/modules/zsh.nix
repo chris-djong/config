@@ -12,6 +12,10 @@
 	set_env = ". .venv/bin/activate";
      };
 
+    sessionVariables = {
+        BAT_THEME = "tokyonight_night";
+    };
+
     history.size = 10000;
     history.path = "${config.xdg.dataHome}/zsh/history";
   };
