@@ -15,12 +15,13 @@
     let 
       user = "chris";
       homeStateVersion = "24.11";
+      hostname = "chris-laptop" 
     in {
     nixosConfigurations = {
-      chris-laptop = nixpkgs.lib.nixosSystem {
+      ${hostname} = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit user;
+          inherit user hostname;
         };
         modules = [
           ./hosts/chris-laptop/configuration.nix
