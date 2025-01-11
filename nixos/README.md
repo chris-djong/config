@@ -1,13 +1,22 @@
-# ❄️ NixOS Config Reborn
+# NIX OS Config
 
-Welcome to my redesigned NixOS configuration built for efficiency and aesthetics. Right now I'm trying to commit something everyday. Let's see how long I can go.
+Just small useful commands I don't want to forget
 
-
-    ```bash
-    cd nixos
-    git add .
-    nixos-rebuild switch --flake ./#<hostname>
+## Building
+    ```
+nixos-rebuild switch --flake ./#<hostname>
     # or nixos-install --flake ./#<hostname> if you are installing on a fresh system
-    home-manager switch
+    home-manager switch --flake ./#<hostname>
+    ```
+
+## Changing XServer Keys
+
+In order to swap caps with ESC somehow it looks like the gsettings options are built once and don't pick up the changes to the configuration.nix. To overcome this run the following commands and restart
+
+
+    ```
+gsettings reset org.gnome.desktop.input-sources xkb-options
+gsettings reset org.gnome.desktop.input-sources sources
+
     ```
 

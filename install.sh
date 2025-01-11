@@ -39,33 +39,29 @@ fi
 sudo apt install -y dconf-cli  
 dconf write "/org/gnome/desktop/input-sources/xkb-options" "[ 'caps:swapescape']"
 
-# Create the symbolic link
-if [[ -L ~/.tmux.conf ]]; then
-  unlink ~/.tmux.conf
-fi
-if [[ -f ~/.tmux.conf ]]; then
-  echo "Moving existing tmux.conf to tmux.conf.old"
-  mv ~/.tmux.conf ~/.tmux.conf.old
-fi
-ln -sf ~/config/.tmux.conf ~/.tmux.conf 
+# Small helper function to create the symlink
+create_symlink() {
+  local source_path="$1"
+  local link_path="$2"
 
-mkdir -p ~/.config
-if [[ -L ~/.config/nvim ]]; then
-  unlink ~/.config/nvim
-fi
-if [[ -d  ~/.config/nvim ]]; then
-  echo "Moving existing ~/.config/nvim to ~/.config/nvim.old"
-  mv ~/.config/nvim ~/.config/nvim.old
-fi
-ln -sf ~/config/.config/nvim ~/.config/nvim
-if [[ -L ~/.wezterm.lua ]]; then
-  unlink ~/.wezterm.lua
-fi
-if [[ -f  ~/.wezterm.lua ]]; then
-  echo "Moving existing wezterm.lua to wezterm.lua.old"
-  mv ~/.wezterm.lua ~/.wezterm.lua.old
-fi
-ln -sf ~/config/.wezterm.lua ~
+  # Check if the link path is a symlink, and if so, remove it
+  if [[ -L "$link_path" ]]; then
+    unlink "$link_path"
+  fi
+
+  # Check if the link path is a regular file, and if so, move it to .old
+  if [[ -e "$link_path" ]]; then
+    echo "Moving existing $link_path to ${link_path}.old"
+    mv "$link_path" "${link_path}.old"
+  fi
+
+  # Create the symlink
+  ln -sf "$source_path" "$link_path"
+}
+
+create_symlink "~/config/.tmux.conf"  "~/.tmux.conf" 
+create_symlink "~/config/nvim"  "~/.config.nvim" 
+create_symlink "~/config/.wezterm.lua" "~" 
 
 # Create the bin directory in case it does not exist yet 
 mkdir -p ~/bin
@@ -118,16 +114,8 @@ if ! command -v eza &> /dev/null; then
   sudo apt install -y eza
 fi
 
-ln -sf ~/config/.zshrc ~/.zshrc 
-mkdir -p ~/.config
-if [[ -L ~/.config/spaceship.toml ]]; then
-  unlink ~/.config/spaceship.toml
-fi
-if [[ -f  ~/.config/spaceship.zsh ]]; then
-  echo "Moving existing .config/spaceship.zsh to spaceship.zsh.old"
-  mv ~/.config/spaceship.zsh ~/.config/spaceship.zsh.old
-fi
-ln -sf ~/config/.config/spaceship.zsh ~/.config/spaceship.zsh
+create_symlink "~/config/.zshrc" "~/.zshrc" 
+create_symlink "~/config/.config/spaceship.zsh" "~/.config/spaceship.zsh" 
 
 # Make zsh the default shell
 chsh -s /bin/zsh
@@ -140,16 +128,9 @@ wget https://github.com/junegunn/fzf/releases/download/v0.56.3/fzf-0.56.3-linux_
 tar -xf fzf-0.56.3-linux_amd64.tar.gz
 mv fzf ~/bin 
 rm fzf-0.56.3-linux_amd64.tar.gz
+
 # Setup GIT shortcuts for fzf. CTRL+G - CTRL+B
-# Create the symbolic link
-if [[ -L ~/.config/fzf-git.sh ]]; then
-  unlink ~/.config/fzf-git.sh
-fi
-if [[ -f ~/.config/fzf-git.sh ]]; then
-  echo "Moving existing fzf-git.sh to fzf-git.sh.old"
-  mv ~/.config/fzf-git.sh ~/.config/fzf-git.sh.old
-fi
-ln -sf ~/config/.config/fzf-git.sh ~/.config/fzf-git.sh 
+create_symlink "~/config/.config/fzf-git.sh" "~/.config/fzf-git.sh" 
 
 echo "Installing better find"
 sudo apt install fd-find

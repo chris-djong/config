@@ -2,8 +2,7 @@
   programs.wezterm = {
     enable = true;
     enableZshIntegration = true;
-    extraConfig = {
-      font = "Iosevka";
+    extraConfig = builtins.readFile ../../.config/wezterm.lua;
     };
   };
 }
