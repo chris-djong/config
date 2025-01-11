@@ -7,7 +7,8 @@
 { imports =
     [ 
       ./hardware-configuration.nix
-      ./packages.nix
+      ./local-packages.nix
+      ../../nixos/modules
     ];
 
   # Bootloader.
