@@ -24,12 +24,12 @@
           inherit user hostname;
         };
         modules = [
-          ./hosts/chris-laptop/configuration.nix
+          ./hosts/${hostname}/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.chris = import ./home-manager/home.nix; 
+            home-manager.users.${user} = import ./home-manager/home.nix; 
             home-manager.extraSpecialArgs = {
               inherit homeStateVersion user;
             };
