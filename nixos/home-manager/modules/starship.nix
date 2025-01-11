@@ -2,7 +2,6 @@
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
-    -- Host / venv / git/ dir / char 
     format="$hostname - $python$git_branch $directory$character ";
     settings = {
       add_newline = false;
