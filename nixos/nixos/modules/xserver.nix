@@ -5,6 +5,6 @@
       gnome.enable = true;
     };
     libinput.enable = true;
-  }
+  };
   services.displayManager.defaultSession = "gnome";
 }

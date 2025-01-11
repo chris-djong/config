@@ -9,7 +9,6 @@
     ./nix.nix
     ./timezone.nix
     ./user.nix
-    ./zram.nix
     ./gbc.nix
     ./xserver.nix
   ];
