@@ -11,7 +11,11 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }: 
+    let 
+      user = "chris";
+      homeStateVersion = "24.11";
+    in {
     nixosConfigurations = {
       chris-laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -24,9 +28,9 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.chris = import ./home-manager/home.nix {
-              homeStateVersion = "24.11";
-              user = "chris"; 
+            home-manager.users.chris = import ./home-manager/home.nix; 
+            home-manager.specialArgs = {
+              inherit homeStateVersion user;
             };
           }
         ];
