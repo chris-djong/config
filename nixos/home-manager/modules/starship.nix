@@ -2,6 +2,7 @@
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
+    enableBashIntegration = true;
     settings = {
       add_newline = false;
       format="$hostname-$python$git_branch $directory$character ";

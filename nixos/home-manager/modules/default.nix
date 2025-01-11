@@ -4,6 +4,7 @@
     ./chromium.nix
     ./eza.nix
     ./git.nix
+    ./zoxide.nix
     ./lazygit.nix
     ./neovim.nix
     ./obsidian.nix
