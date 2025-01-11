@@ -7,7 +7,7 @@
     ./lazygit.nix
     ./neovim.nix
     ./obsidian.nix
-    ./spaceship.nix
+    ./starship.nix
     ./tmux.nix
     ./zsh.nix
   ];
