@@ -47,6 +47,8 @@
       modules = [
         ./home-manager/home.nix
       ];
+      
+      activationPackage = home-manager.lib.activationPackage;
     };
   };
 }
