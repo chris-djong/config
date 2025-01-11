@@ -11,29 +11,10 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: let
-    system = "x86_64-linux";
-    homeStateVersion = "24.11";
-    user = "chris";
-    hosts = [
-      { hostname = "chris-laptop"; stateVersion = "24.11"; }
-    ];
-
-    makeSystem = { hostname, stateVersion }: nixpkgs.lib.nixosSystem {
-      system = system;
-      specialArgs = {
-        inherit inputs stateVersion hostname user;
-      };
-
-      modules = [
-        ./hosts/${hostname}/configuration.nix
-      ];
-    };
-
-  in {
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
       hostname = nixpkgs.lib.nixosSystem {
-        system = ${system};
+        system = "x86_64-linux";
         modules = [
           ./hosts/chris-laptop/configuration.nix
           home-manager.nixosModules.home-manager
@@ -44,6 +25,5 @@
           }
         ];
       };
-    }
   };
 }
