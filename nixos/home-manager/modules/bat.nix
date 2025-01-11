@@ -6,8 +6,7 @@
         src = pkgs.fetchFromGitHub {
           owner = "folke";
           repo = "folke";
-	  ref = "main";
-          sha256 = "186rhbljw80psf1l8hyj02ycz1wzxv4rxmbrqr8yvi30165drpay";
+	  rev = "refs/heads/main";
         };
         file = "extras/sublime/tokyonight_night.tmTheme";
       };
