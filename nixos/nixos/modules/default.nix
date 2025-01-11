@@ -10,5 +10,6 @@
     ./user.nix
     ./gbc.nix
     ./xserver.nix
+    ./fonts.nix
   ];
 }

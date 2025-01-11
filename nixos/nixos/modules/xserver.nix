@@ -4,7 +4,7 @@
     desktopManager = {
       gnome.enable = true;
     };
-    xkbOptions = "ctrl:swapcaps";
+    xkbOptions = "caps:swapescape";
   };
   services.displayManager.defaultSession = "gnome";
   services.libinput.enable = true;
