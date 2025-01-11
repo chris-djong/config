@@ -33,17 +33,14 @@
   in {
     nixosConfigurations = {
       hostname = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = ${system};
         modules = [
-          ./configuration.nix
+          ./hosts/chris-laptop/configuration.nix
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.chris = import ./home-manager/home.nix;
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
           }
         ];
       };
