@@ -15,6 +15,9 @@
     nixosConfigurations = {
       chris-laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+        specialArgs = {
+          inherit user;
+        };
         modules = [
           ./hosts/chris-laptop/configuration.nix
           home-manager.nixosModules.home-manager
