@@ -4,7 +4,7 @@
     enableZshIntegration = true;
     settings = {
       add_newline = false;
-      format="$hostname - $python$git_branch $directory$character ";
+      format="$hostname-$python$git_branch $directory$character ";
       hostname = {
         format = "[$ssh_symbol](blue dimmed bold)[$hostname](green dimmed bold)";
 	ssh_only = false;
@@ -17,16 +17,12 @@
         format="[$branch](blue)"; 
         
       };
-      username = {
-        show_always = true;
-        format = "[$user]($style)@";
-      };
       directory = {
         read_only = " 🔒";
 	truncate_to_repo = false;
       };
       character = { 
-        format = "$symbol ";
+        format = "$symbol";
         success_symbol = "[:](bold green)";
         error_symbol = "[:](bold red)";
       };
