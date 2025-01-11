@@ -24,6 +24,7 @@
             home-manager.users.chris = import ./home-manager/home.nix;
           }
         ];
+        specialArgs = { inherit self; };  # Pass flake itself as special argument
       };
     };
   };
