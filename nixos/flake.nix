@@ -15,7 +15,7 @@
     let 
       user = "chris";
       homeStateVersion = "24.11";
-      hostname = "chris-laptop" 
+      hostname = "chris-laptop"; 
     in {
     nixosConfigurations = {
       ${hostname} = nixpkgs.lib.nixosSystem {
