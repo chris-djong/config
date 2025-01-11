@@ -9,7 +9,7 @@
      {
         vi = "nvim";
         vim = "nvim";
-	set_env = ". .venv/bin/activate" 
+	set_env = ". .venv/bin/activate";
      };
 
     history.size = 10000;
