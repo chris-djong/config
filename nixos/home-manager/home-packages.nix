@@ -7,10 +7,11 @@
     # Desktop apps
     obsidian
     teams-for-linux
+    seafile-client
 
     # CLI utils
     fzf
-    htop
+    btop
     wget
     ripgrep # better grep for telescope
   ];
