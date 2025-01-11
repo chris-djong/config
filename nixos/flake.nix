@@ -13,7 +13,7 @@
 
   outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
     nixosConfigurations = {
-      hostname = nixpkgs.lib.nixosSystem {
+      chris-laptop = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./hosts/chris-laptop/configuration.nix
@@ -24,7 +24,6 @@
             home-manager.users.chris = import ./home-manager/home.nix;
           }
         ];
-        specialArgs = { inherit self; };  # Pass flake itself as special argument
       };
     };
   };
