@@ -21,7 +21,10 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.chris = import ./home-manager/home.nix;
+            home-manager.users.chris = import ./home-manager/home.nix {
+              homeStateVersion = "24.11";
+              user = "chris"; 
+            };
           }
         ];
       };
