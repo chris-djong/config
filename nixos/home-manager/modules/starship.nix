@@ -30,7 +30,7 @@
       };
       character = { 
         format = "$symbol ";
-      }
+      };
     };
   };
 }
