@@ -74,6 +74,9 @@
       ${builtins.readFile ./keymaps/telescope.lua}
       ${builtins.readFile ./keymaps/nvim-tree.lua}
       ${builtins.readFile ./keymaps/lazy-git.lua}
+      ${builtins.readFile ./keymaps/trouble.lua}
+      ${builtins.readFile ./keymaps/nvim-lint.lua}
+      ${builtins.readFile ./keymaps/formatting.lua}
     '';
     extraPackages = with pkgs; [
       xclip
