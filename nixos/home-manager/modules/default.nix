@@ -7,9 +7,9 @@
     ./zoxide.nix
     ./lazygit.nix
     ./neovim.nix
-    ./obsidian.nix
     ./starship.nix
     ./tmux.nix
+    ./firefox.nix
     ./wezterm.nix
     ./zsh.nix
   ];
