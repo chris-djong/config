@@ -13,10 +13,10 @@
         plugin = pkgs.vimPlugins.telescope-nvim;
         config = toLuaFile ./plugins/telescope.lua;
       }
-      # {
-      #   plugin = pkgs.vimPlugins.todo-comments-nvim;
-      #   config = builtins.readFile ../../../.config/nvim/lua/plugins/todo-comments.lua;
-      # }
+      {
+        plugin = pkgs.vimPlugins.todo-comments-nvim;
+        config = toLuaFile ./plugins/todo-comments.lua;
+      }
       # {
       #   plugin = pkgs.vimPlugins.nvim-tree-lua;
       #   config = builtins.readFile ../../../.config/nvim/lua/plugins/nvim-tree.lua;
