@@ -18,7 +18,7 @@ conform.setup({
     python = { "ruff_format", "ruff_fix"  },
     sql = { "sqlfluff" }, 
     cpp = { "clang-format" },
-
+    nix = { "nixfmt" },
   },
   format_on_save = {
     lsp_fallback = true,
