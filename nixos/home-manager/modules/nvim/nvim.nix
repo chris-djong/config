@@ -69,8 +69,8 @@
       pkgs.vimPlugins.nvim-treesitter.withAllGrammars
     ];
     extraLuaConfig = ''
-      ${builtins.readFile ../../../../.config/nvim/lua/core/options.lua}
-      ${builtins.readFile ../../../../.config/nvim/lua/core/keymaps.lua}
+      ${builtins.readFile ./core.lua}
+      ${builtins.readFile ./keymaps/general.lua}
       ${builtins.readFile ./keymaps/telescope.lua}
       ${builtins.readFile ./keymaps/nvim-tree.lua}
       ${builtins.readFile ./keymaps/lazy-git.lua}
