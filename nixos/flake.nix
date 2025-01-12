@@ -11,31 +11,31 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: 
-    let 
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+    let
       user = "chris";
       homeStateVersion = "24.11";
-      hostname = "chris-laptop"; 
     in {
-    nixosConfigurations = {
-      ${hostname} = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        specialArgs = {
-          inherit user hostname;
+      nixosConfigurations = {
+        chris-laptop = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit user;
+            hostname = "chris-laptop";
+          };
+          modules = [
+            ./hosts/chris-laptop/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.${user} = import ./home-manager/home.nix;
+              home-manager.extraSpecialArgs = {
+                inherit homeStateVersion user;
+              };
+            }
+          ];
         };
-        modules = [
-          ./hosts/${hostname}/configuration.nix
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.${user} = import ./home-manager/home.nix; 
-            home-manager.extraSpecialArgs = {
-              inherit homeStateVersion user;
-            };
-          }
-        ];
       };
     };
-  };
 }
