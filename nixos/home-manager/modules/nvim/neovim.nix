@@ -17,15 +17,20 @@
         plugin = pkgs.vimPlugins.todo-comments-nvim;
         config = toLuaFile ./plugins/todo-comments.lua;
       }
-      # {
-      #   plugin = pkgs.vimPlugins.nvim-tree-lua;
-      #   config = builtins.readFile ../../../.config/nvim/lua/plugins/nvim-tree.lua;
-      # }
+      {
+        plugin = pkgs.vimPlugins.nvim-tree-lua;
+        config = toLuaFile ./plugins/nvim-tree.lua;
+      }
+      {
+        plugin = pkgs.vimPlugins.alpha-nvim;
+        config = toLuaFile ./plugins/alpha.lua;
+      }
     ];
     extraLuaConfig = ''
+      ${builtins.readFile ../../../../.config/nvim/lua/core/options.lua}
       ${builtins.readFile ../../../../.config/nvim/lua/core/keymaps.lua}
       ${builtins.readFile ./keymaps/telescope.lua}
-      ${builtins.readFile ../../../../.config/nvim/lua/core/options.lua}
+      ${builtins.readFile ./keymaps/nvim-tree.lua}
     '';
     extraPackages = with pkgs; [
       xclip
