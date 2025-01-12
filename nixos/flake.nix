@@ -14,13 +14,13 @@
   outputs = inputs@{ self, nixpkgs, home-manager, ... }:
     let
       user = "chris";
-      homeStateVersion = "24.11";
+      stateVersion = "24.11";
     in {
       nixosConfigurations = {
         chris-laptop = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = {
-            inherit user;
+            inherit user inputs stateVersion;
             hostname = "chris-laptop";
           };
           modules = [
@@ -31,7 +31,8 @@
               home-manager.useUserPackages = true;
               home-manager.users.${user} = import ./home-manager/home.nix;
               home-manager.extraSpecialArgs = {
-                inherit homeStateVersion user;
+                inherit user;
+                homeStateVersion = stateVersion;
               };
             }
           ];
