@@ -22,6 +22,6 @@
       inherit inputs user;
       homeStateVersion = stateVersion;
     };
-    users = { "${user}" = import ../../home-manager/home.nix; };
+    users = { "${user}" = import ./home.nix; };
   };
 }
