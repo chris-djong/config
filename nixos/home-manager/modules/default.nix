@@ -6,7 +6,7 @@
     ./git.nix
     ./zoxide.nix
     ./lazygit.nix
-    ./neovim.nix
+    ./nvim/neovim.nix
     ./starship.nix
     ./tmux.nix
     ./firefox.nix
