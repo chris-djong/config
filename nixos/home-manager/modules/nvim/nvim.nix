@@ -16,6 +16,7 @@
     plugins = [
       pkgs.vimPlugins.telescope-fzf-native-nvim
       pkgs.vimPlugins.dressing-nvim
+      pkgs.vimPlugins.lazygit-nvim
       {
         plugin = pkgs.vimPlugins.alpha-nvim;
         config = toLuaFile ./plugins/alpha.lua;
@@ -37,8 +38,8 @@
         config = toLuaFile ./plugins/indent-blankline.lua;
       }
       {
-        plugin = pkgs.vimPlugins.indent-blankline-nvim;
-        config = toLuaFile ./plugins/lazy-git.lua;
+        plugin = pkgs.vimPlugins.nvim-lint;
+        config = toLuaFile ./plugins/nvim-lint.lua;
       }
       {
         plugin = pkgs.vimPlugins.telescope-nvim;
@@ -69,6 +70,12 @@
       nodePackages.prettier
       nixfmt-classic
       stylua
+
+      # Linters 
+      nix-linter
+      ruff
+      eslint_d
+      luacheck
 
     ];
   };
