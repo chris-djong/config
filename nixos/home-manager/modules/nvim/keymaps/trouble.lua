@@ -1,5 +1,9 @@
-require("trouble").setup({
-	focus = true,
+return {
+	"folke/trouble.nvim",
+	dependencies = { "nvim-tree/nvim-web-devicons", "folke/todo-comments.nvim" },
+	opts = {
+		focus = true,
+	},
 	keys = {
 		{ "<leader>xw", "<cmd>Trouble diagnostics toggle<CR>", desc = "Open trouble workspace diagnostics" },
 		{
@@ -11,4 +15,4 @@ require("trouble").setup({
 		{ "<leader>xl", "<cmd>Trouble loclist toggle<CR>", desc = "Open trouble location list" },
 		{ "<leader>xt", "<cmd>Trouble todo toggle<CR>", desc = "Open todos in trouble" },
 	},
-})
+}
