@@ -9,9 +9,14 @@
     enable = true;
     plugins = [
       pkgs.vimPlugins.telescope-fzf-native-nvim
+      pkgs.vimPlugins.dressing-nvim
       {
         plugin = pkgs.vimPlugins.telescope-nvim;
         config = toLuaFile ./plugins/telescope.lua;
+      }
+      {
+        plugin = pkgs.vimPlugins.conform-nvim;
+        config = toLuaFile ./plugins/formatting.lua;
       }
       {
         plugin = pkgs.vimPlugins.todo-comments-nvim;
@@ -24,6 +29,10 @@
       {
         plugin = pkgs.vimPlugins.alpha-nvim;
         config = toLuaFile ./plugins/alpha.lua;
+      }
+      {
+        plugin = pkgs.vimPlugins.tokyonight-nvim;
+        config = toLuaFile ./plugins/colorscheme.lua;
       }
     ];
     extraLuaConfig = ''
