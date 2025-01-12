@@ -11,7 +11,7 @@
       pkgs.vimPlugins.telescope-fzf-native-nvim
       {
         plugin = pkgs.vimPlugins.telescope-nvim;
-        config = toLuaFile ./configs/telescope.lua;
+        config = toLuaFile ./plugins/telescope.lua;
       }
       # {
       #   plugin = pkgs.vimPlugins.todo-comments-nvim;
