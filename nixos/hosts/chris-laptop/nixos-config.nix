@@ -1,16 +1,16 @@
 { proxy, ... }: {
   imports = [
-    ./audio.nix
-    ./bluetooth.nix
-    ./boot.nix
-    ./env.nix
-    ./net.nix
-    ./nix.nix
-    ./timezone.nix
-    ./user.nix
-    ./gbc.nix
-    ./xserver.nix
-    ./fonts.nix
-    ./docker.nix
+    ../../nixos/modules/audio.nix
+    ../../nixos/modules/bluetooth.nix
+    ../../nixos/modules/boot.nix
+    ../../nixos/modules/env.nix
+    ../../nixos/modules/net.nix
+    ../../nixos/modules/nix.nix
+    ../../nixos/modules/timezone.nix
+    ../../nixos/modules/user.nix
+    ../../nixos/modules/gbc.nix
+    ../../nixos/modules/xserver.nix
+    ../../nixos/modules/fonts.nix
+    ../../nixos/modules/docker.nix
   ];
 }
