@@ -8,5 +8,6 @@
     ../../nixos/modules/user.nix
     ../../nixos/modules/gbc.nix
     ../../nixos/modules/fonts.nix
+    ../../nixos/modules/docker.nix
   ];
 }
