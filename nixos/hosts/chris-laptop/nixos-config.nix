@@ -13,6 +13,7 @@
     ../../nixos/modules/fonts.nix
     ../../nixos/modules/docker.nix
     ../../nixos/modules/python.nix
+    ../../nixos/modules/node.nix
     ../../nixos/modules/hyprland.nix
   ];
 }
