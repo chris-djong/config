@@ -9,7 +9,7 @@ with lib; {
     systemd.enable = true;
 
     settings = {
-      "$mod" = "SUPER";
+      "$mod" = "ALT";
 
       bind = [
         "$mod, return, exec, wezterm"
