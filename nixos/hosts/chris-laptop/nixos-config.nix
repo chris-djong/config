@@ -12,5 +12,7 @@
     ../../nixos/modules/xserver.nix
     ../../nixos/modules/fonts.nix
     ../../nixos/modules/docker.nix
+    ../../nixos/modules/python.nix
+    ../../nixos/modules/hyperland.nix
   ];
 }
