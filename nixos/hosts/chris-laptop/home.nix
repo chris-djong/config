@@ -1,5 +1,5 @@
 { homeStateVersion, user, ... }: {
-  imports = [ ../../home-manager/modules ../../home-manager/home-packages.nix ];
+  imports = [ ./home-config.nix ];
   home = {
     username = user;
     homeDirectory = "/home/${user}";
