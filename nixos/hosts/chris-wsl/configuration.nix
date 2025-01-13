@@ -5,14 +5,16 @@
 
 {
   imports = [
-    nixos-wsl.nixosModules.default
-    <nixos-wsl/modules>
-    ./local-packages.nix
-    ../../nixos/modules
+    inputs.nixos-wsl.nixosModules.default
     inputs.home-manager.nixosModules.default
+    ./nixos.nix
   ];
 
   networking.hostName = hostname;
+
+  wsl.enable = true;
+  wsl.defaultUser = user;
+  wsl.interop.includePath = true;
 
   environment.systemPackages = [ inputs.home-manager ];
 
