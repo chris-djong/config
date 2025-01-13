@@ -4,6 +4,7 @@
   inputs = {
 
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11";
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
@@ -11,7 +12,7 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs, nixos-wsl, home-manager, ... }:
     let
       user = "chris";
       stateVersion = "24.11";
@@ -25,7 +26,7 @@
           };
           modules = [
             ./hosts/chris-laptop/configuration.nix
-            inputs.home-manager.nixosModules.default
+            home-manager.nixosModules.default
           ];
         };
         chris-wsl = nixpkgs.lib.nixosSystem {
@@ -36,7 +37,8 @@
           };
           modules = [
             ./hosts/chris-wsl/configuration.nix
-            inputs.home-manager.nixosModules.default
+            nixos-wsl.nixosModules.default
+            home-manager.nixosModules.default
           ];
         };
       };
