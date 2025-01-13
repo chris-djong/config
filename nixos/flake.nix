@@ -28,6 +28,17 @@
             inputs.home-manager.nixosModules.default
           ];
         };
+        chris-wsl = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = {
+            inherit user inputs stateVersion;
+            hostname = "chris-wsl";
+          };
+          modules = [
+            ./hosts/chris-wsl/configuration.nix
+            inputs.home-manager.nixosModules.default
+          ];
+        };
       };
     };
 }
