@@ -1,14 +1,13 @@
 # Edit this configuration file to define what should be installed on your system.  # Help is available in the configuration.nix(5) man page and in the NixOS manual
 # (accessible by running ‘nixos-help’).
 
-{ inputs, stateVersion, user, hostname, ... }:
+{ inputs, stateVersion, user, hostname, proxy, ... }:
 
 {
   imports = [
     inputs.nixos-wsl.nixosModules.default
     inputs.home-manager.nixosModules.default
     ./nixos-config.nix
-    ./proxy.nix
   ];
 
   wsl.enable = true;
@@ -21,7 +20,7 @@
 
   home-manager = {
     extraSpecialArgs = {
-      inherit inputs user;
+      inherit inputs user proxy;
       homeStateVersion = stateVersion;
     };
     users = { "${user}" = import ./home.nix; };

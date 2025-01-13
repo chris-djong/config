@@ -23,6 +23,7 @@
           specialArgs = {
             inherit user inputs stateVersion;
             hostname = "chris-laptop";
+            proxy = null;
           };
           modules = [
             ./hosts/chris-laptop/configuration.nix
@@ -34,6 +35,7 @@
           specialArgs = {
             inherit user inputs stateVersion;
             hostname = "chris-wsl";
+            proxy = null;
           };
           modules = [
             ./hosts/chris-wsl/configuration.nix

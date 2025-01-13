@@ -1,4 +1,4 @@
-{
+{ proxy, ... }: {
   imports = [
     ./audio.nix
     ./bluetooth.nix
