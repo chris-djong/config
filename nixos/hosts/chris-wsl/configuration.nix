@@ -7,10 +7,8 @@
   imports = [
     inputs.nixos-wsl.nixosModules.default
     inputs.home-manager.nixosModules.default
-    ./nixos.nix
+    ./nixos-config.nix
   ];
-
-  networking.hostName = hostname;
 
   wsl.enable = true;
   wsl.defaultUser = user;

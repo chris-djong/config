@@ -10,8 +10,6 @@
     inputs.home-manager.nixosModules.default
   ];
 
-  networking.hostName = hostname;
-
   environment.systemPackages = [ inputs.home-manager ];
 
   system.stateVersion = stateVersion;
