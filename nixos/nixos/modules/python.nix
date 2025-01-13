@@ -1,5 +1,1 @@
-{ pkgs, ... }: {
-  environment.systemPackages = [
-    pkgs.python312Full
-  ];
-};
+{ pkgs, ... }: { environment.systemPackages = [ pkgs.python312Full ]; }
