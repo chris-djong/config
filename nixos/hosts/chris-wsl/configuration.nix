@@ -8,6 +8,7 @@
     inputs.nixos-wsl.nixosModules.default
     inputs.home-manager.nixosModules.default
     ./nixos-config.nix
+    ./proxy.nix
   ];
 
   wsl.enable = true;

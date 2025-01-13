@@ -11,5 +11,6 @@
     ./gbc.nix
     ./xserver.nix
     ./fonts.nix
+    ./docker.nix
   ];
 }
