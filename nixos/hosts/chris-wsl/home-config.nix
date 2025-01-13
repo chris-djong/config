@@ -2,7 +2,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # Only import required modules 
-  imports [ 
+  imports = [
     ../../home-manager/modules/bat.nix
     ../../home-manager/modules/eza.nix
     ../../home-manager/modules/git.nix
@@ -11,6 +11,7 @@
     ../../home-manager/modules/tmux.nix
     ../../home-manager/modules/zoxide.nix
     ../../home-manager/modules/zsh.nix
+    ../../home-manager/modules/nvim/nvim.nix
   ];
 
   home.packages = with pkgs; [

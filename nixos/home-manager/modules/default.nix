@@ -10,7 +10,7 @@
     ./starship.nix
     ./tmux.nix
     ./firefox.nix
-    ./wezterm.nix
+    ./wezterm/wezterm.nix
     ./zsh.nix
   ];
 }

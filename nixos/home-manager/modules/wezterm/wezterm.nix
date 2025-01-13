@@ -3,6 +3,6 @@
     enable = true;
     enableZshIntegration = true;
     enableBashIntegration = true;
-    extraConfig = builtins.readFile ../../../.wezterm.lua;
+    extraConfig = builtins.readFile ./.wezterm.lua;
   };
 }
