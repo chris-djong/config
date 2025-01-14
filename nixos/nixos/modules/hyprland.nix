@@ -11,6 +11,7 @@
     rofi-wayland
     waybar
     gnome-icon-theme
+    networkmanagerapplet # to get wifi connectivity
   ];
 
   services.greetd = {
