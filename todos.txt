@@ -1,0 +1,1 @@
+swaylock --clock --screenshots --indicator --indicator-radius 100 --effect-blur 7x5
