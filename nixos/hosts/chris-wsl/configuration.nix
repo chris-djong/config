@@ -12,7 +12,7 @@
 
   wsl.enable = true;
   wsl.defaultUser = user;
-  wsl.interop.includePath = true;
+  wsl.interop.includePath = false;
 
   environment.systemPackages = [ inputs.home-manager ];
 

@@ -1,16 +1,6 @@
-{ config, proxy, ... }: {
-  programs.zsh = {
+{ proxy, ... }: {
+  programs.bash = {
     enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    shellAliases = {
-      vi = "nvim";
-      vim = "nvim";
-      cd = "z";
-      set_env = ". .venv/bin/activate";
-    };
 
     sessionVariables = let
       proxyVars = if proxy != null then {
@@ -34,8 +24,5 @@
       FZF_ALT_C_OPTS = "--preview 'eza --tree --color=always {} | head -200'";
 
     } // proxyVars;
-
-    history.size = 10000;
-    history.path = "${config.xdg.dataHome}/zsh/history";
   };
 }
