@@ -28,6 +28,7 @@
       }
     ];
     extraConfig = ''
+      set -g allow-rename off
       set -ag terminal-overrides ",xterm-256color:RGB"
 
       # New Split Windows Shortcuts
@@ -36,6 +37,12 @@
 
       # Keep current path on new window 
       bind c new-window -c "#{pane_current_path}"
+
+      # switch panes using home row keys
+      bind h select-pane -L
+      bind l select-pane -R
+      bind k select-pane -U
+      bind j select-pane -D
 
       # Bind B to copy mode
       bind b copy-mode
@@ -47,16 +54,20 @@
       bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel "xclip -r -sel clip" 
 
       # Styling for the overal status
-      set -g status-style "bg=#191A24 fg=white"
-      set -g status-left "#{?client_prefix,#[fg=red bold]PREFIX ,#{?#{==:#{pane_mode},copy-mode},#[fg=yellow bold]COPY ,#[fg=green bold]NORMAL }}"
+      set -g status-style "bg=#2A2B3D fg=white"
+      set -g status-left "#{?client_prefix,#[fg=#f38ba8 bold]PREFIX ,#{?#{==:#{pane_mode},copy-mode},#[fg=#f9e2af bold]COPY ,#[fg=#a6e3a1 bold]NORMAL }}"
       set -g status-right ""
+
+      # Styling of the individual panes 
+      set -g pane-border-style 'fg=#a6e3a1'
+      set -g pane-active-border-style 'fg=#c3ccdc'
 
       # Styling for the inidividual windows. Note that status means the small tab on the bottom of the window
       # The window style is the full window 
-      set -g window-status-style 'bg=#0000ff,fg=#000000'
-      set -g window-status-current-style 'bg=#00ff00,fg=#000000'
-      set -g window-status-format "#W (#I)"
-      set -g window-status-current-format "#W (#I)"
+      set -g window-status-style 'bg=#b4befe,fg=#000000'
+      set -g window-status-current-style 'bg=#a6e3a1,fg=#000000'
+      set -g window-status-format "#I: #W "
+      set -g window-status-current-format "#I: #W "
     '';
   };
 }
