@@ -1,5 +1,5 @@
 {
-  environment.sessionVariables = rec {
+  home.sessionVariables = rec {
     XDG_BIN_HOME = "$HOME/.local/bin";
     EDITOR = "nvim";
   };
