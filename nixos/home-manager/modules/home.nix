@@ -4,5 +4,10 @@
     EDITOR = "nvim";
   };
   home.sessionPath = [ "./node_modules/.bin" "$HOME/.local/bin" ];
+
+  home.file."scripts" = {
+    source = ../../scripts;
+    recursive = true;
+  };
 }
 
