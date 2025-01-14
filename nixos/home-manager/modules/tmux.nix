@@ -1,16 +1,4 @@
-{ pkgs, ... }:
-let
-  catpuccin-plugin = pkgs.tmuxPlugins.mkTmuxPlugin {
-    pluginName = "catppuccin-theme";
-    version = "";
-    src = pkgs.fetchFromGitHub {
-      owner = "catppuccin";
-      repo = "tmux";
-      rev = "refs/heads/main";
-      sha256 = "sha256-ymmCI6VYvf94Ot7h2GAboTRBXPIREP+EB33+px5aaJk=";
-    };
-  };
-in {
+{ pkgs, ... }: {
 
   programs.tmux = {
     enable = true;
@@ -19,49 +7,28 @@ in {
     escapeTime = 0;
     prefix = "C-Space";
     keyMode = "vi";
-    terminal = "screen-256color";
     historyLimit = 5000;
-    plugins = with pkgs;
-      [
-        # must be before continuum edits right status bar
-        {
-          plugin = catpuccin-plugin;
-          extraConfig = ''
-            	  set -g @catppuccin_flavor 'mocha' # latte, frappe, macchiato or mocha
-
-                set -g @catppuccin_window_number_position "right"
-                set -g @catppuccin_window_current_number_color "#{@thm_green}"
-                set -g @catppuccin_window_text ""
-                set -g @catppuccin_window_number "#[bold]#I: #{window_name}"
-                set -g @catppuccin_window_current_text ""
-                set -g @catppuccin_window_current_number "#[bold]#I: #{window_name}"
-                set -g @catppuccin_window_status_style "custom"
-                set -g @catppuccin_window_right_separator "#[fg=#{@_ctp_status_bg},reverse]#[none]"
-               
-                set -g @catppuccin_window_left_separator "#[fg=#{@_ctp_status_bg}]#[none]"
-                set -g @catppuccin_window_middle_separator "#[bg=#{@catppuccin_window_number_color},fg=#{@catppuccin_window_text_color}]"
-                set -g @catppuccin_window_current_middle_separator "#[bg=#{@catppuccin_window_current_number_color},fg=#{@catppuccin_window_current_text_color}]"
-          '';
-        }
-        # {
-        #     plugin = tmuxPlugins.resurrect;
-        #     extraConfig = ''
-        #     set -g @resurrect-strategy-vim 'session'
-        #     set -g @resurrect-strategy-nvim 'session'
-        #     set -g @resurrect-capture-pane-contents 'on'
-        #     '';
-        # }
-        # {
-        #     plugin = tmuxPlugins.continuum;
-        #     extraConfig = ''
-        #     set -g @continuum-restore 'on'
-        #     set -g @continuum-boot 'on'
-        #     set -g @continuum-save-interval '10'
-        #     '';
-        # }
-      ];
+    terminal = "screen-256color";
+    plugins = [
+      {
+        plugin = pkgs.tmuxPlugins.resurrect;
+        extraConfig = ''
+          set -g @resurrect-strategy-vim 'session'
+          set -g @resurrect-strategy-nvim 'session'
+          set -g @resurrect-capture-pane-contents 'on'
+        '';
+      }
+      {
+        plugin = pkgs.tmuxPlugins.continuum;
+        extraConfig = ''
+          set -g @continuum-restore 'on'
+          set -g @continuum-boot 'on'
+          set -g @continuum-save-interval '10min'
+        '';
+      }
+    ];
     extraConfig = ''
-      set -ag terminal-overrides ",$TERM:RGB"
+      set -ag terminal-overrides ",xterm-256color:RGB"
 
       # New Split Windows Shortcuts
       bind | split-window -hc "#{pane_current_path}"
@@ -79,11 +46,17 @@ in {
       # Y to copy to clipboard
       bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel "xclip -r -sel clip" 
 
-
-      set -g status-left-length 0
-      set -g status-left "#[fg=#{@thm_fg} bold] #S: "
-      set -ga status-left "#{?client_prefix,#[fg=red bold]PREFIX ,#{?#{==:#{pane_mode},copy-mode},#[fg=#{@thm_yellow} bold]COPY ,#[fg=#{@thm_green} bold]NORMAL }}"
+      # Styling for the overal status
+      set -g status-style "bg=#191A24 fg=white"
+      set -g status-left "#{?client_prefix,#[fg=red bold]PREFIX ,#{?#{==:#{pane_mode},copy-mode},#[fg=yellow bold]COPY ,#[fg=green bold]NORMAL }}"
       set -g status-right ""
+
+      # Styling for the inidividual windows. Note that status means the small tab on the bottom of the window
+      # The window style is the full window 
+      set -g window-status-style 'bg=#0000ff,fg=#000000'
+      set -g window-status-current-style 'bg=#00ff00,fg=#000000'
+      set -g window-status-format "#W (#I)"
+      set -g window-status-current-format "#W (#I)"
     '';
   };
 }
