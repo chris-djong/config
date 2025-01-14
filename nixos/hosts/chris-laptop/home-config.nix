@@ -11,6 +11,7 @@
     ../../home-manager/modules/lazygit.nix
     ../../home-manager/modules/starship.nix
     ../../home-manager/modules/tmux.nix
+    ../../home-manager/modules/home.nix
     ../../home-manager/modules/zoxide.nix
     ../../home-manager/modules/zsh.nix
     ../../home-manager/modules/bash.nix

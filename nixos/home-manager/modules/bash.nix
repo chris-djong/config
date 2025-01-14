@@ -2,6 +2,13 @@
   programs.bash = {
     enable = true;
 
+    shellAliases = {
+      vi = "nvim";
+      vim = "nvim";
+      cd = "z";
+      set_env = ". .venv/bin/activate";
+    };
+
     sessionVariables = let
       proxyVars = if proxy != null then {
         HTTP_PROXY = proxy;
