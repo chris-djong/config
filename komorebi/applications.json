@@ -1,0 +1,12 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/master/schema.asc.json",
+  "SnippingTool": {
+    "ignore": [
+      {
+        "kind": "Exe",
+        "id": "SnippingTool.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
+  }
+}
