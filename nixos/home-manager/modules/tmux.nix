@@ -1,4 +1,17 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  catpuccin-plugin = pkgs.tmuxPlugins.mkTmuxPlugin {
+    pluginName = "catppuccin-theme";
+    version = "";
+    src = pkgs.fetchFromGitHub {
+      owner = "catppuccin";
+      repo = "tmux";
+      rev = "refs/heads/main";
+      sha256 = "sha256-ymmCI6VYvf94Ot7h2GAboTRBXPIREP+EB33+px5aaJk=";
+    };
+  };
+in {
+
   programs.tmux = {
     enable = true;
     baseIndex = 1; # start counting a 1
@@ -12,7 +25,7 @@
       [
         # must be before continuum edits right status bar
         {
-          plugin = tmuxPlugins.catppuccin;
+          plugin = catpuccin-plugin;
           extraConfig = ''
             	  set -g @catppuccin_flavor 'mocha' # latte, frappe, macchiato or mocha
 
