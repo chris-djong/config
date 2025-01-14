@@ -54,8 +54,8 @@
       bind-key -T copy-mode-vi y send -X copy-pipe-and-cancel "xclip -r -sel clip" 
 
       # Styling for the overal status
-      set -g status-style "bg=#2A2B3D fg=white"
-      set -g status-left "#{?client_prefix,#[fg=#f38ba8 bold]PREFIX ,#{?#{==:#{pane_mode},copy-mode},#[fg=#f9e2af bold]COPY ,#[fg=#a6e3a1 bold]NORMAL }}"
+      set -g status-style "bg=#2A2B3D fg=#c3ccdc"
+      set -g status-left "#{?client_prefix,#[fg=#f38ba8 bold] PREFIX ,#{?#{==:#{pane_mode},copy-mode},#[fg=#f9e2af bold] COPY ,#[fg=#a6e3a1 bold] NORMAL }}"
       set -g status-right ""
 
       # Styling of the individual panes 
@@ -64,10 +64,10 @@
 
       # Styling for the inidividual windows. Note that status means the small tab on the bottom of the window
       # The window style is the full window 
-      set -g window-status-style 'bg=#b4befe,fg=#000000'
-      set -g window-status-current-style 'bg=#a6e3a1,fg=#000000'
-      set -g window-status-format "#I: #W "
-      set -g window-status-current-format "#I: #W "
+      set -g window-status-style 'bg=#2c3043,fg=#c3ccdc'
+      set -g window-status-current-style 'bg=#b4befe,fg=#000000'
+      set -g window-status-format " #I: #W "
+      set -g window-status-current-format " #I: #W "
     '';
   };
 }
