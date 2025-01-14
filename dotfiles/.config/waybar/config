@@ -1,20 +1,13 @@
 {
     "modules-left": [],
-    "modules-center": ["clock"],
-    "modules-right": ["network", "pulseaudio",  "battery" ],
+    "modules-center": ["clock", ],
+    "modules-right": ["tray", "pulseaudio", "battery" ],
     "clock": {
       "format": "{:%a, %d. %b  %H:%M}"
       },
      "battery": {
         "format": "{icon}",
         "format-icons": ["", "", "", "", ""]
-    },
-    "network": {
-        "format-wifi": "",
-        "format-ethernet": "",
-        "format-disconnected": "", 
-        "max-length": 50,
-        "on-click": "wezterm -e 'nmtui'"
     },
     "pulseaudio": {
         "format": "{icon} ",
