@@ -9,5 +9,7 @@
     ../../nixos/modules/gbc.nix
     ../../nixos/modules/fonts.nix
     ../../nixos/modules/docker.nix
+    ../../nixos/modules/python.nix
+    ../../nixos/modules/node20.nix
   ];
 }
