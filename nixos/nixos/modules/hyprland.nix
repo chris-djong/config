@@ -11,7 +11,6 @@
     wofi # application launcher
     waybar
     gnome-icon-theme # to show correct mouse icons etc
-    pavucontrol # to control volume
     networkmanagerapplet # to get wifi connectivity
     wlogout # logout menu with different options
     nemo # file manager
