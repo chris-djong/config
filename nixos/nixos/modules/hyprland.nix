@@ -16,6 +16,7 @@
     wlogout # logout menu with different options
     nemo # file manager
     hyprlock # lock screen
+    hypridle # automatically lock screen
   ];
 
 }
