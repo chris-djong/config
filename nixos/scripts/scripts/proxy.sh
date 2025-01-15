@@ -29,15 +29,79 @@ _unlink() {
   return 0
 }
 
-set_proxy() {
-  _create_symlink "/etc/apt/apt.conf-proxy" "/etc/apt/apt.conf"
-  _create_symlink "/etc/docker/daemon.json-proxy" "/etc/docker/daemon.json"
-  _create_symlink "/home/entourage/.ssh/config_proxy" "/home/entourage/.ssh/config"
+_create_apt_conf_proxy() {
+  if [[ ! -d /etc/apt ]]  ||  [[ -f /etc/apt/apt.conf-proxy ]]; then
+    return 0
+  fi
+  local proxy=$1
+  echo "Acquire::http::Proxy \"$proxy\";" > /etc/apt/apt.conf-proxy
+  echo "Acquire::https::Proxy \"$proxy\";" >> /etc/apt/apt.conf-proxy
+}
 
-  export http_proxy="http://10.56.4.40:8080"
-  export HTTP_PROXY="http://10.56.4.40:8080"
-  export https_proxy="http://10.56.4.40:8080"
-  export HTTPS_PROXY="http://10.56.4.40:8080"
+_create_docker_conf_proxy() {
+  if [[ ! -d /etc/docker ]]  ||  [[ -f /etc/docker/daemon.json-proxy ]]; then
+    return 0
+  fi
+  local proxy=$1
+  echo "{
+  \"proxies\": {
+  \"http-proxy\": \"$proxy\",
+    \"https-proxy\": \"$proxy\",
+    \"no-proxy\": \"\"
+  }
+}" > /etc/docker/daemon.json-proxy
+}
+
+_create_ssh_conf_proxy() {
+  if [[ ! -d ~/.ssh ]] || [[ -f ~/.ssh/config_proxy ]]; then
+    return 0
+  fi
+  local proxy=$1
+  echo "Host ssh.dev.azure.com
+       HostName ssh.dev.azure.com
+       IdentityFile ~/.ssh/id_rsa
+       IdentitiesOnly yes
+       ProxyCommand proxytunnel -p $proxy -d %h:%p
+Host github.com
+       HostName github.com
+       IdentityFile ~/.ssh/id_rsa
+       IdentitiesOnly yes
+       ProxyCommand proxytunnel -p $proxy -d %h:%p" > ~/.ssh/config_proxy
+}
+
+set_proxy() {
+  local proxy=$1
+
+  # Validate if proxy is provided
+  if [ -z "$proxy" ]; then
+    echo "Please provide a proxy first. Exiting..."
+    return 1
+  fi
+
+  _create_apt_conf_proxy $proxy
+  _create_docker_conf_proxy $proxy
+  _create_ssh_conf_proxy $proxy
+
+  if [ -d /etc/apt ]; then
+    _create_symlink /etc/apt/apt.conf-proxy /etc/apt/apt.conf
+  else 
+    echo "/etc/apt does not exist. Skipping proxy setup.."
+  fi
+  if [ -d /etc/docker ]; then
+    _create_symlink /etc/docker/daemon.json-proxy /etc/docker/daemon.json
+  else 
+    echo "/etc/docker does not exist. Skipping proxy setup.."
+  fi
+  if [ -d ~/.ssh ]; then
+  _create_symlink ~/.ssh/config_proxy ~/.ssh/config
+  else 
+    echo "~/.ssh does not exist. Skipping proxy setup.."
+  fi
+
+  export http_proxy="$proxy"
+  export HTTP_PROXY="$proxy"
+  export https_proxy="$proxy"
+  export HTTPS_PROXY="$proxy"
   export no_proxy="localhost"
 }
 
