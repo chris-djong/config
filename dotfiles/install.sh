@@ -59,9 +59,9 @@ create_symlink() {
   ln -sf "$source_path" "$link_path"
 }
 
-create_symlink "~/config/.tmux.conf"  "~/.tmux.conf" 
-create_symlink "~/config/nvim"  "~/.config.nvim" 
-create_symlink "~/config/.wezterm.lua" "~" 
+create_symlink "~/config/dotfiles/.tmux.conf"  "~/.tmux.conf" 
+create_symlink "~/config/dotfiles/.config/nvim"  "~/.config/nvim" 
+create_symlink "~/config/dotfiles/.wezterm.lua" "~/.wezterm.lua" 
 
 # Create the bin directory in case it does not exist yet 
 mkdir -p ~/bin
@@ -77,12 +77,6 @@ grep -Fxv -f ~/.bashrc ~/config/.bashrc >> ~/.bashrc
 # Setup tmux plugins
 if [[ ! -d ~/.tmux/plugins/tpm ]]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fi
-
-# Tmux theme
-mkdir -p ~/.config/tmux/plugins/catppuccin
-if [[ ! -d ~/.config/tmux/plugins/catppuccin/tmux ]]; then
-  git clone -b v2.1.1 https://github.com/catppuccin/tmux.git ~/.config/tmux/plugins/catppuccin/tmux
 fi
 
 echo "Installing tmux plugins"
@@ -114,8 +108,8 @@ if ! command -v eza &> /dev/null; then
   sudo apt install -y eza
 fi
 
-create_symlink "~/config/.zshrc" "~/.zshrc" 
-create_symlink "~/config/.config/spaceship.zsh" "~/.config/spaceship.zsh" 
+create_symlink "~/config/dotfiles/.zshrc" "~/.zshrc" 
+create_symlink "~/config/dotfiles/.config/spaceship.zsh" "~/.config/spaceship.zsh" 
 
 # Make zsh the default shell
 chsh -s /bin/zsh
