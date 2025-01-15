@@ -9,5 +9,10 @@
     source = ../../scripts;
     recursive = true;
   };
+
+  home.file."Pictures" = {
+    source = ../../../pictures;
+    recursive = true;
+  };
 }
 
