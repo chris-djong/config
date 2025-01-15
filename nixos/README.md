@@ -17,7 +17,7 @@ In order to swap caps with ESC somehow it looks like the gsettings options are b
 
 ```
 
-gsettings reset org.gnome.desktop.input-sources xkb-options
+ssettings reset org.gnome.desktop.input-sources xkb-options
 gsettings reset org.gnome.desktop.input-sources sources
 
 ```

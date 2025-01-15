@@ -7,15 +7,20 @@
       [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
   };
 
+  # Create a hyprlock pam file so that we can unlock from here
+  security.pam.services.hyprlock = { };
+
   environment.systemPackages = with pkgs; [
     wofi # application launcher
     waybar
     gnome-icon-theme # to show correct mouse icons etc
+    pavucontrol # to control volume
     networkmanagerapplet # to get wifi connectivity
     wlogout # logout menu with different options
     nemo # file manager
     hyprlock # lock screen
     hypridle # automatically lock screen
+    greetd
   ];
 
 }
