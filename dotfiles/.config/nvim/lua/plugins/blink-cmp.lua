@@ -1,7 +1,6 @@
 return {
   "saghen/blink.cmp",
-  version = "*",
-
+  version="*",
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
@@ -18,11 +17,9 @@ return {
         treesitter_highlighting = true,
         window = { border = "rounded" },
       },
-      list = {
-        selection {
-          preselect = function(ctx)
-            return ctx.mode == "cmdline" and "auto_insert" or "preselect"
-          end,
+      list = { 
+    selection = {
+      preselect = function(ctx) return ctx.mode ~= 'cmdline' end,
         },
       },
       menu = {
