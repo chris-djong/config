@@ -26,6 +26,6 @@ let
   };
 in pkgs.mkShell {
   buildInputs = [ patchedpython ];
-  plugins = [ ];
+  packages = [ pkgs.postgresql ];
 }
 
