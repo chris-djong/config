@@ -1,5 +1,5 @@
 { ... }: {
-  programs.hyprlock = {
+  services.hypridle = {
     enable = true;
     settings = {
       general = {
