@@ -6,21 +6,13 @@
   "default_workspace_padding": 10,
   "default_container_padding": 5,
   "border": true,
-  "border_width": 2,
+  "border_width": 5,
   "border_offset": -1,
-
-  "theme": {
-    "palette": "Base16",
-    "name": "Ashes",
-    "unfocused_border": "Base03",
-    "bar_accent": "Base0D"
-  },
-  "stackbar": {
-    "height": 40,
-    "mode": "OnStack",
-    "tabs": {
-      "width": 300
-    }
+  "border_colours": {
+    "unfocused": { "b": 67, "r": 44, "g": 48 },
+    "monocle": { "b": 161, "r": 166, "g": 227 },
+    "single": { "b": 161, "r": 166, "g": 227 },
+    "stack": { "b": 161, "r": 166, "g": 227 }
   },
   "monitors": [
     {
