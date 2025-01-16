@@ -66,7 +66,7 @@ Host github.com
        HostName github.com
        IdentityFile ~/.ssh/id_rsa
        IdentitiesOnly yes
-       ProxyCommand nc -X connect -x $proxy %h %p
+       ProxyCommand nc -X connect -x $proxy %h %p"
 }
 
 set_proxy() {
