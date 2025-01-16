@@ -22,6 +22,7 @@
     extraSpecialArgs = {
       inherit inputs user proxy;
       homeStateVersion = stateVersion;
+      backupFileExtension = "old";
     };
     users = { "${user}" = import ./home.nix; };
   };

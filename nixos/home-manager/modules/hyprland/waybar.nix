@@ -1,15 +1,15 @@
 { ... }: {
   programs.waybar = {
     enable = true;
-    settings = {
-      "modules-left" = [ ];
-      "modules-center" = [ "clock" ];
-      "modules-right" = [ "tray" "pulseaudio" "battery" ];
-      clock = { format = "{:%a, %d. %b  %H:%M}"; };
+    settings = [{
+      modules-left = [ ];
+      modules-center = [ "clock" ];
+      modules-right = [ "tray" "pulseaudio" "battery" ];
       battery = {
         format = "{icon}";
         format-icons = [ "" "" "" "" "" ];
       };
+      clock = { format = "{:%a, %d. %b  %H:%M}"; };
       pulseaudio = {
         format = "{icon} ";
         "format-bluetooth" = "{icon}";
@@ -28,7 +28,7 @@
         };
         "on-click" = "pavucontrol";
       };
-    };
+    }];
     style = ''
       * {
         border: none;

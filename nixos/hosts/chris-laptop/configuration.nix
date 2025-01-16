@@ -20,5 +20,6 @@
       homeStateVersion = stateVersion;
     };
     users = { "${user}" = import ./home.nix; };
+    backupFileExtension = "old";
   };
 }
