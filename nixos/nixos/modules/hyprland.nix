@@ -28,6 +28,7 @@
     nemo # file manager
     hyprlock # lock screen
     hypridle # automatically lock screen
+    hyprpaper
   ];
 
 }
