@@ -30,9 +30,6 @@
   };
 
   wayland.windowManager.hyprland.settings = {
-    # Take the actual flake package
-    package =
-      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
 
     "$mod" = "ALT";
 

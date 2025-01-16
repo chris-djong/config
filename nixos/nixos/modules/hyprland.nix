@@ -1,12 +1,6 @@
 { inputs, config, pkgs, services, user, ... }: {
   programs.hyprland = { enable = true; };
 
-  nix.settings = {
-    substituters = [ "https://hyprland.cachix.org" ];
-    trusted-public-keys =
-      [ "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc=" ];
-  };
-
   # Create a hyprlock pam file so that we can unlock from here
   security.pam.services.hyprlock = { };
 
