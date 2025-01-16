@@ -1,7 +1,7 @@
 .shell powershell
 
 alt + q                 : komorebic close
-alt + s         : komorebic toggle-monocle
+alt + s                 : komorebic toggle-monocle
 
 # Focus windows
 alt + h                 : komorebic focus left
@@ -24,7 +24,7 @@ alt + right             : komorebic stack right
 # Application
 alt + v                 : komorebic toggle-float
 alt + b                 : if ($wshell.AppActivate('Firefox') -eq $False) { start firefox }
-alt + t                 : if ($wshell.AppActivate('wezterm') -eq $False) { start wezterm }
+alt + t                 : wezterm 
 alt + f                 : if ($wshell.AppActivate('explorer') -eq $False) { start explorer }
 
 # Workspaces
