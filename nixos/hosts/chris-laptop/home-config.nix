@@ -5,6 +5,7 @@
   imports = [
     ../../home-manager/modules/nvim/nvim.nix
     ../../home-manager/modules/wezterm/wezterm.nix
+    ../../home-manager/modules/hyperland/hyperland.nix
     ../../home-manager/modules/bat.nix
     ../../home-manager/modules/firefox.nix
     ../../home-manager/modules/git.nix
