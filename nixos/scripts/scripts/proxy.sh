@@ -61,12 +61,12 @@ _create_ssh_conf_proxy() {
        HostName ssh.dev.azure.com
        IdentityFile ~/.ssh/id_rsa
        IdentitiesOnly yes
-       ProxyCommand proxytunnel -p $proxy -d %h:%p
+       ProxyCommand nc -X connect -x $proxy %h %p
 Host github.com
        HostName github.com
        IdentityFile ~/.ssh/id_rsa
        IdentitiesOnly yes
-       ProxyCommand proxytunnel -p $proxy -d %h:%p" > ~/.ssh/config_proxy
+       ProxyCommand nc -X connect -x $proxy %h %p
 }
 
 set_proxy() {
