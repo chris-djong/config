@@ -62,6 +62,7 @@
         "nm-applet --indicator"
         "blueman-applet"
         "hypridle"
+        "hyprpaper"
         "hyprlock"
       ];
 
