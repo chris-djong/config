@@ -200,11 +200,20 @@
         "$mod, right, movefocus, r"
         "$mod, up, movefocus, u"
         "$mod, down, movefocus, d"
-
         "$mod, H, movefocus, l"
         "$mod, L, movefocus, r"
         "$mod, K, movefocus, u"
         "$mod, J, movefocus, d"
+
+        # Move focus with mainMod + arrow keys
+        "$mod SHIFT, left, movefocus, l"
+        "$mod SHIFT, right, movefocus, r"
+        "$mod SHIFT, up, movefocus, u"
+        "$mod SHIFT, down, movefocus, d"
+        "$mod SHIFT, H, movefocus, l"
+        "$mod SHIFT, L, movefocus, r"
+        "$mod SHIFT, K, movefocus, u"
+        "$mod SHIFT, J, movefocus, d"
 
         # Switch workspaces with mainMod + [0-9]
         "$mod, 1, workspace, 1"

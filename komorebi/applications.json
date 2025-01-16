@@ -8,5 +8,39 @@
         "matching_strategy": "Equals"
       }
     ]
+  },
+  "PowerToys": {
+    "ignore": [
+      {
+        "kind": "Exe",
+        "id": "PowerToys.ColorPickerUI.exe",
+        "matching_strategy": "Equals"
+      },
+      {
+        "kind": "Exe",
+        "id": "PowerToys.CropAndLock.exe",
+        "matching_strategy": "Equals"
+      },
+      {
+        "kind": "Exe",
+        "id": "PowerToys.ImageResizer.exe",
+        "matching_strategy": "Equals"
+      },
+      {
+        "kind": "Exe",
+        "id": "PowerToys.Peek.UI.exe",
+        "matching_strategy": "Equals"
+      },
+      {
+        "kind": "Exe",
+        "id": "PowerToys.PowerLauncher.exe",
+        "matching_strategy": "Equals"
+      },
+      {
+        "kind": "Exe",
+        "id": "PowerToys.PowerAccent.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
   }
 }
