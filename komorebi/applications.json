@@ -18,7 +18,15 @@
       }
     ]
   },
-
+  "CitrixWorkspace": {
+    "ignore": [
+      {
+        "kind": "Exe",
+        "id": "SelfService.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
+  },
   "PowerToys": {
     "ignore": [
       {
