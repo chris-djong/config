@@ -9,6 +9,16 @@
       }
     ]
   },
+  "CiscoAnyConnect": {
+    "ignore": [
+      {
+        "kind": "Exe",
+        "id": "csc_ui.exe",
+        "matching_strategy": "Equals"
+      }
+    ]
+  },
+
   "PowerToys": {
     "ignore": [
       {
