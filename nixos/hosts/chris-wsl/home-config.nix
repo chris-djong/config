@@ -23,5 +23,11 @@
     btop
     wget
     ripgrep # better grep for telescope
+    gnumake # make command
+
+    # Azure cli things   
+    azure-cli
+    azure-storage-azcopy
+
   ];
 }
