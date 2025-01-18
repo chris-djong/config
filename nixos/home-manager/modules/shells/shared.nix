@@ -1,14 +1,10 @@
-{ config, proxy, ... }: {
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
+{ proxy  }: {
 
     shellAliases = {
       vi = "nvim";
       vim = "nvim";
       cd = "z";
+      ll = "ls -al";
       set_env = ". .venv/bin/activate";
     };
 
@@ -35,7 +31,4 @@
 
     } // proxyVars;
 
-    history.size = 10000;
-    history.path = "${config.xdg.dataHome}/zsh/history";
-  };
-}
+};
