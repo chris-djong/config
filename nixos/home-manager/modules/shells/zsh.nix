@@ -12,5 +12,11 @@ in {
 
     sessionVariables = shared.sessionVariables;
     shellAliases = shared.shellAliases;
+
+    initExtra = ''
+      bindkey '^r' history-incremental-search-backward
+      bindkey "''${key[Up]}" up-line-or-search
+      bindkey "''${key[Down]}" down-line-or-search
+    '';
   };
 }
