@@ -24,6 +24,10 @@
         config = toLuaFile ./plugins/ccc.lua;
       }
       {
+        plugin = pkgs.vimPlugins.nvim-treesitter;
+        config = toLuaFile ./plugins/treesitter.lua;
+      }
+      {
         plugin = pkgs.vimPlugins.alpha-nvim;
         config = toLuaFile ./plugins/alpha.lua;
       }
