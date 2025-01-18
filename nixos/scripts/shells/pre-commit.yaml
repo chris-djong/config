@@ -1,0 +1,33 @@
+- repo: https://github.com/pre-commit/mirrors-eslint
+  rev: latest
+  hooks:
+    - id: eslint
+      name: eslint (angular)
+      files: \.(ts|html)$
+      args: ["--max-warnings", "0"]
+- repo: local
+  hooks:
+    - id: angular-ls
+      name: angular-ls (Angular Language Service)
+      entry: npx angular-ls --check
+      language: system
+      files: \.(ts|html)$
+- repo: https://github.com/microsoft/pyright
+  rev: latest
+  hooks:
+    - id: basedpyright
+      language_version: python3
+      args: ["--check"]
+- repo: https://github.com/charliermarsh/ruff
+  rev: latest
+  hooks:
+    - id: ruff
+      language_version: python3
+      args: ["--check"]
+- repo: https://github.com/prettier/prettier
+  rev: latest
+  hooks:
+    - id: prettier
+      name: prettier (js/ts)
+      files: \.(js|ts)$
+      args: ["--check"]
