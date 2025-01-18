@@ -12,12 +12,12 @@
       clock = { format = "{:%a, %d. %b  %H:%M}"; };
       pulseaudio = {
         format = "{icon} ";
-        "format-bluetooth" = "{icon}";
-        "format-bluetooth-muted" = " {icon}";
-        "format-muted" = "0% {icon}";
-        "format-source" = "";
-        "format-source-muted" = "";
-        "format-icons" = {
+        format-bluetooth = "{icon}";
+        format-bluetooth-muted = " {icon}";
+        format-muted = "0% {icon}";
+        format-source = "";
+        format-source-muted = "";
+        format-icons = {
           headphone = "";
           hands-free = "";
           headset = "";
@@ -27,6 +27,13 @@
           default = [ "" "" "" ];
         };
         "on-click" = "pavucontrol";
+      };
+      idle_inhibitor = {
+        format = "{icon}";
+        format-icons = {
+          activated = "";
+          deactivated = "";
+        };
       };
     }];
     style = ''

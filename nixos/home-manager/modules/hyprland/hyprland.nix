@@ -44,7 +44,7 @@
       # Set programs that you use
       "$terminal" = "wezterm";
       "$fileManager" = "nemo";
-      "$menu" = "wofi - -show drun";
+      "$menu" = "wofi --show drun";
       "$browser" = "firefox";
 
       ################

@@ -34,5 +34,8 @@
     btop
     wget
     ripgrep # better grep for telescope
+
+    # Required utilities for hyprland 
+    brightnessctl
   ];
 }
