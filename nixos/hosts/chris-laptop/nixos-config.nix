@@ -11,7 +11,6 @@
     # ../../nixos/modules/gnome.nix
     ../../nixos/modules/fonts.nix
     ../../nixos/modules/docker.nix
-    ../../nixos/modules/node22.nix
     ../../nixos/modules/hyprland.nix
   ];
 }
