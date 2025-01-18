@@ -24,7 +24,7 @@
         config = toLuaFile ./plugins/ccc.lua;
       }
       {
-        plugin = pkgs.vimPlugins.nvim-treesitter;
+        plugin = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
         config = toLuaFile ./plugins/treesitter.lua;
       }
       {

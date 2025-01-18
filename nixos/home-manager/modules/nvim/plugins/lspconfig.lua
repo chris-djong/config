@@ -1,5 +1,3 @@
-local lspconfig = require("lspconfig")
-
 local keymap = vim.keymap -- for conciseness
 
 vim.api.nvim_create_autocmd("LspAttach", {

@@ -10,25 +10,6 @@ treesitter.setup({ -- enable syntax highlighting
 	},
 	-- enable indentation
 	indent = { enable = true },
-	-- ensure these language parsers are installed
-	ensure_installed = {
-		"json",
-		"javascript",
-		"typescript",
-		"yaml",
-		"html",
-		"css",
-		"markdown",
-		"markdown_inline",
-		"bash",
-		"lua",
-		"vim",
-		"dockerfile",
-		"gitignore",
-		"query",
-		"python",
-		"vimdoc",
-	},
 	-- incremental_selection means that by clicking CTRL+Space, we keep visually selecting
 	-- more inside the current function/ file. Just try it out by going over a variable
 	-- and hitting CTRL Space
