@@ -104,6 +104,7 @@
       stylua
       ruff
       sqlfluff
+      clang-tools
 
       # Linters 
       eslint_d
