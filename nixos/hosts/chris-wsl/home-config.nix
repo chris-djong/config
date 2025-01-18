@@ -14,6 +14,7 @@
     ../../home-manager/modules/zsh.nix
     ../../home-manager/modules/bash.nix
     ../../home-manager/modules/nvim/nvim.nix
+    ../../home-manager/modules/direnv.nix
   ];
 
   home.packages = with pkgs; [

@@ -3,7 +3,7 @@
     enable = true;
     settings = [{
       modules-left = [ ];
-      modules-center = [ "clock" ];
+      modules-center = [ "clock" "idle_inhibitor" ];
       modules-right = [ "tray" "pulseaudio" "battery" ];
       battery = {
         format = "{icon}";
