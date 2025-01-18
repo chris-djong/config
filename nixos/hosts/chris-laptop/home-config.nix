@@ -4,6 +4,7 @@
   # Import all the modules 
   imports = [
     ../../home-manager/modules/nvim/nvim.nix
+    ../../home-manager/modules/nixvim/nixvim.nix
     ../../home-manager/modules/wezterm/wezterm.nix
     ../../home-manager/modules/hyprland
     ../../home-manager/modules/bat.nix
