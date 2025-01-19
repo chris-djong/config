@@ -183,7 +183,7 @@
         "$mod, B, exec, $browser"
         "$mod, Q, killactive,"
         "$mod, F, exec, $fileManager "
-        "$mod, S, fullscreen "
+        "$mod, Z, fullscreen "
         "$mod, V, togglefloating,"
         "$mod, Space, exec, $menu"
 
