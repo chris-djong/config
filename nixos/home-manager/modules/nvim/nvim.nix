@@ -19,10 +19,9 @@
       pkgs.vimPlugins.dressing-nvim
       pkgs.vimPlugins.lazygit-nvim
       pkgs.vimPlugins.which-key-nvim
-      {
-        plugin = pkgs.vimPlugins.ccc-nvim;
-        config = toLuaFile ./plugins/ccc.lua;
-      }
+      pkgs.vimPlugins.ccc-nvim
+      pkgs.vimPlugins.trouble-nvim
+      pkgs.vimPlugins.todo-comments-nvim
       {
         plugin = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
         config = toLuaFile ./plugins/treesitter.lua;
@@ -60,10 +59,6 @@
         config = toLuaFile ./plugins/telescope.lua;
       }
       {
-        plugin = pkgs.vimPlugins.todo-comments-nvim;
-        config = toLuaFile ./plugins/todo-comments.lua;
-      }
-      {
         plugin = pkgs.vimPlugins.nvim-tree-lua;
         config = toLuaFile ./plugins/nvim-tree.lua;
       }
@@ -71,11 +66,6 @@
         plugin = pkgs.vimPlugins.lualine-nvim;
         config = toLuaFile ./plugins/lualine.lua;
       }
-      {
-        plugin = pkgs.vimPlugins.trouble-nvim;
-        config = toLuaFile ./plugins/trouble.lua;
-      }
-      pkgs.vimPlugins.nvim-treesitter.withAllGrammars
     ];
     extraLuaConfig = ''
       ${builtins.readFile ./core.lua}
