@@ -89,8 +89,6 @@
       ${builtins.readFile ./keymaps/formatting.lua}
     '';
     extraPackages = with pkgs; [
-      xclip
-      wl-clipboard
       # LSPs 
       angular-language-server
       vscode-langservers-extracted

@@ -1,4 +1,4 @@
-{ proxy, ... }: {
+{
   imports = [
     ../../nixos/modules/audio.nix
     ../../nixos/modules/bluetooth.nix

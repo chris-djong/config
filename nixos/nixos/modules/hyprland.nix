@@ -19,6 +19,9 @@
   };
 
   environment.systemPackages = with pkgs; [
+    # Clipboard and clipboard manager
+    wl-clipboard
+
     wofi # application launcher
     waybar
     gnome-icon-theme # to show correct mouse icons etc
@@ -28,7 +31,9 @@
     nemo # file manager
     hyprlock # lock screen
     hypridle # automatically lock screen
-    hyprpaper
+    hyprpaper # change wallpaper
+    brightnessctl # Required utilities for hyprland
+
   ];
 
 }

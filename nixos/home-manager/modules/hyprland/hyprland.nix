@@ -161,22 +161,18 @@
 
       # https://wiki.hyprland.org/Configuring/Variables/#input
       input = {
-        # TODO: Make internaional keyboard so that "e works 
         kb_layout = "us";
+        kb_variant = "intl"; # required to setup dead keys
         kb_options = "caps:swapescape";
 
         follow_mouse = 0;
         sensitivity = 0; # -1.0 - 1.0, 0 means no modification.
 
-        touchpad = { natural_scroll = false; };
+        # Swipe up to scroll down
+        touchpad = { natural_scroll = true; };
       };
 
       gestures = { workspace_swipe = true; };
-
-      device = {
-        name = "epic-mouse-v1";
-        sensitivity = -0.5;
-      };
 
       bind = [
         "$mod, F, exec, firefox"

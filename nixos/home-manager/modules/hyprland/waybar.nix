@@ -7,6 +7,10 @@
       modules-right = [ "tray" "pulseaudio" "battery" ];
       battery = {
         format = "{icon}";
+        states = {
+          warning = 40;
+          critical = 20;
+        };
         format-icons = [ "" "" "" "" "" ];
       };
       clock = { format = "{:%a, %d. %b  %H:%M}"; };
@@ -65,10 +69,21 @@
       #clock {
         padding: 0px 10px;
       }
+      #idle_inhibitor {
+        padding: 0px 10px;
+      }
       #battery {
         margin-right: 15px;
       }
-
+      #battery.charging {
+        color: green;
+      }
+      #battery.warning-discharging {
+        color: yellow;
+      }
+      #battery.critical-discharging {
+        color: red;
+      }
       #power {
         margin: 0px 5px;
       }
