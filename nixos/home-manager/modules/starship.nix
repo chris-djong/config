@@ -5,14 +5,14 @@
     enableBashIntegration = true;
     settings = {
       add_newline = false;
-      format = "$hostname$python $git_branch $directory$character ";
+      format = "$direnv $hostname $git_branch $directory$character ";
       hostname = {
         format =
           "[$ssh_symbol](blue dimmed bold)[$hostname](green dimmed bold)";
         ssh_only = false;
         disabled = false;
       };
-      python = { format = "($virtualenv)"; };
+      direnv = { format = "[$symbol$loaded/$allowed]($style)"; };
       git_branch = {
         format = "[$branch](blue)";
 
