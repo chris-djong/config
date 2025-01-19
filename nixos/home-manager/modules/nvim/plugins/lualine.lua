@@ -1,6 +1,6 @@
 local lualine = require("lualine")
 
-local theme = {
+local lua_theme = {
 	normal = {
 		a = { bg = theme.green, fg = theme.bg, gui = "bold" },
 		b = { bg = theme.bg, fg = theme.fg },
@@ -36,7 +36,7 @@ local theme = {
 -- configure lualine with modified theme
 lualine.setup({
 	options = {
-		theme = theme,
+		theme = lua_theme,
 		globalstatus = true,
 	},
 	sections = {

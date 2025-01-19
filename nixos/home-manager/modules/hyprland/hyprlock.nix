@@ -1,4 +1,5 @@
-{
+let theme = import ../theme.nix;
+in {
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -46,7 +47,7 @@
         fail_text = "Passwuerd $ATTEMPTSx falsch";
         fail_timeout = 5000;
         placeholder_text =
-          ''<i><span foreground="##00000000">Passwuerd w.e.g...</span></i>'';
+          ''<i><span foreground="##000000">Passwuerd w.e.g...</span></i>'';
         hide_input = false;
         position = "0, -200";
         halign = "center";

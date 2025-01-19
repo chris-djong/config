@@ -1,4 +1,6 @@
-{ ... }: {
+{ ... }:
+let theme = import ../theme.nix;
+in {
   programs.waybar = {
     enable = true;
     settings = [{
@@ -59,15 +61,15 @@
       /*-----module groups----*/
       .modules-right {
         margin-top: 5px;
-        background-color: rgba(0, 43, 51, 0.85);
+        background-color: ${theme.bg};
       }
       .modules-center {
         margin-top: 5px;
-        background-color: rgba(0, 43, 51, 0.85);
+        background-color: ${theme.bg};
       }
       .modules-left {
         margin-top: 5px;
-        background-color: rgba(0, 119, 179, 0.6);
+        background-color: ${theme.bg};
       }
       #clock {
         padding: 0px 10px;
@@ -76,19 +78,19 @@
         padding: 0px 10px;
       }
       #idle_inhibitor.activated {
-        color: green;
+        color: ${theme.green};
       }
       #battery {
         margin-right: 15px;
       }
       #battery.charging {
-        color: green;
+        color: ${theme.green};
       }
       #battery.warning-discharging {
-        color: yellow;
+        color: ${theme.yellow};
       }
       #battery.critical-discharging {
-        color: red;
+        color: ${theme.red};
       }
       #power {
         margin: 0px 5px;

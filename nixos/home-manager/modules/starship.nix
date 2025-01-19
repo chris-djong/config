@@ -1,4 +1,5 @@
-{
+let theme = import ./theme.nix;
+in {
   programs.starship = {
     enable = true;
     enableZshIntegration = true;
@@ -8,13 +9,13 @@
       format = "$direnv $hostname $git_branch $directory$character ";
       hostname = {
         format =
-          "[$ssh_symbol](blue dimmed bold)[$hostname](green dimmed bold)";
+          "[$ssh_symbol](${theme.red} dimmed bold)[$hostname](${theme.yellow} dimmed bold)";
         ssh_only = false;
         disabled = false;
       };
-      direnv = { format = "[$symbol$loaded/$allowed]($style)"; };
+      direnv = { format = "$symbol$loaded/$allowed"; };
       git_branch = {
-        format = "[$branch](blue)";
+        format = "[$branch](${theme.blue})";
 
       };
       directory = {
@@ -23,8 +24,8 @@
       };
       character = {
         format = "$symbol";
-        success_symbol = "[:](bold green)";
-        error_symbol = "[:](bold red)";
+        success_symbol = "[:](bold ${theme.green})";
+        error_symbol = "[:](bold ${theme.red})";
       };
     };
   };

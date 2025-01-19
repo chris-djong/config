@@ -85,7 +85,7 @@ in {
         border_size = 2;
 
         "col.active_border" = "${theme.green} ${theme.blue} 45deg";
-        "col.inactive_border" = "theme.inactive_bg";
+        "col.inactive_border" = "${theme.inactive_bg}";
 
         # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
         allow_tearing = false;
