@@ -58,12 +58,15 @@
       }
       /*-----module groups----*/
       .modules-right {
+        margin-top: 5px;
         background-color: rgba(0, 43, 51, 0.85);
       }
       .modules-center {
+        margin-top: 5px;
         background-color: rgba(0, 43, 51, 0.85);
       }
       .modules-left {
+        margin-top: 5px;
         background-color: rgba(0, 119, 179, 0.6);
       }
       #clock {
@@ -71,6 +74,9 @@
       }
       #idle_inhibitor {
         padding: 0px 10px;
+      }
+      #idle_inhibitor.activated {
+        color: green;
       }
       #battery {
         margin-right: 15px;
@@ -90,6 +96,7 @@
       #pulseaudio {
         margin: 0px 5px;
       }'';
+
   };
 
 }

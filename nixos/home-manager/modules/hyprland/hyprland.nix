@@ -1,6 +1,6 @@
 { pkgs, inputs, ... }: {
 
-  # TODO: Find out whether this is needed
+  # Setup the cursor 
   home.pointerCursor = {
     gtk.enable = true;
     # x11.enable = true;
