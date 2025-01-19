@@ -1,46 +1,35 @@
 local lualine = require("lualine")
 
-local colors = {
-	blue = "#89b4fa",
-	green = "#a6e3a1",
-	violet = "#b4befe",
-	yellow = "#f9e2af",
-	red = "#f38ba8",
-	fg = "#c3ccdc",
-	bg = "#2A2B3D",
-	inactive_bg = "#2c3043",
-}
-
 local theme = {
 	normal = {
-		a = { bg = colors.green, fg = colors.bg, gui = "bold" },
-		b = { bg = colors.bg, fg = colors.fg },
-		c = { bg = colors.bg, fg = colors.fg },
+		a = { bg = theme.green, fg = theme.bg, gui = "bold" },
+		b = { bg = theme.bg, fg = theme.fg },
+		c = { bg = theme.bg, fg = theme.fg },
 	},
 	insert = {
-		a = { bg = colors.blue, fg = colors.bg, gui = "bold" },
-		b = { bg = colors.bg, fg = colors.fg },
-		c = { bg = colors.bg, fg = colors.fg },
+		a = { bg = theme.blue, fg = theme.bg, gui = "bold" },
+		b = { bg = theme.bg, fg = theme.fg },
+		c = { bg = theme.bg, fg = theme.fg },
 	},
 	visual = {
-		a = { bg = colors.violet, fg = colors.bg, gui = "bold" },
-		b = { bg = colors.bg, fg = colors.fg },
-		c = { bg = colors.bg, fg = colors.fg },
+		a = { bg = theme.violet, fg = theme.bg, gui = "bold" },
+		b = { bg = theme.bg, fg = theme.fg },
+		c = { bg = theme.bg, fg = theme.fg },
 	},
 	command = {
-		a = { bg = colors.yellow, fg = colors.bg, gui = "bold" },
-		b = { bg = colors.bg, fg = colors.fg },
-		c = { bg = colors.bg, fg = colors.fg },
+		a = { bg = theme.yellow, fg = theme.bg, gui = "bold" },
+		b = { bg = theme.bg, fg = theme.fg },
+		c = { bg = theme.bg, fg = theme.fg },
 	},
 	replace = {
-		a = { bg = colors.red, fg = colors.bg, gui = "bold" },
-		b = { bg = colors.bg, fg = colors.fg },
-		c = { bg = colors.bg, fg = colors.fg },
+		a = { bg = theme.red, fg = theme.bg, gui = "bold" },
+		b = { bg = theme.bg, fg = theme.fg },
+		c = { bg = theme.bg, fg = theme.fg },
 	},
 	inactive = {
-		a = { bg = colors.inactive_bg, fg = colors.fg, gui = "bold" },
-		b = { bg = colors.inactive_bg, fg = colors.fg },
-		c = { bg = colors.inactive_bg, fg = colors.fg },
+		a = { bg = theme.inactive_bg, fg = theme.fg, gui = "bold" },
+		b = { bg = theme.inactive_bg, fg = theme.fg },
+		c = { bg = theme.inactive_bg, fg = theme.fg },
 	},
 }
 

@@ -1,13 +1,19 @@
 { pkgs, lib, ... }: {
 
   programs.neovim = let
-    toLua = str: ''
-      lua << EOF
-      ${str}
-      EOF
-    '';
+    theme = import ../theme.nix;
     toLuaFile = file: ''
       lua << EOF
+      local theme = {
+        blue = "${theme.blue}",
+        green = "${theme.green}",
+        violet = "${theme.violet}",
+        yellow = "${theme.yellow}",
+        red = "${theme.red}",
+        fg = "${theme.fg}",
+        bg = "${theme.bg}",
+        inactive_bg = "${theme.inactive_bg}",
+      }
       ${builtins.readFile file}
       EOF
     '';
@@ -19,9 +25,18 @@
       pkgs.vimPlugins.dressing-nvim
       pkgs.vimPlugins.lazygit-nvim
       pkgs.vimPlugins.which-key-nvim
-      pkgs.vimPlugins.ccc-nvim
-      pkgs.vimPlugins.trouble-nvim
-      pkgs.vimPlugins.todo-comments-nvim
+      {
+        plugin = pkgs.vimPlugins.todo-comments-nvim;
+        config = toLuaFile ./plugins/todo-comments.lua;
+      }
+      {
+        plugin = pkgs.vimPlugins.trouble-nvim;
+        config = toLuaFile ./plugins/trouble.lua;
+      }
+      {
+        plugin = pkgs.vimPlugins.ccc-nvim;
+        config = toLuaFile ./plugins/ccc.lua;
+      }
       {
         plugin = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
         config = toLuaFile ./plugins/treesitter.lua;
