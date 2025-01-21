@@ -26,3 +26,5 @@ keymap.set("n", "<Up>", "<Nop>", { desc = "Close current tab" })                
 keymap.set("n", "<Down>", "<Nop>", { desc = "Go to next tab" })                  --  go to next tab
 keymap.set("n", "<Left>", "<Nop>", { desc = "Go to previous tab" })              --  go to previous tab
 keymap.set("n", "<Right>", "<Nop>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
+
+keymap.set("v", "<leader>y", '"+y', { desc = "Yank To Clipboard" })
