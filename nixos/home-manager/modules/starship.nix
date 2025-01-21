@@ -14,12 +14,13 @@ in {
         disabled = false;
       };
       direnv = {
-        format = "$symbol";
+        format = "$loaded";
         disabled = false;
-        symbol = "📂 ";
+        loaded_msg = "📂 ";
+        unloaded_msg = "";
       };
       python = {
-        format = "$symbol";
+        format = "$virtualenv";
         symbol = "🐍 ";
       };
       git_branch = {
