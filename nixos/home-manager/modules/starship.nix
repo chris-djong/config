@@ -6,14 +6,22 @@ in {
     enableBashIntegration = true;
     settings = {
       add_newline = false;
-      format = "$direnv $hostname $git_branch $directory$character ";
+      format = "$direnv$python$hostname $git_branch $directory$character ";
       hostname = {
         format =
           "[$ssh_symbol](${theme.red} dimmed bold)[$hostname](${theme.yellow} dimmed bold)";
         ssh_only = false;
         disabled = false;
       };
-      direnv = { format = "$symbol$loaded/$allowed"; };
+      direnv = {
+        format = "$symbol";
+        disabled = false;
+        symbol = "📂 ";
+      };
+      python = {
+        format = "$symbol";
+        symbol = "🐍 ";
+      };
       git_branch = {
         format = "[$branch](${theme.blue})";
 
