@@ -1,7 +1,7 @@
 .shell powershell
 
 alt + q                 : komorebic close
-alt + s                 : komorebic toggle-monocle
+alt + z                 : komorebic toggle-monocle
 
 # Focus windows
 alt + h                 : komorebic focus left
