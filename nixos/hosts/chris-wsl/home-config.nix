@@ -15,11 +15,11 @@
     ../../home-manager/modules/shells/zsh.nix
     ../../home-manager/modules/nvim/nvim.nix
     ../../home-manager/modules/direnv.nix
+    ../../home-manager/modules/fzf.nix
   ];
 
   home.packages = with pkgs; [
     # CLI utils
-    fzf
     fd
     btop
     wget

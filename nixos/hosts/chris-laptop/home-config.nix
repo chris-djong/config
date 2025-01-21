@@ -18,6 +18,7 @@
     ../../home-manager/modules/shells/bash.nix
     ../../home-manager/modules/shells/zsh.nix
     ../../home-manager/modules/direnv.nix
+    ../../home-manager/modules/fzf.nix
   ];
 
   home.packages = with pkgs; [
@@ -29,7 +30,6 @@
     seafile-client
 
     # CLI utils
-    fzf
     fd
     btop
     wget
