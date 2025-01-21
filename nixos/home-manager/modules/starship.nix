@@ -20,8 +20,8 @@ in {
         unloaded_msg = "";
       };
       python = {
-        format = "$virtualenv";
-        symbol = "🐍 ";
+        format = "$version";
+        version_format = "🐍 ";
       };
       git_branch = {
         format = "[$branch](${theme.blue})";
