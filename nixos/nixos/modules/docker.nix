@@ -1,4 +1,4 @@
-{ pkgs, user, proxy, ... }: {
+{ user, ... }: {
   virtualisation = {
     docker = {
       enable = false;
@@ -14,5 +14,4 @@
   };
 
   users.users.${user}.extraGroups = [ "docker" ];
-
 }

@@ -1,4 +1,4 @@
-{
+{ proxy, ... }: {
   programs.git = {
     enable = true;
     userName = "Chris";
@@ -6,4 +6,5 @@
     aliases = { st = "status"; };
     ignores = [ ];
   };
+
 }
