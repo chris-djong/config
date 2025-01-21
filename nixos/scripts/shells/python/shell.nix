@@ -20,14 +20,21 @@ let
   # Create the python environment
   patchedpython = pkgs.symlinkJoin {
     name = "python-env";
-    paths = [ pkgs.python312 ];
+    paths = [ pkgs.python313 ];
     buildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
-      wrapProgram "$out/bin/python3.12" --prefix LD_LIBRARY_PATH : "${pythonldlibpath}"
+      wrapProgram "$out/bin/python3.13" --prefix LD_LIBRARY_PATH : "${pythonldlibpath}"
     '';
   };
 in pkgs.mkShell {
-  buildInputs = [ patchedpython pkgs.python312Packages.pip ];
+  buildInputs = [ patchedpython pkgs.python313Packages.pip ];
   packages = [ ];
+  shellHook = ''
+    if test ! -d .venv; then
+      python -m venv .venv
+    fi
+    . .venv/bin/activate
+  '';
+
 }
 
