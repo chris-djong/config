@@ -1,5 +1,11 @@
 { pkgs, inputs, ... }:
-let theme = import ../theme.nix;
+let
+  theme = import ../theme.nix;
+  green =
+    builtins.substring 1 (builtins.stringLength theme.green - 1) theme.green;
+  inactive_bg =
+    builtins.substring 1 (builtins.stringLength theme.inactive_bg - 1)
+    theme.inactive_bg;
 in {
 
   # Setup the cursor 
@@ -84,8 +90,8 @@ in {
 
         border_size = 2;
 
-        "col.active_border" = "${theme.green} ${theme.blue} 45deg";
-        "col.inactive_border" = "${theme.inactive_bg}";
+        "col.active_border" = "rgb(${green})";
+        "col.inactive_border" = "rgb(${inactive_bg})";
 
         # Please see https://wiki.hyprland.org/Configuring/Tearing/ before you turn this on
         allow_tearing = false;
