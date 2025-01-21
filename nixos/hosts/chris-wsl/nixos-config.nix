@@ -1,7 +1,5 @@
 { proxy, ... }: {
   imports = [
-    ../../nixos/modules/audio.nix
-    ../../nixos/modules/bluetooth.nix
     ../../nixos/modules/net.nix
     ../../nixos/modules/nix.nix
     ../../nixos/modules/timezone.nix

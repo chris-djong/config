@@ -11,8 +11,8 @@
     ../../home-manager/modules/home.nix
     ../../home-manager/modules/tmux.nix
     ../../home-manager/modules/zoxide.nix
-    ../../home-manager/modules/shell/bash.nix
-    ../../home-manager/modules/shell/zsh.nix
+    ../../home-manager/modules/shells/bash.nix
+    ../../home-manager/modules/shells/zsh.nix
     ../../home-manager/modules/nvim/nvim.nix
     ../../home-manager/modules/direnv.nix
   ];
