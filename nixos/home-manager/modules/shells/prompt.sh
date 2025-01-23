@@ -44,15 +44,6 @@ update_ps1() {
   PWD=$(echo "$PWD" | rev | cut -d'/' -f1-3 | rev)
 
   # Combine everything into the PS1 prompt
-  PS1="$DIR_ENV$PYTHON $HOST $GIT_BRANCH $PWD$CHAR"
+  PS1="$DIR_ENV$PYTHON$HOST $GIT_BRANCH $PWD$CHAR"
 }
 
-# Check if we are in bash or zsh and set the prompt accordingly
-if [[ "$0" == "bash" ]]; then
-  # For Bash: Use PROMPT_COMMAND to update PS1 before every prompt
-  export PROMPT_COMMAND="update_ps1"
-elif [[ "$0" == "zsh" ]]; then
-  # For Zsh: Use precmd hook to update PS1 before every prompt
-  autoload -U add-zsh-hook
-  add-zsh-hook precmd update_ps1
-fi

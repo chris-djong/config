@@ -11,6 +11,9 @@ in {
         source "$(fzf-share)/key-bindings.bash"
         source "$(fzf-share)/completion.bash"
       fi
+      # Setting prompt
+      ${builtins.readFile ./prompt.sh}
+      export PROMPT_COMMAND="update_ps1"
     '';
   };
 }

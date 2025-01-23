@@ -18,7 +18,11 @@ in {
         source "$(fzf-share)/key-bindings.zsh"
         source "$(fzf-share)/completion.zsh"
       fi
+
+      # Setup prompt
       ${builtins.readFile ./prompt.sh}
+      autoload -U add-zsh-hook
+      add-zsh-hook precmd update_ps1
     '';
   };
 }
