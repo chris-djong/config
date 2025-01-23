@@ -18,6 +18,7 @@ in {
         source "$(fzf-share)/key-bindings.zsh"
         source "$(fzf-share)/completion.zsh"
       fi
+      ${builtins.readFile ./prompt.sh}
     '';
   };
 }

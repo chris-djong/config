@@ -11,7 +11,6 @@
     ../../home-manager/modules/firefox.nix
     ../../home-manager/modules/git.nix
     ../../home-manager/modules/lazygit.nix
-    ../../home-manager/modules/starship.nix
     ../../home-manager/modules/tmux.nix
     ../../home-manager/modules/home.nix
     ../../home-manager/modules/zoxide.nix
@@ -34,5 +33,6 @@
     btop
     wget
     ripgrep # better grep for telescope
+    jq # to parse json in bash
   ];
 }
