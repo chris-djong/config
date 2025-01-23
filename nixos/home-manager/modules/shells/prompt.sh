@@ -18,11 +18,11 @@ update_ps1() {
   GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
   GIT=""
   if [ "$GIT_BRANCH" ]; then
-    GIT="%F{49}$GIT_BRANCH %f"
+    GIT="$GIT_BRANCH "
   fi
 
   # Get the hostname
-  HOST="%F{205}$(hostname) %f"
+  HOST="$(hostname) "
   # Check for direnv environment (Optional)
   DIR_ENV=""
   # If direnv exists
@@ -34,11 +34,12 @@ update_ps1() {
     fi
   fi
 
-  DIRECTORY="%F{14}$(echo "$PWD" | rev | cut -d'/' -f1-3 | rev)%f"
-  CHAR="%B: %b"
+  DIRECTORY="$(echo "$PWD" | rev | cut -d'/' -f1-3 | rev)"
+  CHAR=": "
 
   # Combine everything into the PS1 prompt
-  PS1="$DIR_ENV$PYTHON$HOST$GIT$DIRECTORY$CHAR"
+  # TODO: Make bash colors 
+  PS1="$DIR_ENV$PYTHON%F{205}$HOST%f%F{49}$GIT%f%F{14}$DIRECTORY%f%B$CHAR%b"
 
 }
 
