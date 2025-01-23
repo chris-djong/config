@@ -18,11 +18,11 @@ update_ps1() {
   GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
   GIT=""
   if [ "$GIT_BRANCH" ]; then
-    GIT="$GIT_BRANCH"
+    GIT="$GIT_BRANCH "
   fi
 
   # Get the hostname
-  HOST="$(hostname)"
+  HOST="$(hostname) "
   # Check for direnv environment (Optional)
   DIR_ENV=""
   # If direnv exists
@@ -44,6 +44,6 @@ update_ps1() {
   PWD=$(echo "$PWD" | rev | cut -d'/' -f1-3 | rev)
 
   # Combine everything into the PS1 prompt
-  PS1="$DIR_ENV$PYTHON$HOST $GIT_BRANCH $PWD$CHAR"
+  PS1="$DIR_ENV$PYTHON$HOST$GIT_BRANCH$PWD$CHAR"
 }
 
