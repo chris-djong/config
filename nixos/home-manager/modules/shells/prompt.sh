@@ -18,11 +18,11 @@ update_ps1() {
   GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
   GIT=""
   if [ "$GIT_BRANCH" ]; then
-    GIT="$GIT_BRANCH "
+    GIT="%F{49}$GIT_BRANCH %f"
   fi
 
   # Get the hostname
-  HOST="$(hostname) "
+  HOST="%F{205}$(hostname) %f"
   # Check for direnv environment (Optional)
   DIR_ENV=""
   # If direnv exists
@@ -34,16 +34,11 @@ update_ps1() {
     fi
   fi
 
-  # Character section (change based on success or failure)
-  if [ $? -eq 0 ]; then
-    CHAR=": "
-  else
-    CHAR=": "
-  fi
-
-  PWD=$(echo "$PWD" | rev | cut -d'/' -f1-3 | rev)
+  DIRECTORY="%F{14}$(echo "$PWD" | rev | cut -d'/' -f1-3 | rev)%f"
+  CHAR="%B: %b"
 
   # Combine everything into the PS1 prompt
-  PS1="$DIR_ENV$PYTHON$HOST$GIT_BRANCH$PWD$CHAR"
+  PS1="$DIR_ENV$PYTHON$HOST$GIT$DIRECTORY$CHAR"
+
 }
 
