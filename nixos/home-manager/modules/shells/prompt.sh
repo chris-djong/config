@@ -37,9 +37,13 @@ update_ps1() {
   DIRECTORY="$(echo "$PWD" | rev | cut -d'/' -f1-3 | rev)"
   CHAR=": "
 
-  # Combine everything into the PS1 prompt
-  # TODO: Make bash colors 
-  PS1="$DIR_ENV$PYTHON%F{205}$HOST%f%F{49}$GIT%f%F{14}$DIRECTORY%f%B$CHAR%b"
+  if [[ "$BASH_VERSION" ]]; then
+    PS1="$DIR_ENV$PYTHON$HOST$GIT$DIRECTORY$CHAR"
+  elif [[ "$ZSH_VERSION" ]]; then
+    PS1="$DIR_ENV$PYTHON%F{205}$HOST%f%F{49}$GIT%f%F{14}$DIRECTORY%f%B$CHAR%b"
+  else
+    PS1="$DIR_ENV$PYTHON$HOST$GIT$DIRECTORY$CHAR"
+  fi
 
 }
 
