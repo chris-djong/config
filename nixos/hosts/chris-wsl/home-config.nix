@@ -28,6 +28,7 @@
 
     # Azure cli things   
     azure-cli
+    azure-cli-extensions.containerapp
     azure-storage-azcopy
 
   ];
