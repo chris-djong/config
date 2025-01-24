@@ -23,6 +23,7 @@
     btop
     wget
     ripgrep # better grep for telescope
+    jq # to parse json in bash
     gnumake # make command
 
     # Azure cli things   
