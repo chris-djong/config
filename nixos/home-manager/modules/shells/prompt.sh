@@ -14,15 +14,6 @@ update_ps1() {
     PYTHON="🐍"
   fi
 
-  # Get the current git branch
-  GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-  GIT=""
-  if [ "$GIT_BRANCH" ]; then
-    GIT="$GIT_BRANCH "
-  fi
-
-  # Get the hostname
-  HOST="$(hostname) "
   # Check for direnv environment (Optional)
   DIR_ENV=""
   # If direnv exists
@@ -32,6 +23,21 @@ update_ps1() {
     if [[ "$DIRENV_LOADED_STATUS" == "0" ]]; then
       DIR_ENV="📂"
     fi
+  fi
+
+  # Get the current git branch
+  GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+  GIT=""
+  if [ "$GIT_BRANCH" ]; then
+    GIT="$GIT_BRANCH "
+  fi
+
+  # Get the hostname
+  if [[ $PYTHON || $DIR_ENV ]]; then
+    # Extra space for visibility
+    HOST=" $(hostname)"
+  else
+    HOST="$(hostname)"
   fi
 
   DIRECTORY="$(echo "$PWD" | rev | cut -d'/' -f1-3 | rev)"
