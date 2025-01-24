@@ -35,9 +35,9 @@ update_ps1() {
   # Get the hostname
   if [[ $PYTHON || $DIR_ENV ]]; then
     # Extra space for visibility
-    HOST=" $(hostname)"
+    HOST=" $(hostname) "
   else
-    HOST="$(hostname)"
+    HOST="$(hostname) "
   fi
 
   DIRECTORY="$(echo "$PWD" | rev | cut -d'/' -f1-3 | rev)"
