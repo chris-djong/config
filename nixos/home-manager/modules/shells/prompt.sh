@@ -44,7 +44,14 @@ update_ps1() {
   CHAR=": "
 
   if [[ "$BASH_VERSION" ]]; then
-    PS1="$DIR_ENV$PYTHON$HOST$GIT$DIRECTORY$CHAR"
+     # Define color codes for Bash
+  COLOR_HOST="\e[38;5;205m"     # Pink (205)
+  COLOR_GIT="\e[38;5;49m"       # Green (49)
+  COLOR_DIRECTORY="\e[38;5;14m" # Blue (14)
+  COLOR_RESET="\e[0m"           # Reset
+
+  PS1="$DIR_ENV$PYTHON${COLOR_HOST}$HOST${COLOR_RESET}${COLOR_GIT}$GIT${COLOR_RESET}${COLOR_DIRECTORY}$DIRECTORY${COLOR_RESET}$CHAR"
+    # PS1="$DIR_ENV$PYTHON$HOST$GIT$DIRECTORY$CHAR"
   elif [[ "$ZSH_VERSION" ]]; then
     PS1="$DIR_ENV$PYTHON%F{205}$HOST%f%F{49}$GIT%f%F{14}$DIRECTORY%f%B$CHAR%b"
   else

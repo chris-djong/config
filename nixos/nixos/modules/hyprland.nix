@@ -1,5 +1,9 @@
 { inputs, config, pkgs, services, user, ... }: {
-  programs.hyprland = { enable = true; };
+  programs.hyprland = {
+    enable = true;
+    withUWSM =
+      true; # Session Manager. Needed to keep Wifi credentials after reboot for example
+  };
 
   # Create a hyprlock pam file so that we can unlock from here
   security.pam.services.hyprlock = { };
@@ -33,7 +37,6 @@
     hypridle # automatically lock screen
     hyprpaper # change wallpaper
     brightnessctl # Required utilities for hyprland
-
   ];
 
 }
