@@ -36,6 +36,7 @@
     hyprlock # lock screen
     hypridle # automatically lock screen
     hyprpaper # change wallpaper
+    hyprshot
     brightnessctl # Required utilities for hyprland
   ];
 

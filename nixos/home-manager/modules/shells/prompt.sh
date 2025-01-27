@@ -10,7 +10,9 @@ update_ps1() {
   fi
 
   # Show the shell level in case we are in a shell
-  if [[ ! "$SHLVL" == "1" ]]; then
+  if [[ $TMUX && ! "$SHLVL" == "2" ]]; then 
+    add_logo "🐚"
+  elif [[ ! $TMUX && ! "$SHLVL" == "1"  ]]; then
     add_logo "🐚"
   fi
 

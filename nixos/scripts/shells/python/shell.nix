@@ -27,7 +27,11 @@ let
     '';
   };
 in pkgs.mkShell {
-  buildInputs = [ patchedpython pkgs.python313Packages.pip ];
+  buildInputs = [
+    patchedpython
+    pkgs.python313Packages.pip
+    pkgs.postgresql # in case you use psycopg. Don't forget to install using pip install psycopg[c]
+  ];
   packages = [ ];
   shellHook = ''
     if test ! -d .venv; then

@@ -194,6 +194,7 @@ in {
         "$mod, Z, fullscreen "
         "$mod, V, togglefloating,"
         "$mod, Space, exec, $menu"
+        "$mod, S, exec, hyprshot -m window --clipboard-only"
 
         # Move focus with mainMod + arrow keys
         "$mod, left, movefocus, l"
