@@ -8,10 +8,10 @@ update_ps1() {
   if [ ! -w "$(pwd)" ]; then
     add_logo "🔒"
   fi
-  if [[ "$BASH_VERSION" ]]; then
+
+  # Show the shell level in case we are in a shell
+  if [[ ! "$SHLVL" == "1" ]]; then
     add_logo "🐚"
-  elif [[ "$ZSH_VERSION" ]]; then
-    add_logo "🌀"
   fi
 
   # If direnv exists
@@ -30,7 +30,10 @@ update_ps1() {
     add_logo "🐍"
   fi
 
-  LOGOS="$LOGOS "
+  if [[ "$LOGOS" ]]; then
+    LOGOS="$LOGOS "
+  fi
+
   HOST_PROMPT=""   
   if [[ $SSH_CONNECTION ]]; then
     HOST_PROMPT="$(whoami)@$(hostname) "
