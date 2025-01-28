@@ -113,6 +113,7 @@
       # Linters 
       eslint_d
       basedpyright
+
     ];
   };
 }

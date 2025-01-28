@@ -20,8 +20,6 @@
   ];
 
   home.packages = with pkgs; [
-    # Packages in each category are sorted alphabetically
-
     # Desktop apps
     obsidian
     teams-for-linux
@@ -33,5 +31,7 @@
     wget
     ripgrep # better grep for telescope
     jq # to parse json in bash
+    boxes
+    tldr
   ];
 }

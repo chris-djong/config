@@ -25,6 +25,8 @@
     jq # to parse json in bash
     gnumake # make command
     xsel # for clipboard functionality
+    boxes
+    tldr
 
     # Azure cli things   
     azure-cli
