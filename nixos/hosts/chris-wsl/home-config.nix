@@ -24,6 +24,7 @@
     ripgrep # better grep for telescope
     jq # to parse json in bash
     gnumake # make command
+    xsel # for clipboard functionality
 
     # Azure cli things   
     azure-cli
