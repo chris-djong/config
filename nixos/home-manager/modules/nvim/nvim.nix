@@ -21,6 +21,7 @@
     enable = true;
     plugins = [
       pkgs.vimPlugins.telescope-fzf-native-nvim
+      pkgs.vimPlugins.nvim-web-devicons
       pkgs.vimPlugins.dressing-nvim
       pkgs.vimPlugins.dressing-nvim
       pkgs.vimPlugins.lazygit-nvim
