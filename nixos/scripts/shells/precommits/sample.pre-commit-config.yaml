@@ -1,0 +1,83 @@
+---
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: check-added-large-files
+        stages: [commit]
+      - id: check-case-conflict
+        stages: [commit]
+      # Not collaborating
+      # - id: check-illegal-windows-names
+      - id: check-merge-conflict
+        stages: [commit]
+      - id: check-shebang-scripts-are-executable
+        stages: [commit]
+      - id: no-commit-to-branch
+        stages: [commit]
+        args: ["--branch", "release", "--branch", "main"]
+      - id: check-yaml
+        # See: https://github.com/pre-commit/pre-commit-hooks?tab=readme-ov-file#check-yaml
+        # Important for the compose files which are a little weird
+        args: ["--unsafe"]
+        stages: [commit]
+  - repo: https://github.com/sqlfluff/sqlfluff
+    rev: 3.1.0
+    hooks:
+      - id: sqlfluff-lint
+        stages: [commit]
+  - repo: https://gitlab.com/bmares/check-json5
+    # Allows json with comments
+    rev: v1.0.0
+    hooks:
+      - id: check-json5
+        stages: [commit]
+
+  # If you have docker and do bash scripting
+  # - repo: https://github.com/koalaman/shellcheck-precommit
+  #   rev: v0.10.0
+  #   hooks:
+  #   -   id: shellcheck
+
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.5.0
+    hooks:
+      - id: ruff
+        stages: [commit]
+      # If you want them on other files
+      # types_or: [ python, pyi, jupyter ]
+      # If you want to automatically fix
+      # args: [ --fix ]
+      - id: ruff-format
+        # Remove line bellow if you want to fix automatically
+        args: [--check]
+        stages: [commit]
+
+  - repo: local
+    hooks:
+      - id: additional-pre-commit
+        name: additional-pre-commit
+        entry: python devops/test/additional-pre-commit.py
+        language: system
+        stages: [commit]
+        require_serial: true
+
+  - repo: local
+    hooks:
+      - id: run_pytest_before_push
+        name: run_pytest_before_push
+        entry: python devops/test/run_tests.py
+        language: python
+        types_or: [python]
+        require_serial: true
+        stages: [push]
+
+  - repo: local
+    hooks:
+      - id: run_vitetest_before_push
+        name: run_vitetest_before_push
+        entry: python devops/test/run_tests_js.py
+        language: node
+        files: \.(js|jsx|ts|tsx)$
+        require_serial: true
+        stages: [push]
