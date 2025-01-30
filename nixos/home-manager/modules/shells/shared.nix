@@ -6,6 +6,7 @@
     cd = "z";
     ll = "ls -al";
     set_env = ". .venv/bin/activate";
+    shell = "nix-shell";
   };
 
   sessionVariables = let

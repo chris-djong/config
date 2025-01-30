@@ -48,10 +48,10 @@ update_ps1() {
 
   if [[ "$BASH_VERSION" ]]; then
     # Define color codes for Bash
-    COLOR_HOST="\e[38;5;205m"     # Pink (205)
-    COLOR_GIT="\e[38;5;49m"       # Green (49)
-    COLOR_DIRECTORY="\e[38;5;14m" # Blue (14)
-    COLOR_RESET="\e[0m"           # Reset
+    COLOR_HOST="\[\e[38;5;205m\]"     # Pink (205)
+    COLOR_GIT="\[\e[38;5;49m\]"       # Green (49)
+    COLOR_DIRECTORY="\[\e[38;5;14m\]" # Blue (14)
+    COLOR_RESET="\[\e[0m\]"           # Reset
   elif [[ "$ZSH_VERSION" ]]; then
     COLOR_HOST="%F{205}"     # Pink (205)
     COLOR_GIT="%F{49}"       # Green (49)
