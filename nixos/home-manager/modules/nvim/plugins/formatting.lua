@@ -15,7 +15,7 @@ conform.setup({
 		graphql = { "prettier" },
 		liquid = { "prettier" },
 		lua = { "stylua" },
-		python = { "ruff_format", "ruff_fix" },
+		python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
 		sql = { "sqlfluff" },
 		cpp = { "clang-format" },
 		nix = { "nixfmt" },
