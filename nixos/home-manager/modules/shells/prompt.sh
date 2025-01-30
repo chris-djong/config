@@ -16,15 +16,6 @@ update_ps1() {
     add_logo "🐚"
   fi
 
-  # If direnv exists
-  if type direnv >/dev/null 2>&1; then
-    # And is loaded
-    DIRENV_LOADED_STATUS=$(direnv status --json | jq '.state.loadedRC.allowed' ) 
-    if [[ "$DIRENV_LOADED_STATUS" == "0" ]]; then
-      add_logo "📂"
-    fi
-  fi
-
   # Check for Python version
   PYTHON_EXISTS=$(python --version 2>/dev/null) 
   PYTHON_PATH=$(which python 2>/dev/null)
