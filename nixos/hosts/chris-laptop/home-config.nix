@@ -24,6 +24,7 @@
     obsidian
     teams-for-linux
     seafile-client
+    gimp
 
     # CLI utils
     fd
