@@ -26,6 +26,7 @@
       pkgs.vimPlugins.dressing-nvim
       pkgs.vimPlugins.lazygit-nvim
       pkgs.vimPlugins.which-key-nvim
+      pkgs.vimPlugins.git-blame-nvim
       {
         plugin = pkgs.vimPlugins.todo-comments-nvim;
         config = toLuaFile ./plugins/todo-comments.lua;
