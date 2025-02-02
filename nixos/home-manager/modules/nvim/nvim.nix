@@ -19,68 +19,68 @@
     '';
   in {
     enable = true;
-    plugins = [
-      pkgs.vimPlugins.telescope-fzf-native-nvim
-      pkgs.vimPlugins.nvim-web-devicons
-      pkgs.vimPlugins.dressing-nvim
-      pkgs.vimPlugins.dressing-nvim
-      pkgs.vimPlugins.lazygit-nvim
-      pkgs.vimPlugins.which-key-nvim
-      pkgs.vimPlugins.git-blame-nvim
+    plugins = with pkgs.vimPlugins; [
+      telescope-fzf-native-nvim
+      nvim-web-devicons
+      dressing-nvim
+      lazygit-nvim
+      which-key-nvim
+      git-blame-nvim
       {
-        plugin = pkgs.vimPlugins.todo-comments-nvim;
+        plugin = todo-comments-nvim;
         config = toLuaFile ./plugins/todo-comments.lua;
       }
       {
-        plugin = pkgs.vimPlugins.trouble-nvim;
+        plugin = trouble-nvim;
         config = toLuaFile ./plugins/trouble.lua;
       }
       {
-        plugin = pkgs.vimPlugins.ccc-nvim;
+        plugin = ccc-nvim;
         config = toLuaFile ./plugins/ccc.lua;
       }
       {
-        plugin = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
+        plugin = nvim-treesitter.withAllGrammars;
         config = toLuaFile ./plugins/treesitter.lua;
       }
       {
-        plugin = pkgs.vimPlugins.alpha-nvim;
+        plugin = alpha-nvim;
         config = toLuaFile ./plugins/alpha.lua;
       }
+      cmp-nvim-lsp
       {
-        plugin = pkgs.vimPlugins.blink-cmp;
-        config = toLuaFile ./plugins/blink-cmp.lua;
+        plugin = nvim-cmp;
+        config = toLuaFile ./plugins/nvim-cmp.lua;
       }
       {
-        plugin = pkgs.vimPlugins.tokyonight-nvim;
+        plugin = tokyonight-nvim;
         config = toLuaFile ./plugins/colorscheme.lua;
       }
       {
-        plugin = pkgs.vimPlugins.conform-nvim;
+        plugin = conform-nvim;
         config = toLuaFile ./plugins/formatting.lua;
       }
       {
-        plugin = pkgs.vimPlugins.indent-blankline-nvim;
+        plugin = indent-blankline-nvim;
         config = toLuaFile ./plugins/indent-blankline.lua;
       }
       {
-        plugin = pkgs.vimPlugins.nvim-lint;
+        plugin = nvim-lint;
         config = toLuaFile ./plugins/nvim-lint.lua;
       }
       {
-        plugin = pkgs.vimPlugins.nvim-lspconfig;
+        plugin = nvim-lspconfig;
         config = toLuaFile ./plugins/lspconfig.lua;
       }
       {
-        plugin = pkgs.vimPlugins.telescope-nvim;
+        plugin = telescope-nvim;
         config = toLuaFile ./plugins/telescope.lua;
       }
       {
-        plugin = pkgs.vimPlugins.nvim-tree-lua;
+        plugin = nvim-tree-lua;
         config = toLuaFile ./plugins/nvim-tree.lua;
       }
       {
-        plugin = pkgs.vimPlugins.lualine-nvim;
+        plugin = lualine-nvim;
         config = toLuaFile ./plugins/lualine.lua;
       }
     ];

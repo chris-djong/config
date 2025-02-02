@@ -48,7 +48,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
 	end,
 })
-local capabilities = require("blink.cmp").get_lsp_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 local lspconfig = require("lspconfig")
 
 local border = {
