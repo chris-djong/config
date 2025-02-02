@@ -7,10 +7,6 @@ require("blink.cmp").setup({
 		accept = { auto_brackets = { enabled = true } },
 		documentation = {
 			auto_show = true,
-			auto_show_delay_ms = 250,
-			update_delay_ms = 50,
-			treesitter_highlighting = true,
-			window = { border = "rounded" },
 		},
 		list = {
 			selection = {
@@ -21,19 +17,11 @@ require("blink.cmp").setup({
 		},
 		menu = {
 			border = "rounded",
-			cmdline_position = function()
-				if vim.g.ui_cmdline_pos ~= nil then
-					local pos = vim.g.ui_cmdline_pos -- (1, 0)-indexed
-					return { pos[1] - 1, pos[2] }
-				end
-				local height = (vim.o.cmdheight == 0) and 1 or vim.o.cmdheight
-				return { vim.o.lines - height, 0 }
-			end,
 			draw = {
-				columns = {
-					{ "label", "label_description", gap = 1 },
-					{ "kind_icon", "kind" },
-				},
+				-- columns = {
+				-- 	{ "label", "label_description", gap = 1 },
+				-- 	{ "kind_icon", "kind" },
+				-- },
 				treesitter = { "lsp" },
 			},
 		},
@@ -61,6 +49,7 @@ require("blink.cmp").setup({
 		["<C-down>"] = { "select_next", "fallback" },
 		["<PageUp>"] = { "scroll_documentation_up", "fallback" },
 		["<PageDown>"] = { "scroll_documentation_down", "fallback" },
+		["<C-d>"] = { "show_documentation", "fallback" },
 	},
 
 	sources = {
