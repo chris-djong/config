@@ -11,24 +11,7 @@ in {
     keyMode = "vi";
     historyLimit = 5000;
     terminal = "screen-256color";
-    plugins = [
-      {
-        plugin = pkgs.tmuxPlugins.resurrect;
-        extraConfig = ''
-          set -g @resurrect-strategy-vim 'session'
-          set -g @resurrect-strategy-nvim 'session'
-          set -g @resurrect-capture-pane-contents 'on'
-        '';
-      }
-      {
-        plugin = pkgs.tmuxPlugins.continuum;
-        extraConfig = ''
-          set -g @continuum-restore 'on'
-          set -g @continuum-boot 'on'
-          set -g @continuum-save-interval '1min'
-        '';
-      }
-    ];
+    plugins = with pkgs.tmuxPlugins; [ resurrect continuum ];
     extraConfig = ''
       set -g allow-rename off
       set -ag terminal-overrides ",xterm-256color:RGB"
@@ -70,6 +53,14 @@ in {
       set -g window-status-current-style 'bg=${theme.blue},fg=#000000'
       set -g window-status-format " #I: #W "
       set -g window-status-current-format " #I: #W "
+
+      set -g @resurrect-strategy-vim 'session'
+      set -g @resurrect-strategy-nvim 'session'
+      set -g @resurrect-capture-pane-contents 'on'
+
+      set -g @continuum-restore 'on'
+      set -g @continuum-boot 'on'
+      set -g @continuum-save-interval '10min'
     '';
   };
 }
