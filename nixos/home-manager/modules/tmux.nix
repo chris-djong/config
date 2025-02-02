@@ -11,7 +11,14 @@ in {
     keyMode = "vi";
     historyLimit = 5000;
     terminal = "screen-256color";
-    plugins = with pkgs.tmuxPlugins; [ resurrect continuum ];
+    plugins = with pkgs.tmuxPlugins; [{
+      plugin = resurrect;
+      extraConfig = ''
+        set -g @resurrect-strategy-vim 'session'
+        set -g @resurrect-strategy-nvim 'session'
+        set -g @resurrect-capture-pane-contents 'on'
+      '';
+    }];
     extraConfig = ''
       set -g allow-rename off
       set -ag terminal-overrides ",xterm-256color:RGB"
@@ -44,8 +51,8 @@ in {
       set -g status-right ""
 
       # Styling of the individual panes 
-      set -g pane-border-style 'fg=${theme.green}'
-      set -g pane-active-border-style 'fg=${theme.fg}'
+      set -g pane-border-style 'fg=${theme.fg}'
+      set -g pane-active-border-style 'fg=${theme.green}'
 
       # Styling for the inidividual windows. Note that status means the small tab on the bottom of the window
       # The window style is the full window 
@@ -53,14 +60,6 @@ in {
       set -g window-status-current-style 'bg=${theme.blue},fg=#000000'
       set -g window-status-format " #I: #W "
       set -g window-status-current-format " #I: #W "
-
-      set -g @resurrect-strategy-vim 'session'
-      set -g @resurrect-strategy-nvim 'session'
-      set -g @resurrect-capture-pane-contents 'on'
-
-      set -g @continuum-restore 'on'
-      set -g @continuum-boot 'on'
-      set -g @continuum-save-interval '10min'
     '';
   };
 }
