@@ -6,6 +6,8 @@
     cd = "z";
     ll = "ls -al";
     set_env = ". .venv/bin/activate";
+    pbox = "boxes -s 74x1 -a c";
+    dev = "nix develop";
   };
 
   sessionVariables = let
