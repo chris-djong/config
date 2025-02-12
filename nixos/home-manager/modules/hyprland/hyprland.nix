@@ -206,15 +206,15 @@ in {
         "$mod, K, movefocus, u"
         "$mod, J, movefocus, d"
 
-        # Move focus with mainMod + arrow keys
-        "$mod SHIFT, left, movefocus, l"
-        "$mod SHIFT, right, movefocus, r"
-        "$mod SHIFT, up, movefocus, u"
-        "$mod SHIFT, down, movefocus, d"
-        "$mod SHIFT, H, movefocus, l"
-        "$mod SHIFT, L, movefocus, r"
-        "$mod SHIFT, K, movefocus, u"
-        "$mod SHIFT, J, movefocus, d"
+        # Move window with mainMod + arrow keys
+        "$mod SHIFT, left, movewindow, l"
+        "$mod SHIFT, right, movewindow, r"
+        "$mod SHIFT, up, movewindow, u"
+        "$mod SHIFT, down, movewindow, d"
+        "$mod SHIFT, H, movewindow, l"
+        "$mod SHIFT, L, movewindow, r"
+        "$mod SHIFT, K, movewindow, u"
+        "$mod SHIFT, J, movewindow, d"
 
         # Switch workspaces with mainMod + [0-9]
         "$mod, 1, workspace, 1"
