@@ -26,6 +26,9 @@
     seafile-client
     gimp
 
+    # Emoji picker
+    smile
+
     # CLI utils
     fd
     btop
