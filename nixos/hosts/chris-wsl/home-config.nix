@@ -19,7 +19,7 @@
   home.packages = with pkgs; [
     # CLI utils
     fd
-    btop
+    htop
     wget
     ripgrep # better grep for telescope
     jq # to parse json in bash
