@@ -29,9 +29,6 @@
     tldr
 
     # Azure cli things   
-    azure-cli
-    azure-cli-extensions.containerapp
-    azure-storage-azcopy
-
+    (azure-cli.withExtensions [ azure-cli.extensions.containerapp ])
   ];
 }
