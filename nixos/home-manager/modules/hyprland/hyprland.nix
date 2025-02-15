@@ -59,7 +59,11 @@ in {
       ### MONITORS ###
       ################
 
-      monitor = [ "eDP-1,highres,0x0,1" ];
+      monitor = [
+        "eDP-1,1920x1080,0x0,1" # laptop screen
+        "DP-3,1920x1080,1920x0,1" # desktop screen left
+        "DP-4,1920x1080,3840x0,1" # desktop screen right
+      ];
 
       #################
       ### AUTOSTART ###
