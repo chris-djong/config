@@ -25,6 +25,7 @@
     teams-for-linux
     seafile-client
     gimp
+    discord
 
     # Emoji picker
     smile
