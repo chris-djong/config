@@ -15,19 +15,33 @@
       devShells.${system}.default = with pkgs;
         mkShell {
           buildInputs = [
+            # Languages
+            nodejs_22
             python313
+
+            # Python packages
             uv
-            # Install some binaries seperately because nix can not handle them otherwise
+            postgresql # Required by psycopg, don't forget to install using pip install psycopg[c]
+
+            # Formatters
+            nodePackages.prettier
             ruff
+            sqlfluff
+            shfmt
+
+            # Linters 
+            eslint
             basedpyright
-            # postgresql # Required by psycopg, don't forget to install using pip install psycopg[c]
+            shellcheck
           ];
           shellHook = ''
             export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}
-            if test ! -d .venv; then
-              python -m venv .venv
+
+            # Recursively search for .venv and activate it if found
+            venv_dir=$(find "$PWD" -type d -name ".venv" -print -quit)
+            if [ -n "$venv_dir" ]; then
+              . "$venv_dir/bin/activate"
             fi
-            . .venv/bin/activate
           '';
         };
     };
