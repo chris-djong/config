@@ -19,6 +19,8 @@ conform.setup({
 		sql = { "sqlfluff" },
 		cpp = { "clang-format" },
 		nix = { "nixfmt" },
+		bash = { "shfmt" },
+		sh = { "shfmt" },
 	},
 	format_on_save = {
 		lsp_fallback = true,

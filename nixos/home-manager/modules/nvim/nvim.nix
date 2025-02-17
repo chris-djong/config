@@ -110,10 +110,12 @@
       ruff
       sqlfluff
       clang-tools
+      shfmt
 
       # Linters 
       eslint_d
       basedpyright
+      shellharden
 
     ];
   };

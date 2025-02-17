@@ -1,33 +1,44 @@
-- repo: https://github.com/pre-commit/mirrors-eslint
-  rev: latest
-  hooks:
-    - id: eslint
-      name: eslint (angular)
-      files: \.(ts|html)$
-      args: ["--max-warnings", "0"]
-- repo: local
-  hooks:
-    - id: angular-ls
-      name: angular-ls (Angular Language Service)
-      entry: npx angular-ls --check
-      language: system
-      files: \.(ts|html)$
-- repo: https://github.com/microsoft/pyright
-  rev: latest
-  hooks:
-    - id: basedpyright
-      language_version: python3
-      args: ["--check"]
-- repo: https://github.com/charliermarsh/ruff
-  rev: latest
-  hooks:
-    - id: ruff
-      language_version: python3
-      args: ["--check"]
-- repo: https://github.com/prettier/prettier
-  rev: latest
-  hooks:
-    - id: prettier
-      name: prettier (js/ts)
-      files: \.(js|ts)$
-      args: ["--check"]
+#!/bin/bash
+
+# Get the list of changed files in the commit
+CHANGED_FILES=$(git diff --cached --name-only)
+
+# Check if any Python files have changed
+PYTHON_FILES=()
+TS_HTML_FILES=()
+EXIT_STATUS=0
+
+for file in $CHANGED_FILES; do
+    if [[ "$file" == *.py ]]; then
+        python_files+=("$file")
+    elif [[ "$file" == *.ts || "$file" == *.html ]]; then
+        ts_html_files+=("$file")
+    fi
+    
+    # Check for NOCOMMIT keyword in the commit
+    if git diff --cached "$file" | grep -q "NOCOMMIT"; then
+        echo "Error: Commit contains 'NOCOMMIT'. Aborting commit."
+        EXIT_STATUS=1 
+    fi
+done
+
+# Run basedpyright and ruff on Python files
+if [ ${#python_files[@]} -gt 0 ]; then
+    echo "Running basedpyright and ruff on Python files..."
+    basedpyright "${python_files[@]}" || error_found=1
+    ruff check "${python_files[@]}" || error_found=1
+fi
+
+# Run eslint and prettier on TS and HTML files
+if [ ${#ts_html_files[@]} -gt 0 ]; then
+    echo "Running eslint and prettier on TypeScript and HTML files..."
+    eslint "${ts_html_files[@]}" || error_found=1
+    prettier --check "${ts_html_files[@]}" || error_found=1
+fi
+
+
+if [ $EXIT_STATUS -ne 0 ]; then
+    exit 1
+fi
+exit 0
+

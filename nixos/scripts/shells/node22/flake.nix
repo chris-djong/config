@@ -1,5 +1,5 @@
 {
-  description = "Python Environment";
+  description = "Node Environment";
   inputs = { nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; };
 
   outputs = { self, nixpkgs }:
