@@ -21,6 +21,7 @@ conform.setup({
 		nix = { "nixfmt" },
 		bash = { "shfmt" },
 		sh = { "shfmt" },
+		zsh = { "shfmt" },
 	},
 	format_on_save = {
 		lsp_fallback = true,

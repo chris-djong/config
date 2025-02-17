@@ -102,6 +102,7 @@
       lua-language-server
       tailwindcss-language-server
       typescript-language-server
+      bash-language-server
 
       # Formatters
       nodePackages.prettier

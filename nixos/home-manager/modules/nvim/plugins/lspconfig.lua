@@ -88,3 +88,5 @@ lspconfig.html.setup({ handlers = handlers, capabilities = capabilities })
 lspconfig.cssls.setup({ handlers = handlers, capabilities = capabilities })
 -- CPP
 lspconfig.clangd.setup({ handlers = handlers, capabilities = capabilities })
+-- Shell / Bash / Zsh
+lspconfig.bashls.setup({ handlers = handlers, capabilities = capabilities })
