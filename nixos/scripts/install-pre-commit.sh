@@ -1,3 +1,8 @@
+# Create pre-commit hook in .git/hooks/
+HOOK_FILE=".git/hooks/pre-commit"
+echo "Installing precommit hook in $HOOK_FILE"
+
+cat >"$HOOK_FILE" <<'EOF'
 #! /usr/bin/env bash
 # Get the list of changed files in the commit
 EXIT_STATUS=0
@@ -12,11 +17,13 @@ done
 #                                NOCOMMIT                                #
 ##########################################################################
 
-mapfile -t NO_COMMITS < <(grep -l NOCOMMIT "${CHANGED_FILES[@]}" | xargs realpath)
-if [[ ${#NO_COMMITS[@]} -gt 0 ]]; then
-  echo "The following files contain NOCOMMITS: "
-  echo "${NO_COMMITS[@]}"
-  EXIT_STATUS=1
+if [[ ${#CHANGED_FILES[@]} -gt 0 ]]; then
+  mapfile -t NO_COMMITS < <(grep -l NOCOMMIT "${CHANGED_FILES[@]}" | xargs -r realpath)
+  if [[ ${#NO_COMMITS[@]} -gt 0 ]]; then
+    echo "The following files contain NOCOMMITS: "
+    echo " - ${NO_COMMITS[@]}"
+    EXIT_STATUS=1
+  fi
 fi
 
 ##########################################################################
@@ -60,6 +67,14 @@ if [ ${#SHELL_FILES[@]} -gt 0 ]; then
 fi
 
 if [ $EXIT_STATUS -ne 0 ]; then
+  echo "❌ Pre-commit checks failed!"
+  echo ""
   exit 1
 fi
+echo "✅ All pre-commit checks passed!"
+echo ""
 exit 0
+EOF
+
+chmod +x "$HOOK_FILE"
+echo "✅ Pre-commit hook installed successfully!"
