@@ -115,8 +115,7 @@
       # Linters 
       eslint_d
       basedpyright
-      shellharden
-
+      shellcheck
     ];
   };
 }
