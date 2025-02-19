@@ -1,7 +1,15 @@
-# Create pre-commit hook in .git/hooks/
-HOOK_FILE=".git/hooks/pre-commit"
-echo "Installing precommit hook in $HOOK_FILE"
+# Create pre-commit hook in HOOK_PATH
+read -p "Please provide a repo: " GIT_FOLDER
 
+# Check if the folder exists
+if [ ! -d "$GIT_FOLDER/.git" ]; then
+  echo "❌ '$GIT_FOLDER' is not a valid git repository."
+  exit 1
+fi
+
+HOOK_FILE="$GIT_FOLDER/.git/hooks/pre-commit"
+
+echo "Installing precommit hook in $HOOK_FILE"
 cat >"$HOOK_FILE" <<'EOF'
 #! /usr/bin/env bash
 # Get the list of changed files in the commit
