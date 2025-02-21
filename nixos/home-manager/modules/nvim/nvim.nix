@@ -25,6 +25,7 @@
       dressing-nvim
       lazygit-nvim
       which-key-nvim
+      lsp_signature-nvim
       git-blame-nvim
       {
         plugin = todo-comments-nvim;

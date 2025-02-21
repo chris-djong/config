@@ -16,6 +16,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			})
 		end, opts)
 
+		-- This show some further types hints whenever we are inside a function
+		-- I don't really think I will need this, but for now I keep it
+		require("lsp_signature").on_attach({}, ev.buf)
+
 		opts.desc = "Go to declaration"
 		keymap.set("n", "gD", vim.lsp.buf.declaration, opts) -- go to declaration
 

@@ -17,6 +17,7 @@
     ../../home-manager/modules/shells/bash.nix
     ../../home-manager/modules/shells/zsh.nix
     ../../home-manager/modules/fzf.nix
+    ../../home-manager/modules/ssh.nix
   ];
 
   home.packages = with pkgs; [
