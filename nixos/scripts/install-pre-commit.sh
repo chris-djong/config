@@ -54,11 +54,10 @@ fi
 
 mapfile -t JS_HTML_FILES < <(printf "%s\n" "\${CHANGED_FILES[@]}" | grep -E "\.(js|ts|html)$" | sed 's|^$FRONTEND_DIR/||')
 if [ \${#JS_HTML_FILES[@]} -gt 0 ]; then
-  (
-    cd $FRONTEND_DIR || EXIT_STATUS=1
-    eslint "\${JS_HTML_FILES[@]}" || EXIT_STATUS=1
-    prettier --check "\${JS_HTML_FILES[@]}" || EXIT_STATUS=1
-  ) || EXIT_STATUS=1
+  cd $FRONTEND_DIR 
+  eslint "\${JS_HTML_FILES[@]}" || EXIT_STATUS=1
+  prettier --check "\${JS_HTML_FILES[@]}" || EXIT_STATUS=1
+  cd ..
 fi
 
 ##########################################################################
