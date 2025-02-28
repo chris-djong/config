@@ -51,7 +51,7 @@ fi
 
 mapfile -t JS_HTML_FILES < <(printf "%s\n" "${CHANGED_FILES[@]}" | grep -E "\.(js|ts|html)$")
 if [ ${#JS_HTML_FILES[@]} -gt 0 ]; then
-  eslint --config frontend "${JS_HTML_FILES[@]}" || EXIT_STATUS=1
+  eslint "${JS_HTML_FILES[@]}" || EXIT_STATUS=1
   prettier --check "${JS_HTML_FILES[@]}" || EXIT_STATUS=1
 fi
 
