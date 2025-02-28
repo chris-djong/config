@@ -20,7 +20,7 @@ EXIT_STATUS=0
 
 # We need to check whether the files exists
 CHANGED_FILES=()
-for file in $(git diff --cached --name-only); do
+for file in \$(git diff --cached --name-only); do
   [ -f "\$file" ] && CHANGED_FILES+=("\$file")
 done
 
@@ -58,7 +58,7 @@ if [ \${#JS_HTML_FILES[@]} -gt 0 ]; then
     cd $FRONTEND_DIR || EXIT_STATUS=1
     eslint "\${JS_HTML_FILES[@]}" || EXIT_STATUS=1
     prettier --check "\${JS_HTML_FILES[@]}" || EXIT_STATUS=1
-  )
+  ) || EXIT_STATUS=1
 fi
 
 ##########################################################################
