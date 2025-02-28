@@ -1,9 +1,10 @@
 # Create pre-commit hook in HOOK_PATH
-read -p "Please provide a repo: " GIT_FOLDER
+read -e -p "Please provide a repo: " GIT_FOLDER
 
 # Check if the folder exists
 if [ ! -d "$GIT_FOLDER/.git" ]; then
   echo "❌ '$GIT_FOLDER' is not a valid git repository."
+  echo "~ is not working. Please use an absolute path /home/chris/"
   exit 1
 fi
 
