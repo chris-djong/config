@@ -81,7 +81,7 @@ lspconfig.ruff.setup({ handlers = handlers, capabilities = capabilities })
 -- Typescript/Javascript
 lspconfig.angularls.setup({ handlers = handlers, capabilities = capabilities })
 lspconfig.ts_ls.setup({ handlers = handlers, capabilities = capabilities })
-lspconfig.eslint.setup({ handlers = handlers, capabilities = capabilities })
+lspconfig.eslint_d.setup({ handlers = handlers, capabilities = capabilities })
 lspconfig.tailwindcss.setup({ handlers = handlers, capabilities = capabilities })
 -- HTML
 lspconfig.html.setup({ handlers = handlers, capabilities = capabilities })
