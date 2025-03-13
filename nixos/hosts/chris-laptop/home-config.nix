@@ -39,5 +39,6 @@
     jq # to parse json in bash
     boxes
     tldr
+    unzip
   ];
 }
