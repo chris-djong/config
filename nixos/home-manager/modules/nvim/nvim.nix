@@ -23,7 +23,6 @@
       telescope-fzf-native-nvim
       nvim-web-devicons
       dressing-nvim
-      lazygit-nvim
       which-key-nvim
       git-blame-nvim
       {
@@ -90,7 +89,6 @@
       ${builtins.readFile ./keymaps/telescope.lua}
       ${builtins.readFile ./keymaps/nvim-tree.lua}
       ${builtins.readFile ./keymaps/ccc.lua}
-      ${builtins.readFile ./keymaps/lazy-git.lua}
       ${builtins.readFile ./keymaps/trouble.lua}
       ${builtins.readFile ./keymaps/nvim-lint.lua}
       ${builtins.readFile ./keymaps/formatting.lua}

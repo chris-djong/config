@@ -6,7 +6,6 @@
     ../../home-manager/modules/bat.nix
     ../../home-manager/modules/eza.nix
     ../../home-manager/modules/git.nix
-    ../../home-manager/modules/lazygit.nix
     ../../home-manager/modules/home.nix
     ../../home-manager/modules/tmux.nix
     ../../home-manager/modules/zoxide.nix
