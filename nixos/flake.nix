@@ -35,7 +35,7 @@
           specialArgs = {
             inherit user inputs stateVersion;
             hostname = "chris-wsl";
-            proxy = "10.56.4.40:8080";
+            proxy = "http://10.56.4.40:8080";
           };
           modules = [
             ./hosts/chris-wsl/configuration.nix

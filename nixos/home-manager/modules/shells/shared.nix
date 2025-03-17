@@ -16,7 +16,8 @@
       HTTPS_PROXY = proxy;
       http_proxy = proxy;
       https_proxy = proxy;
-      NO_PROXY = "";
+      NO_PROXY = "localhost,127.0.0.1,0.0.0.0";
+      no_proxy = "localhost,127.0.0.1,0.0.0.0";
     } else
       { };
   in {
