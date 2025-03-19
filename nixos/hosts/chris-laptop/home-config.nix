@@ -8,7 +8,6 @@
     ../../home-manager/modules/hyprland
     ../../home-manager/modules/bat.nix
     ../../home-manager/modules/eza.nix
-    ../../home-manager/modules/firefox.nix
     ../../home-manager/modules/librewolf.nix
     ../../home-manager/modules/git.nix
     ../../home-manager/modules/tmux.nix

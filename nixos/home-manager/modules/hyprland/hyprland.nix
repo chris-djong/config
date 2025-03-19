@@ -53,7 +53,7 @@ in {
       "$terminal" = "wezterm";
       "$fileManager" = "nemo";
       "$menu" = "wofi --show drun";
-      "$browser" = "firefox";
+      "$browser" = "librewolf";
 
       ################
       ### MONITORS ###
@@ -188,7 +188,6 @@ in {
       gestures = { workspace_swipe = true; };
 
       bind = [
-        "$mod, F, exec, firefox"
         ", Print, exec, grimblast copy area"
 
         # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
