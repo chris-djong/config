@@ -74,13 +74,51 @@ local handlers = {
 }
 
 -- Lua
-lspconfig.lua_ls.setup({ handlers = handlers, capabilities = capabilities })
+lspconfig.lua_ls.setup({
+	handlers = handlers,
+	capabilities = capabilities,
+	settings = {
+		Lua = {
+			diagnostics = {
+				-- Get the language server to recognize the `vim` global
+				globals = {
+					"vim",
+				},
+			},
+		},
+	},
+})
 -- Python
 lspconfig.basedpyright.setup({ handlers = handlers, capabilities = capabilities })
 lspconfig.ruff.setup({ handlers = handlers, capabilities = capabilities })
 -- Typescript/Javascript
 lspconfig.angularls.setup({ handlers = handlers, capabilities = capabilities })
-lspconfig.ts_ls.setup({ handlers = handlers, capabilities = capabilities })
+local function organize_imports()
+	local params = {
+		command = "_typescript.organizeImports",
+		arguments = { vim.api.nvim_buf_get_name(0) },
+		title = "",
+	}
+	vim.lsp.buf.execute_command(params)
+end
+
+lspconfig.ts_ls.setup({
+	handlers = handlers,
+	capabilities = capabilities,
+	on_attach = function(client, bufnr)
+		client.server_capabilities.documentFormattingProvider = false
+		vim.api.nvim_create_autocmd("BufWritePre", {
+			buffer = bufnr,
+			command = "OrganizeImports",
+		})
+	end,
+	commands = {
+		OrganizeImports = {
+			organize_imports,
+			description = "Organize Imports",
+		},
+	},
+})
 lspconfig.eslint.setup({ handlers = handlers, capabilities = capabilities })
 lspconfig.tailwindcss.setup({ handlers = handlers, capabilities = capabilities })
 -- HTML
