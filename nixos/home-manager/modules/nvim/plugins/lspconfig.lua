@@ -105,13 +105,14 @@ end
 lspconfig.ts_ls.setup({
 	handlers = handlers,
 	capabilities = capabilities,
-	on_attach = function(client, bufnr)
-		client.server_capabilities.documentFormattingProvider = false
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			buffer = bufnr,
-			command = "OrganizeImports",
-		})
-	end,
+	-- TODO: This does not quiet work yet. There is a misformatting between prettier and the imports
+	-- on_attach = function(client, bufnr)
+	-- 	-- client.server_capabilities.documentFormattingProvider = false
+	-- 	vim.api.nvim_create_autocmd("BufWritePre", {
+	-- 		buffer = bufnr,
+	-- 		command = "OrganizeImports",
+	-- 	})
+	-- end,
 	commands = {
 		OrganizeImports = {
 			organize_imports,
