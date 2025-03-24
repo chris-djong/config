@@ -1,7 +1,9 @@
 # Create pre-commit hook in HOOK_PATH
 read -e -p "Please provide a repo: " GIT_FOLDER
 read -e -p "Please provide the frontend folder (frontend): " FRONTEND_DIR
+read -e -p "Please provide the backend folder (backend): " BACKEND_DIR
 FRONTEND_DIR=${FRONTEND_DIR:-frontend}
+BACKEND_DIR=${BACKEND_DIR:-frontend}
 
 # Check if the folder exists
 if [ ! -d "$GIT_FOLDER/.git" ]; then
@@ -41,11 +43,13 @@ fi
 #                             PYTHON CHECKS                              #
 ##########################################################################
 
-mapfile -t PYTHON_FILES < <(printf "%s\n" "\${CHANGED_FILES[@]}" | grep -E "\.py$")
+mapfile -t PYTHON_FILES < <(printf "%s\n" "\${CHANGED_FILES[@]}" | grep -E "\.py$" | sed 's|^$BACKEND_DIR/||')
 if [ \${#PYTHON_FILES[@]} -gt 0 ]; then
+  cd $BACKEND_DIR
   basedpyright "\${PYTHON_FILES[@]}" || EXIT_STATUS=1
   ruff check "\${PYTHON_FILES[@]}" || EXIT_STATUS=1
   ruff format --check "\${PYTHON_FILES[@]}" || EXIT_STATUS=1
+  cd ..
 fi
 
 ##########################################################################
