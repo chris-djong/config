@@ -28,6 +28,8 @@
     boxes
     tldr
 
+    npm-check-updates
+
     # Azure cli things   
     (azure-cli.withExtensions [ azure-cli.extensions.containerapp ])
     azure-storage-azcopy

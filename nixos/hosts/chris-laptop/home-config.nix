@@ -25,6 +25,7 @@
     teams-for-linux
     seafile-client
     gimp
+    inkscape
     discord
 
     # Emoji picker
@@ -39,5 +40,6 @@
     boxes
     tldr
     unzip
+    npm-check-updates
   ];
 }
