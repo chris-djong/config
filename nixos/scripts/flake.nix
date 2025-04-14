@@ -24,13 +24,11 @@
             postgresql # Required by psycopg, don't forget to install using pip install psycopg[c]
 
             # Formatters
-            nodePackages.prettier
             ruff
             sqlfluff
             shfmt
 
             # Linters 
-            eslint
             basedpyright
             shellcheck
           ];
