@@ -21,6 +21,8 @@
             nodejs_22
             python312
             gnumake
+            gdb
+            postgresql # Required by psycopg, don't forget to install using pip install 'psycopg[c]'
 
             zlib # required by numpy
             stdenv.cc.cc # required by numpy
@@ -37,4 +39,3 @@
       };
     in { devShells.${system}.default = fhs.env; };
 }
-
