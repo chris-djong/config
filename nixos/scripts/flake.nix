@@ -21,7 +21,7 @@
 
             # Python packages
             uv
-            postgresql # Required by psycopg, don't forget to install using pip install psycopg[c]
+            postgresql # Required by psycopg, don't forget to install using pip install 'psycopg[c]"
 
             # Formatters
             ruff
