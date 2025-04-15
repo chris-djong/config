@@ -1,46 +1,40 @@
 {
-  description = "Python Environment";
+  description = "Development Environment";
   inputs = { nixpkgs.url = "github:nixos/nixpkgs/nixos-24.11"; };
 
   outputs = { self, nixpkgs }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      # Make the library path depending on what packages you need
-      LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath (with pkgs; [
-        zlib # required by numpy
-        stdenv.cc.cc # required by numpy
-      ]);
-    in {
-      devShells.${system}.default = with pkgs;
-        mkShell {
-          buildInputs = [
-            # Languages
+      fhs = pkgs.buildFHSUserEnv {
+        name = "fhs-shell";
+        runScript = "zsh";
+        profile = ''
+          export LIBRARY_PATH=/usr/lib
+          export C_INCLUDE_PATH=/usr/include
+          export CPLUS_INCLUDE_PATH=/usr/include
+          export CMAKE_LIBRARY_PATH=/usr/lib
+          export CMAKE_INCLUDE_PATH=/usr/include bash
+        '';
+        targetPkgs = with pkgs;
+          pkgs: [
             nodejs_22
-            python313
+            python312
+            gnumake
 
-            # Python packages
-            uv
-            postgresql # Required by psycopg, don't forget to install using pip install 'psycopg[c]"
+            zlib # required by numpy
+            stdenv.cc.cc # required by numpy
+            binutils_nogold # add some libraries that are needed for entourage compilation
 
-            # Formatters
-            ruff
+            # General formatters/linters that are not project specific 
             sqlfluff
             shfmt
-
-            # Linters 
-            basedpyright
             shellcheck
+            clang-tools
+            nixfmt-classic
+            stylua
           ];
-          shellHook = ''
-            export LD_LIBRARY_PATH=${LD_LIBRARY_PATH}
-
-            # Recursively search for .venv and activate it if found
-            venv_dir=$(find "$PWD" -type d -name ".venv" -print -quit)
-            if [ -n "$venv_dir" ]; then
-              . "$venv_dir/bin/activate"
-            fi
-          '';
-        };
-    };
+      };
+    in { devShells.${system}.default = fhs.env; };
 }
+

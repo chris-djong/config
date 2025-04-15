@@ -23,12 +23,9 @@
     wget
     ripgrep # better grep for telescope
     jq # to parse json in bash
-    gnumake # make command
     xsel # for clipboard functionality
     boxes
     tldr
-
-    npm-check-updates
 
     # Azure cli things   
     (azure-cli.withExtensions [ azure-cli.extensions.containerapp ])

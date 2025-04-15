@@ -40,6 +40,5 @@
     boxes
     tldr
     unzip
-    npm-check-updates
   ];
 }
