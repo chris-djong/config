@@ -1,6 +1,5 @@
 {
   imports = [
-    ../../nixos/modules/audio.nix
     ../../nixos/modules/bluetooth.nix
     ../../nixos/modules/boot.nix
     ../../nixos/modules/net.nix

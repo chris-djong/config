@@ -22,6 +22,12 @@
     };
   };
 
+  # Pipewire and wireplumber are needed for screensharing
+  services.pipewire = {
+    enable = true;
+    wireplumber.enable = true;
+  };
+
   environment.systemPackages = with pkgs; [
     # Clipboard and clipboard manager
     wl-clipboard
@@ -36,8 +42,9 @@
     hyprlock # lock screen
     hypridle # automatically lock screen
     hyprpaper # change wallpaper
-    hyprshot
+    hyprshot # screenshots
     brightnessctl # Required utilities for hyprland
+    hyprpolkitagent # Some agent that is requried to request privileges
   ];
 
 }
