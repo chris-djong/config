@@ -17,21 +17,23 @@ in {
       };
       clock = {
         format = "{:%a, %d. %b  %H:%M}";
+        tooltip-format = "<tt><small>{calendar}</small></tt>";
         calendar = {
-          "mode" = "month";
-          "on-scroll" = 1;
-          "format" = {
-            "months" = "<span color='#ffead3'><b>{}</b></span>";
-            "days" = "<span color='#ecc6d9'><b>{}</b></span>";
-            "weeks" = "<span color='#99ffdd'><b>W{}</b></span>";
-            "weekdays" = "<span color='#ffcc66'><b>{}</b></span>";
-            "today" = "<span color='#ff6699'><b><u>{}</u></b></span>";
+          mode = "year";
+          mode-mon-col = 3;
+          on-scroll = 1;
+          format = {
+            months = "<span color='${theme.green}'><b>{}</b></span>";
+            weekdays = "<span color='${theme.yellow}'><b>{}</b></span>";
+            days = "<span color='${theme.violet}'>{}</span>";
+            today = "<span color='${theme.red}'><b><u>{}</u></b></span>";
+            weeks = "<span color='${theme.fg}'><b>{}</b></span>";
           };
         };
         actions = {
-          "on-click-right" = "mode";
-          "on-scroll-up" = "shift_up";
-          "on-scroll-down" = "shift_down";
+          on-click-right = "mode";
+          on-scroll-up = "shift_up";
+          on-scroll-down = "shift_down";
         };
       };
       pulseaudio = {

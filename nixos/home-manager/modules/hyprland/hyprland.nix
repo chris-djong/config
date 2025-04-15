@@ -8,6 +8,9 @@ let
     theme.inactive_bg;
 in {
 
+  # To get notification on low battery
+  services.batsignal.enable = true;
+
   # Setup the cursor 
   home.pointerCursor = {
     gtk.enable = true;

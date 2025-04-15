@@ -45,6 +45,7 @@
     hyprshot # screenshots
     brightnessctl # Required utilities for hyprland
     hyprpolkitagent # Some agent that is requried to request privileges
+    batsignal # to show battery status
   ];
 
 }
