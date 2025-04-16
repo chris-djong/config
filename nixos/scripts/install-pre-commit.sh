@@ -30,13 +30,11 @@ done
 #                                NOCOMMIT                                #
 ##########################################################################
 
-if [[ \${#CHANGED_FILES[@]} -gt 0 ]]; then
-  mapfile -t NO_COMMITS < <(grep -l NOCOMMIT "\${CHANGED_FILES[@]}" | xargs -r realpath)
-  if [[ \${#NO_COMMITS[@]} -gt 0 ]]; then
-    echo "The following files contain NOCOMMITS: "
-    echo " - \${NO_COMMITS[@]}"
-    EXIT_STATUS=1
-  fi
+mapfile -t NO_COMMITS < <(grep -l NOCOMMIT "\${CHANGED_FILES[@]}" | xargs -r realpath)
+if [[ \${#NO_COMMITS[@]} -gt 0 ]]; then
+  echo "The following files contain NOCOMMITS: "
+  echo " - \${NO_COMMITS[@]}"
+  EXIT_STATUS=1
 fi
 
 ##########################################################################
