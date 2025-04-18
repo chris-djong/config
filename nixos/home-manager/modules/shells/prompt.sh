@@ -10,14 +10,14 @@ update_ps1() {
   fi
 
   # Show the shell level in case we are in a shell
-  if [[ $TMUX && ! "$SHLVL" == "2" ]]; then 
+  if [[ $TMUX && ! "$SHLVL" == "2" ]]; then
     add_logo "🐚"
-  elif [[ ! $TMUX && ! "$SHLVL" == "1"  ]]; then
+  elif [[ ! $TMUX && ! "$SHLVL" == "1" ]]; then
     add_logo "🐚"
   fi
 
   # Check for Python version
-  PYTHON_EXISTS=$(python --version 2>/dev/null) 
+  PYTHON_EXISTS=$(python --version 2>/dev/null)
   PYTHON_PATH=$(which python 2>/dev/null)
   if [[ "$PYTHON_EXISTS" && "$PYTHON_PATH" == *".venv"* ]]; then
     add_logo "🐍"
@@ -27,11 +27,12 @@ update_ps1() {
     LOGOS="$LOGOS "
   fi
 
-  HOST_PROMPT=""   
+  HOST_PROMPT=""
   if [[ $SSH_CONNECTION ]]; then
     HOST_PROMPT="$(whoami)@$(hostname) "
   fi
   GIT=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+  GIT_PROMPT=""
   if [[ "$GIT" ]]; then
     GIT_PROMPT="$GIT "
   fi
@@ -46,10 +47,9 @@ update_ps1() {
   elif [[ "$ZSH_VERSION" ]]; then
     COLOR_HOST="%F{205}"     # Pink (205)
     COLOR_GIT="%F{49}"       # Green (49)
-    COLOR_DIRECTORY="%F{14}"  # Blue (14)
+    COLOR_DIRECTORY="%F{14}" # Blue (14)
     COLOR_RESET="%f"         # Reset
   fi
 
   PS1="$LOGOS${COLOR_HOST}$HOST_PROMPT${COLOR_RESET}${COLOR_GIT}${GIT_PROMPT}${COLOR_RESET}${COLOR_DIRECTORY}$DIRECTORY${COLOR_RESET}"
 }
-
