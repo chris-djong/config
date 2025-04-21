@@ -1,9 +1,12 @@
 { inputs, config, pkgs, services, user, ... }: {
   programs.hyprland = {
     enable = true;
+    xwayland.enable = true;
     withUWSM =
       true; # Session Manager. Needed to keep Wifi credentials after reboot for example
   };
+
+  environment.sessionVariables = { NIXOS_OZONE_WL = "1"; };
 
   # Create a hyprlock pam file so that we can unlock from here
   security.pam.services.hyprlock = { };
@@ -26,6 +29,11 @@
   services.pipewire = {
     enable = true;
     wireplumber.enable = true;
+    # NOTE: Enable these if screen sharing is still not working
+    # alsa.enable = true;
+    # alsa.support32Bit = true;
+    # pulse.enable = true;
+    # jack.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
