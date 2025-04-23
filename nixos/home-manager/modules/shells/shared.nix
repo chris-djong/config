@@ -7,7 +7,7 @@
     ll = "ls -al";
     set_env = ". .venv/bin/activate";
     pbox = "boxes -s 74x1 -a c";
-    dev = "nix develop -c $SHELL --profile ./flake-profile";
+    dev = "nix develop --profile ~/flake-profile -c $SHELL";
   };
 
   sessionVariables = let
