@@ -27,6 +27,7 @@
     gimp
     inkscape
     discord
+    libreoffice-fresh
 
     # Emoji picker
     smile

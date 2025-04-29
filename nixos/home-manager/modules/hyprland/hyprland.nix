@@ -78,14 +78,8 @@ in {
       ### AUTOSTART ###
       #################
 
-      exec-once = [
-        "waybar"
-        "nm-applet --indicator"
-        "blueman-applet"
-        "hypridle"
-        "hyprpaper"
-        "hyprlock"
-      ];
+      exec-once =
+        [ "waybar" "nm-applet --indicator" "blueman-applet" "hyprlock" ];
 
       #############################
       ### ENVIRONMENT VARIABLES ###

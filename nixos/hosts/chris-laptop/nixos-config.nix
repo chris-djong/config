@@ -7,9 +7,9 @@
     ../../nixos/modules/timezone.nix
     ../../nixos/modules/user.nix
     ../../nixos/modules/gbc.nix
-    # ../../nixos/modules/gnome.nix
     ../../nixos/modules/fonts.nix
     ../../nixos/modules/docker.nix
     ../../nixos/modules/hyprland.nix
+    ../../nixos/modules/printing.nix
   ];
 }
