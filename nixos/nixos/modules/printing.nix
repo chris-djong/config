@@ -9,7 +9,7 @@
   };
 
   # Scanning 
-  # NOTE: Command scanimage only works using sudo currently
+  # NOTE: Command scanimage 
   hardware.sane.enable = true; # enables support for SANE scanners
   hardware.sane.extraBackends = [ pkgs.hplipWithPlugin ];
 
