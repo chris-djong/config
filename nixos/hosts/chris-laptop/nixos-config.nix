@@ -9,7 +9,7 @@
     ../../nixos/modules/gbc.nix
     ../../nixos/modules/fonts.nix
     ../../nixos/modules/docker.nix
-    ../../nixos/modules/hyprland.nix
     ../../nixos/modules/printing.nix
+    ../../nixos/modules/hyprland.nix
   ];
 }
