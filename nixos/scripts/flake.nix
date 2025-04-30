@@ -19,7 +19,7 @@
         targetPkgs = with pkgs;
           pkgs: [
             nodejs_22
-            python312
+            python313
             gnumake
             gdb
             postgresql # Required by psycopg, don't forget to install using pip install 'psycopg[c]'
