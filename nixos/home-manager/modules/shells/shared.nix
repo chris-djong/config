@@ -21,7 +21,6 @@
     } else
       { };
   in {
-    BAT_THEME = "tokyonight_night";
 
     # Use fd instead of fzf for faster searches
     FZF_DEFAULT_COMMAND = "fd --hidden --strip-cwd-prefix --exclude .git";
