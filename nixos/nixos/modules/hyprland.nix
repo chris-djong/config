@@ -29,11 +29,11 @@
   services.pipewire = {
     enable = true;
     wireplumber.enable = true;
-    # NOTE: Enable these if screen sharing is still not working
-    # alsa.enable = true;
-    # alsa.support32Bit = true;
-    # pulse.enable = true;
-    # jack.enable = true;
+    # These below seem to be required for screen sharing..
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
   };
 
   environment.systemPackages = with pkgs; [

@@ -15,32 +15,37 @@
     let
       user = "chris";
       stateVersion = "24.11";
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+      helper =
+        import ./hosts/helpers.nix { inherit pkgs nixpkgs home-manager; };
     in {
-      nixosConfigurations = {
-        chris-laptop = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit user inputs stateVersion;
-            hostname = "chris-laptop";
-            proxy = null;
-          };
-          modules = [
-            ./hosts/chris-laptop/configuration.nix
-            home-manager.nixosModules.default
-          ];
+      homeConfigurations = {
+        chris-laptop = helper.mkHome {
+          user = user;
+          proxy = null;
+          stateVersion = stateVersion;
+          hostname = "chris-laptop";
         };
-        chris-wsl = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = {
-            inherit user inputs stateVersion;
-            hostname = "chris-wsl";
-            proxy = "http://10.56.4.40:8080";
-          };
-          modules = [
-            ./hosts/chris-wsl/configuration.nix
-            nixos-wsl.nixosModules.default
-            home-manager.nixosModules.default
-          ];
+        chris-wsl = helper.mkHome {
+          user = user;
+          proxy = "http://10.56.4.40:8080";
+          stateVersion = stateVersion;
+          hostname = "chris-wsl";
+        };
+      };
+      nixosConfigurations = {
+        chris-laptop = helper.mkNixos {
+          user = user;
+          proxy = null;
+          stateVersion = stateVersion;
+          hostname = "chris-laptop";
+        };
+        chris-wsl = helper.mkNixos {
+          user = user;
+          proxy = "http://10.56.4.40:8080";
+          stateVersion = stateVersion;
+          hostname = "chris-wsl";
         };
       };
     };
