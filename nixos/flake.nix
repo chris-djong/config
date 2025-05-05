@@ -24,7 +24,7 @@
         zit-server = helper.mkHome {
           user = "zit";
           proxy = null;
-          stateVersion = "25.05";
+          stateVersion = stateVersion;
           hostname = "linux-server";
           isGenericLinux = true;
         };
