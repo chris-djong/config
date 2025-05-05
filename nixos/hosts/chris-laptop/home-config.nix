@@ -1,6 +1,9 @@
 { pkgs, ... }: {
   nixpkgs.config.allowUnfree = true;
 
+  # whether on a nixos distro or not 
+  targets.genericLinux.enable = false;
+
   # Import all the modules 
   imports = [
     ../../home-manager/modules/nvim/nvim.nix

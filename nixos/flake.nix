@@ -26,12 +26,14 @@
           proxy = null;
           stateVersion = stateVersion;
           hostname = "chris-laptop";
+          isGenericLinux = false;
         };
         chris-wsl = helper.mkHome {
           user = user;
           proxy = "http://10.56.4.40:8080";
           stateVersion = stateVersion;
           hostname = "chris-wsl";
+          isGenericLinux = false;
         };
       };
       nixosConfigurations = {

@@ -1,10 +1,10 @@
 { pkgs, nixpkgs, home-manager, ... }: {
   # Helper function for generating home-manager configs
-  mkHome = { user, proxy, stateVersion, hostname }:
+  mkHome = { user, proxy, stateVersion, hostname, isGenericLinux }:
     home-manager.lib.homeManagerConfiguration {
       inherit pkgs;
       extraSpecialArgs = {
-        inherit user;
+        inherit user isGenericLinux;
         proxy = proxy;
         homeStateVersion = stateVersion;
       };
