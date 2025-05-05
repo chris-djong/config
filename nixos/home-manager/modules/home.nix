@@ -1,4 +1,4 @@
-{ user, homeStateVersion, isGenericLinux, ... }: {
+{ user, homeStateVersion, isGenericLinux, pkgs, ... }: {
 
   # Needs to be set whenever we are on non nixos
   targets.genericLinux.enable = isGenericLinux;
@@ -8,6 +8,8 @@
     homeDirectory = "/home/${user}";
     stateVersion = homeStateVersion;
   };
+
+  user.user.${user}.shell = pkgs.zsh;
 
   # Allow home-manager to manage itself
   programs.home-manager.enable = true;
