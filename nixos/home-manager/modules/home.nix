@@ -9,8 +9,6 @@
     stateVersion = homeStateVersion;
   };
 
-  user.user.${user}.shell = pkgs.zsh;
-
   # Allow home-manager to manage itself
   programs.home-manager.enable = true;
 
