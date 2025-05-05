@@ -16,7 +16,11 @@
     XDG_BIN_HOME = "$HOME/.local/bin";
     EDITOR = "nvim";
   };
-  home.sessionPath = [ "./node_modules/.bin" "$HOME/.local/bin" ];
+  home.sessionPath = [
+    "./node_modules/.bin"
+    "$HOME/bin" # needed by docker rootless on non nixos systems
+    "$HOME/.local/bin"
+  ];
 
   home.file."scripts" = {
     source = ../../scripts;
