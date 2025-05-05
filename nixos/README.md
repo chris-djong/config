@@ -4,22 +4,22 @@ Just small useful commands I don't want to forget
 
 ## Building
 
-    ```
-
+```
 nixos-rebuild switch --flake ./#<hostname> # or nixos-install --flake ./#<hostname> if you are installing on a fresh system
 home-manager switch --flake ./#<hostname>
 
 ```
 
-## Changing XServer Keys
+In case you dont have a nixos system, but using debian for example, you just need to install the nix package manager.
 
-In order to swap caps with ESC somehow it looks like the gsettings options are built once and don't pick up the changes to the configuration.nix. To overcome this run the following commands and restart
-
-```
-
-ssettings reset org.gnome.desktop.input-sources xkb-options
-gsettings reset org.gnome.desktop.input-sources sources
+Then use the following command to build your home environment
 
 ```
+nix build ./#homeConfigurations.zit-server.activationPackage
+```
 
+This will build the activation environment to a ./result folders. Check that folder if the config is correct and if so run the following to activate the home manager config
+
+```
+./result/activate
 ```
