@@ -3,6 +3,12 @@
   # Needs to be set whenever we are on non nixos
   targets.genericLinux.enable = isGenericLinux;
 
+  home = {
+    username = user;
+    homeDirectory = "/home/${user}";
+    stateVersion = homeStateVersion;
+  };
+
   # Allow home-manager to manage itself
   programs.home-manager.enable = true;
 
@@ -11,12 +17,6 @@
     EDITOR = "nvim";
   };
   home.sessionPath = [ "./node_modules/.bin" "$HOME/.local/bin" ];
-
-  home = {
-    username = user;
-    homeDirectory = "/home/${user}";
-    stateVersion = homeStateVersion;
-  };
 
   home.file."scripts" = {
     source = ../../scripts;
