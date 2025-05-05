@@ -4,6 +4,7 @@
     vi = "nvim";
     vim = "nvim";
     cd = "z";
+    cat = "bat";
     ll = "ls -al";
     set_env = ". .venv/bin/activate";
     pbox = "boxes -s 74x1 -a c";
