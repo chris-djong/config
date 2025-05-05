@@ -21,6 +21,13 @@
         import ./hosts/helpers.nix { inherit pkgs nixpkgs home-manager; };
     in {
       homeConfigurations = {
+        zit-server = helper.mkHome {
+          user = "zit";
+          proxy = null;
+          stateVersion = "25.05";
+          hostname = "zit-server";
+          isGenericLinux = true;
+        };
         chris-laptop = helper.mkHome {
           user = user;
           proxy = null;
