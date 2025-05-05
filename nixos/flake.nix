@@ -25,7 +25,7 @@
           user = "zit";
           proxy = null;
           stateVersion = "25.05";
-          hostname = "zit-server";
+          hostname = "linux-server";
           isGenericLinux = true;
         };
         chris-laptop = helper.mkHome {
