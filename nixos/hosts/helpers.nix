@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs, home-manager, nixos-wsl, ... }: {
+{ pkgs, nixos-wsl, nixpkgs, home-manager, system, ... }: {
   # Helper function for generating home-manager configs
   mkHome = { user, proxy, stateVersion, hostname, isGenericLinux }:
     home-manager.lib.homeManagerConfiguration {
@@ -14,16 +14,11 @@
   mkNixos = { user, proxy, stateVersion, hostname, isWsl }:
     nixpkgs.lib.nixosSystem {
       specialArgs = {
-        inherit user stateVersion;
+        inherit nixos-wsl user stateVersion;
         hostname = hostname;
         proxy = proxy;
       };
-      modules = if isWsl then [
-        nixos-wsl.nixosModules.default
-        ./${hostname}/configuration.nix
-      ] else [
-        nixos-wsl.nixosModules.default
-        ./${hostname}/configuration.nix
-      ];
+      system = system;
+      modules = [ ./${hostname}/configuration.nix ];
     };
 }

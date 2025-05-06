@@ -1,8 +1,9 @@
 # Edit this configuration file to define what should be installed on your system.  # Help is available in the configuration.nix(5) man page and in the NixOS manual
 # (accessible by running ‘nixos-help’).
 
-{ user, stateVersion, ... }: {
+{ user, nixos-wsl, stateVersion, ... }: {
   imports = [
+    nixos-wsl.nixosModules.default
     ../../nixos/modules/net.nix
     ../../nixos/modules/nix.nix
     ../../nixos/modules/timezone.nix

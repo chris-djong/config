@@ -18,7 +18,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
       helper = import ./hosts/helpers.nix {
-        inherit pkgs nixpkgs home-manager nixos-wsl;
+        inherit system pkgs nixpkgs home-manager nixos-wsl;
       };
     in {
       homeConfigurations = {
