@@ -17,8 +17,9 @@
       stateVersion = "24.11";
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
-      helper =
-        import ./hosts/helpers.nix { inherit pkgs nixpkgs home-manager; };
+      helper = import ./hosts/helpers.nix {
+        inherit pkgs nixpkgs home-manager nixos-wsl;
+      };
     in {
       homeConfigurations = {
         zit-server = helper.mkHome {
@@ -49,12 +50,14 @@
           proxy = null;
           stateVersion = stateVersion;
           hostname = "chris-laptop";
+          isWsl = false;
         };
         chris-wsl = helper.mkNixos {
           user = user;
           proxy = "http://10.56.4.40:8080";
           stateVersion = stateVersion;
           hostname = "chris-wsl";
+          isWsl = true;
         };
       };
     };

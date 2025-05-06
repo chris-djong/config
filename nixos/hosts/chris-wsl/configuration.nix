@@ -3,7 +3,6 @@
 
 { user, stateVersion, ... }: {
   imports = [
-    inputs.nixos-wsl.nixosModules.default
     ../../nixos/modules/net.nix
     ../../nixos/modules/nix.nix
     ../../nixos/modules/timezone.nix
