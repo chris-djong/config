@@ -24,13 +24,13 @@
 
   home.packages = with pkgs; [
     # Desktop apps
-    obsidian
     teams-for-linux
     seafile-client
     gimp
     inkscape
     discord
     libreoffice-fresh
+    tutanota-desktop
 
     # Emoji picker
     smile
