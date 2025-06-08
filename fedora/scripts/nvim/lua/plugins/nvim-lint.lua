@@ -7,7 +7,6 @@ lint.linters_by_ft = {
 	typescriptreact = { "eslint_d" },
 	svelte = { "eslint_d" },
 	python = { "ruff" },
-	-- TODO: Find out why these are not working
 	bash = { "shellcheck" },
 	sh = { "shellcheck" },
 	zsh = { "shellcheck" },
@@ -21,3 +20,8 @@ vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave" }, {
 		lint.try_lint()
 	end,
 })
+
+vim.keymap.set("n", "<leader>l", function()
+	lint.try_lint()
+end, { desc = "Trigger linting for current file" })
+

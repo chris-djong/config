@@ -1,4 +1,5 @@
 local lualine = require("lualine")
+local theme = require("theme")
 
 local lua_theme = {
 	normal = {
@@ -58,3 +59,4 @@ lualine.setup({
 		lualine_b = { "filename" },
 	},
 })
+

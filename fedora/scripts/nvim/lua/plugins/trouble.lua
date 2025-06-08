@@ -1,3 +1,7 @@
+require("trouble").setup({
+	focus = true,
+})
+
 vim.keymap.set(
 	"n",
 	"<leader>xd",
@@ -13,3 +17,4 @@ vim.keymap.set(
 	"<cmd>Trouble diagnostics toggle<CR>",
 	{ desc = "Open Trouble Workspace Diagnostics" }
 )
+

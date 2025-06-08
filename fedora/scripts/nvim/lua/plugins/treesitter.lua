@@ -23,3 +23,4 @@ treesitter.setup({ -- enable syntax highlighting
 		},
 	},
 })
+

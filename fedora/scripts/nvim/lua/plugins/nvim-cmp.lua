@@ -1,4 +1,4 @@
-local cmp = require("cmp")
+local cmp = require("cmp");
 cmp.setup({
 	completion = {
 		completeopt = "menu,menuone,noinsert",
@@ -20,3 +20,4 @@ cmp.setup({
 		{ name = "path" }, -- file system paths
 	}),
 })
+
