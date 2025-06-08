@@ -50,11 +50,6 @@ git clone https://github.com/folke/todo-comments.nvim.git ~/.config/nvim/pack/pl
 # Nvim-lint
 git clone https://github.com/mfussenegger/nvim-lint.git ~/.config/nvim/pack/plugins/start/nvim-lint
 
-
-
-
-
-
 #
 # Config 
 #
