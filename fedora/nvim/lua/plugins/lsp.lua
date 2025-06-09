@@ -54,16 +54,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 
+-- NOTE: The configs were downloaded from nvim-lspconfig plugin page
+-- https://github.com/neovim/nvim-lspconfig/tree/master/lsp
 vim.lsp.enable({
-  'angularls',
-  'basedpyright',
-  'bashls', -- working by default
-  'clangd',
-  "lua_ls", -- working by default
-  'cssls',  -- working by default
-  'eslint',
-  'htmlls', -- working by default
-  'ruff',
-  'tailwindcss',
-  'ts_ls',
+  'angularls',    -- Updated on 9 June
+  'basedpyright', -- Updated on 9 June
+  'bashls',       -- Updated on 9 June
+  'clangd',       -- Updated on 9 June
+  "lua_ls",       -- Updated on 9 June
+  'cssls',        -- Updated on 9 June
+  'eslint',       -- Updated on 9 June
+  'htmlls',       -- Updated on 9 June
+  'ruff',         -- Updated on 9 June
+  'tailwindcss',  -- Updated on 9 June
+  'ts_ls',        -- Updated on 9 June
 })
