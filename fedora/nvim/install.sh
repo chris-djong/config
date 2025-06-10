@@ -63,10 +63,9 @@ sudo dnf install shellcheck shfmt
 
 # Luals
 wget -O "$TEMP_DIR/lua-ls.tar.gz" https://github.com/LuaLS/lua-language-server/releases/download/3.14.0/lua-language-server-3.14.0-linux-x64.tar.gz
-mkdir -p ~/programs/bin
 mkdir -p ~/programs/lua-ls
 tar -xvzf "$TEMP_DIR/lua-ls.tar.gz" -C ~/programs/lua-ls
-ln -s ~/programs/lua-ls/bin/lua-language-server ~/programs/bin/lua-language-server
+ln -s ~/programs/lua-ls/bin/lua-language-server ~/.local/bin
 
 # Bashls
 sudo npm install -g bash-language-server

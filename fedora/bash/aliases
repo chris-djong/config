@@ -1,8 +1,8 @@
 # Aliases
-alias vi="nvim";
-alias vim="nvim";
-alias cd="z";
-alias cat="batcat";
-alias ll="ls -al";
-alias set_env=". .venv/bin/activate";
-alias pbox="boxes -s 74x1 -a c";
+alias vi="nvim"
+alias vim="nvim"
+alias cd="z"
+alias cat="batcat"
+alias ll="ls -al"
+alias set_env=". .venv/bin/activate"
+alias pbox="boxes -s 74x1 -a c"

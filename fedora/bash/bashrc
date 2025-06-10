@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# Setup zoxide needs to be done before the aliases
+eval "$(zoxide init bash)"
+
 if [ -f ~/.bash_aliases ]; then
   . ~/.bash_aliases
 fi
@@ -15,12 +19,7 @@ if [ -f ~/.bash_specific ]; then
   . ~/.bash_specific
 fi
 
-# Setup zoxide
-eval "$(zoxide init bash)"
-
 # User specific environment
-if ! [[ "$PATH" =~ $HOME/.local/bin:$HOME/bin: ]]; then
-  PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
+PATH="$HOME/.local/bin:$PATH"
 
 export PATH
