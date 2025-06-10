@@ -1,23 +1,26 @@
 #!/bin/bash
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 if [ -f ~/.bash_proxy ]; then
-    . ~/.bash_proxy
+  . ~/.bash_proxy
 fi
 
 if [ -f ~/.bash_prompt ]; then
-    . ~/.bash_prompt
+  . ~/.bash_prompt
 fi
 
 if [ -f ~/.bash_specific ]; then
-    . ~/.bash_specific
+  . ~/.bash_specific
 fi
 
+# Setup zoxide
+eval "$(zoxide init bash)"
+
 # User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+if ! [[ "$PATH" =~ $HOME/.local/bin:$HOME/bin: ]]; then
+  PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
 
 export PATH
