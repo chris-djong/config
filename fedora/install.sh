@@ -72,9 +72,7 @@ EOF
   echo "Proxy config written to $proxy_file" 
 fi
 
-echo " " 
-link_file ./dotfiles/tmux.conf "$HOME/tmux.conf"
-
+link_file ./dotfiles/tmux.conf "$HOME/.tmux.conf"
 
 echo "✅ Installation complete."
 
