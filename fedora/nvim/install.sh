@@ -22,7 +22,9 @@ fc-cache -f -v
 #
 
 # Nvim-Tree
+if [ -f ~/.config/nvim/pack/plugins/start/nvim-tree ]; then
 git clone https://github.com/nvim-tree/nvim-tree.lua.git ~/.config/nvim/pack/plugins/start/nvim-tree
+fi
 git clone https://github.com/nvim-tree/nvim-web-devicons.git ~/.config/nvim/pack/plugins/start/nvim-web-devicons
 # CCC
 git clone https://github.com/uga-rosa/ccc.nvim.git ~/.config/nvim/pack/plugins/start/ccc
@@ -59,7 +61,7 @@ git clone https://github.com/mfussenegger/nvim-lint.git ~/.config/nvim/pack/plug
 #
 
 # Shellcheck and shellformat
-sudo dnf install shellcheck shfmt
+sudo dnf install -y shellcheck shfmt
 
 # Luals
 wget -O "$TEMP_DIR/lua-ls.tar.gz" https://github.com/LuaLS/lua-language-server/releases/download/3.14.0/lua-language-server-3.14.0-linux-x64.tar.gz

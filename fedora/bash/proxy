@@ -1,7 +1,0 @@
-PROXY="http://10.56.4.40:8080"
-export http_proxy="$PROXY"
-export https_proxy="$PROXY"
-export HTTP_PROXY="$PROXY"
-export HTTPS_PROXY="$PROXY"
-export no_proxy="localhost"
-export NO_PROXY="localhost"

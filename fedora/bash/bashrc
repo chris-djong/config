@@ -3,20 +3,20 @@
 # Setup zoxide needs to be done before the aliases
 eval "$(zoxide init bash)"
 
-if [ -f ~/.bash_aliases ]; then
-  . ~/.bash_aliases
+if [ -f "$HOME/.bash_aliases" ]; then
+  . "$HOME/.bash_aliases"
 fi
 
-if [ -f ~/.bash_proxy ]; then
-  . ~/.bash_proxy
+if [ -f "$HOME/.bash_proxy" ]; then
+  . "$HOME/.bash_proxy"
 fi
 
-if [ -f ~/.bash_prompt ]; then
-  . ~/.bash_prompt
+if [ -f "$HOME/.bash_prompt" ]; then
+  . "$HOME/.bash_prompt"
 fi
 
-if [ -f ~/.bash_specific ]; then
-  . ~/.bash_specific
+if [ -f "$HOME/.bash_specific" ]; then
+  . "$HOME/.bash_specific"
 fi
 
 # User specific environment
