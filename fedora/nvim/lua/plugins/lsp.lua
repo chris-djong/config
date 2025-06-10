@@ -21,17 +21,13 @@ vim.lsp.config("*", {
 
 -- Create keybindings, commands, inlay hints and autocommands on LSP attach {{{
 vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(ev)
-    local client = vim.lsp.get_client_by_id(ev.data.client_id)
-    if not client then
-      return
-    end
-
+  callback = function()
     local opts = { silent = true }
     -- Function to add the description to the options
     local function opt(desc, others)
       return vim.tbl_extend("force", opts, { desc = desc }, others or {})
     end
+
     -- set keybinds
     vim.keymap.set("n", "gr", function()
       require("telescope.builtin").lsp_references({
