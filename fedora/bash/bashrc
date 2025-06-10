@@ -1,8 +1,4 @@
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
-fi
-
+#!/bin/bash
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
@@ -23,8 +19,5 @@ fi
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
-
-# For custom programs
-PATH="$HOME/programs/bin:$PATH"
 
 export PATH
