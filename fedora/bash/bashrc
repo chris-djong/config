@@ -11,12 +11,20 @@ if [ -f ~/.bash_proxy ]; then
     . ~/.bash_proxy
 fi
 
+if [ -f ~/.bash_prompt ]; then
+    . ~/.bash_prompt
+fi
+
+if [ -f ~/.bash_specific ]; then
+    . ~/.bash_specific
+fi
+
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]; then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
 fi
+
+# For custom programs
+PATH="$HOME/programs/bin:$PATH"
+
 export PATH
-
-
-
-

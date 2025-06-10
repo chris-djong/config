@@ -9,13 +9,6 @@ update_ps1() {
     add_logo "🔒"
   fi
 
-  # Show the shell level in case we are in a shell
-  if [[ $TMUX && ! "$SHLVL" == "2" ]]; then
-    add_logo "🐚"
-  elif [[ ! $TMUX && ! "$SHLVL" == "1" ]]; then
-    add_logo "🐚"
-  fi
-
   # Check for Python version
   PYTHON_EXISTS=$(python --version 2>/dev/null)
   PYTHON_PATH=$(which python 2>/dev/null)

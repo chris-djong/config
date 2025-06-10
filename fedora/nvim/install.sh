@@ -3,18 +3,19 @@
 # First install nvim
 sudo dnf install nvim
 
+# Temporary folder to store any downloads
+TEMP_DIR=$(mktemp -d)
+
 #
 # Font 
 #
 
-TEMP_DIR=$(mktemp -d)
 FONT_URL=https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Iosevka.zip
 wget -O "$TEMP_DIR/font.zip" "$FONT_URL" 
 unzip "$TEMP_DIR/font.zip" -d "$TEMP_DIR"
 mkdir ~/.local/share/fonts
 mv "$TEMP_DIR"/*.{ttf,otf} ~/.local/share/fonts
 fc-cache -f -v
-rm -rf "$TEMP_DIR"
 
 #
 # Plugins 
@@ -61,17 +62,17 @@ git clone https://github.com/mfussenegger/nvim-lint.git ~/.config/nvim/pack/plug
 sudo dnf install shellcheck
 
 # Luals
-sudo dnf copr enable yorickpeterse/lua-language-server
-sudo dnf install lua-language-server
+wget -O "$TEMP_DIR/lua-ls.tar.gz" https://github.com/LuaLS/lua-language-server/releases/download/3.14.0/lua-language-server-3.14.0-linux-x64.tar.gz
+mkdir -p ~/programs/bin
+mkdir -p ~/programs/lua-ls
+tar -xvzf "$TEMP_DIR/lua-ls.tar.gz" -C ~/programs/lua-ls
+ln -s ~/programs/lua-ls/bin/lua-language-server ~/programs/bin/lua-language-server
 
 # Bashls 
 sudo npm install -g bash-language-server
 
 # CssLs 
-sudo npm install -g vscode-css-language-server
-
-
-
+sudo npm install -g vscode-css-languageservice
 
 #
 # Config 
@@ -80,5 +81,7 @@ ln -s "$(realpath ./init.lu)" ~/.config/nvim/init.lua
 ln -s "$(realpath ./lua)" ~/.config/nvim/lua
 ln -s "$(realpath ./lsp)" ~/.config/nvim/lsp
 
+# Cleanup
+rm -rf "$TEMP_DIR"
 
 
