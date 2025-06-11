@@ -34,7 +34,7 @@ fedora)
 esac
 
 if [ -f ~/.tmux/plugins/tpm ]; then
-  echo "Don't forget to install your tmux plugins.."
+  echo "‼️ Don't forget to install your tmux plugins using <PREFIX> + I"
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
