@@ -136,11 +136,12 @@ mkdir -p ~/programs/lua-ls
 tar -xvzf "$TEMP_DIR/lua-ls.tar.gz" -C ~/programs/lua-ls
 ln -s ~/programs/lua-ls/bin/lua-language-server ~/.local/bin
 
-# Bashls
 sudo npm install -g bash-language-server
-
-# CssLs
 sudo npm install -g vscode-css-languageservice
+sudo npm install -g vscode-langserver-languageservice
+sudo npm install -g eslint_d
+sudo npm install -g typescript-language-server
+sudo npm install -g vscode-langservers-extracted
 
 #
 # Config
