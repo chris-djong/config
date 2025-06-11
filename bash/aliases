@@ -6,6 +6,7 @@ alias cd="z"
 if command -v batcat >/dev/null 2>&1; then
   alias bat="batcat"
 fi
+alias ls="ls --color=auto"
 alias ll="ls -al"
 alias set_env=". .venv/bin/activate"
 alias pbox="boxes -s 74x1 -a c"

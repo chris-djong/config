@@ -19,11 +19,11 @@ proxy_url="$2"
 # OS specific installations
 case "$os" in
 debian)
-  echo "🔵 Running Debian install..."
+  echo "🔵 Running Debian install.."
   sudo apt install -y tmux bat zoxide
   ;;
 fedora)
-  echo "🟣 Running Fedora install..."
+  echo "🟣 Running Fedora install.."
   sudo dnf install -y gnome-tweaks tmux bat zoxide
   ;;
 *)
@@ -32,6 +32,11 @@ fedora)
   exit 1
   ;;
 esac
+
+if [ -f ~/.tmux/plugins/tpm ]; then
+  echo "Don't forget to install your tmux plugins.."
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
 # 🔄 Common setup for both OSes
 echo "📦 Creating bash setup..."
