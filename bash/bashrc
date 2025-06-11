@@ -20,6 +20,6 @@ if [ -f "$HOME/.bash_specific" ]; then
 fi
 
 # User specific environment
-PATH="$HOME/.local/bin:$PATH"
+PATH="./node_modules/.bin:$HOME/.local/bin:$PATH"
 
 export PATH
