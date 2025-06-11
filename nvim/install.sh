@@ -25,6 +25,16 @@ fi
 # Temporary folder to store any downloads
 TEMP_DIR=$(mktemp -d)
 
+if command -v nvim >/dev/null 2>&1; then
+
+  if [ "$os" == "fedora" ]; then
+    sudo dnf install -y nvim
+  else
+    echo "⚠️ Warning: Latest nvim version can not be installed automatically in debian."
+    echo "Please download the binaries manually from https://github.com/neovim/neovim/releases"
+  fi
+fi
+
 #
 # Font
 #
