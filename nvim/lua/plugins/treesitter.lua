@@ -5,13 +5,13 @@ vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.opt.foldenable = false
 
 treesitter.setup({ -- enable syntax highlighting
-	highlight = {
-		enable = true,
-	},
-	-- enable indentation
-	indent = { enable = true },
+  highlight = {
+    enable = true,
+  },
+  -- enable indentation
+  indent = { enable = true },
   -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-  ensure_installed = { 
+  ensure_installed = {
     "angular",
     "bash",
     "c",
@@ -42,16 +42,15 @@ treesitter.setup({ -- enable syntax highlighting
     "xml",
   },
   -- incremental_selection means that by clicking CTRL+Space, we keep visually selecting
-	-- more inside the current function/ file. Just try it out by going over a variable
-	-- and hitting CTRL Space
-	incremental_selection = {
-		enable = true,
-		keymaps = {
-			init_selection = "<C-space>",
-			node_incremental = "<C-space>",
-			scope_incremental = false,
-			node_decremental = "<bs>",
-		},
-	},
+  -- more inside the current function/ file. Just try it out by going over a variable
+  -- and hitting CTRL Space
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "<C-space>",
+      node_incremental = "<C-space>",
+      scope_incremental = false,
+      node_decremental = "<bs>",
+    },
+  },
 })
-

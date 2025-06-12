@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 if [ "$EUID" -eq 0 ]; then
   echo "❌ Please do NOT run this script as root or with sudo."
   echo "Run it as a regular user."
@@ -26,13 +24,17 @@ fi
 TEMP_DIR=$(mktemp -d)
 
 if command -v nvim >/dev/null 2>&1; then
-
   if [ "$os" == "fedora" ]; then
     sudo dnf install -y nvim
   else
     echo "⚠️ Warning: Latest nvim version can not be installed automatically in debian."
     echo "Please download the binaries manually from https://github.com/neovim/neovim/releases"
   fi
+fi
+
+# Some required tools
+if [ "$os" == "debian" ]; then
+  sudo apt install -y xsel
 fi
 
 #
@@ -50,12 +52,20 @@ fc-cache -f -v
 # Plugins
 #
 
-# Nvim-Tree
-if [ -f ~/.config/nvim/pack/plugins/start/nvim-tree ]; then
-  git clone https://github.com/nvim-tree/nvim-tree.lua.git ~/.config/nvim/pack/plugins/start/nvim-tree
+# Snacks
+if [ -f ~/.config/nvim/pack/plugins/start/snacks ]; then
+  git clone https://github.com/folke/snacks.nvim.git ~/.config/nvim/pack/plugins/start/snacks
 fi
 if [ -f ~/.config/nvim/pack/plugins/start/nvim-web-devicons ]; then
   git clone https://github.com/nvim-tree/nvim-web-devicons.git ~/.config/nvim/pack/plugins/start/nvim-web-devicons
+fi
+if [ -f ~/.config/nvim/pack/plugins/start/plenary ]; then
+  git clone https://github.com/nvim-lua/plenary.nvim.git ~/.config/nvim/pack/plugins/start/plenary
+fi
+if [ "$os" == "fedora" ]; then
+  sudo dnf install -y ripgrep fd
+else
+  sudo apt install -y ripgrep fd-find
 fi
 # CCC
 if [ -f ~/.config/nvim/pack/plugins/start/ccc ]; then
@@ -64,22 +74,6 @@ fi
 # Which Key
 if [ -f ~/.config/nvim/pack/plugins/start/which-key ]; then
   git clone https://github.com/folke/which-key.nvim.git ~/.config/nvim/pack/plugins/start/which-key
-fi
-# Telescope
-if [ -f ~/.config/nvim/pack/plugins/start/telescope ]; then
-  git clone https://github.com/nvim-telescope/telescope.nvim.git ~/.config/nvim/pack/plugins/start/telescope
-fi
-if [ -f ~/.config/nvim/pack/plugins/start/plenary ]; then
-  git clone https://github.com/nvim-lua/plenary.nvim.git ~/.config/nvim/pack/plugins/start/plenary
-fi
-if [ -f ~/.config/nvim/pack/plugins/start/telescope-fzf-native ]; then
-  git clone https://github.com/nvim-telescope/telescope-fzf-native.nvim.git ~/.config/nvim/pack/plugins/start/telescope-fzf-native
-  cd ~/.config/nvim/pack/plugins/start/telescope-fzf-native && make && cd -
-fi
-if [ "$os" == "fedora" ]; then
-  sudo dnf install -y ripgrep
-else
-  sudo apt install -y ripgrep
 fi
 # Tokyonight colorscheme
 if [ -f ~/.config/nvim/pack/plugins/start/tokyonight ]; then
@@ -92,10 +86,6 @@ fi
 # Nvim-Cmp
 if [ -f ~/.config/nvim/pack/plugins/start/nvim-cmp ]; then
   git clone https://github.com/hrsh7th/nvim-cmp.git ~/.config/nvim/pack/plugins/start/nvim-cmp
-fi
-# Indent blankline
-if [ -f ~/.config/nvim/pack/plugins/start/indent-blankline ]; then
-  git clone https://github.com/lukas-reineke/indent-blankline.nvim.git ~/.config/nvim/pack/plugins/start/indent-blankline
 fi
 # Lualine
 if [ -f ~/.config/nvim/pack/plugins/start/lualine ]; then
