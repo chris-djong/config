@@ -20,16 +20,29 @@ if [[ "$os" != "fedora" && "$os" != "debian" ]]; then
   exit 1
 fi
 
+header_log() {
+  echo ""
+  echo "##################"
+  echo "$1"
+  echo "##################"
+  echo ""
+}
+
 # Temporary folder to store any downloads
 TEMP_DIR=$(mktemp -d)
 
-if command -v nvim >/dev/null 2>&1; then
+if [ ! command -v nvim ] >/dev/null 2>&1; then
+  echo ""
+  echo " Installing nvim"
   if [ "$os" == "fedora" ]; then
     sudo dnf install -y nvim
   else
     echo "⚠️ Warning: Latest nvim version can not be installed automatically in debian."
     echo "Please download the binaries manually from https://github.com/neovim/neovim/releases"
   fi
+else
+  echo ""
+  echo "nvim command found. Skipping installation"
 fi
 
 # Some required tools
@@ -41,78 +54,83 @@ fi
 # Font
 #
 
-FONT_URL=https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Iosevka.zip
-wget -O "$TEMP_DIR/font.zip" "$FONT_URL"
-unzip "$TEMP_DIR/font.zip" -d "$TEMP_DIR"
-mkdir ~/.local/share/fonts
-mv "$TEMP_DIR"/*.{ttf,otf} ~/.local/share/fonts
-fc-cache -f -v
+# Check if the font is already installed
+FONT_NAME="IosevkaNerdFont-Medium.ttf"
+FONT_PATH="$HOME/.local/share/fonts/$FONT_NAME"
+if [ ! -e "$FONT_PATH" ]; then
+  header_log "Downloading font"
+  FONT_URL=https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Iosevka.zip
+  wget -O "$TEMP_DIR/font.zip" "$FONT_URL"
+  unzip "$TEMP_DIR/font.zip" -d "$TEMP_DIR"
+  mkdir -p ~/.local/share/fonts
+  mv "$TEMP_DIR"/*.{ttf,otf} ~/.local/share/fonts
+  fc-cache -f -v
+else
+  echo ""
+  echo "$FONT_NAME is already installed. Skipping download"
+fi
 
 #
 # Plugins
 #
 
+download_plugin() {
+  PLUGIN_NAME=$(basename "$1" .git)
+  PLUGIN_PATH="$HOME/.config/nvim/pack/plugins/start/$PLUGIN_NAME"
+  if [ ! -e "$PLUGIN_PATH" ]; then
+    echo ""
+    echo "Downloading $1"
+    git clone "$1" "$PLUGIN_PATH"
+  fi
+}
+
+header_log "Downloading plugins"
 # Snacks
-if [ -f ~/.config/nvim/pack/plugins/start/snacks ]; then
-  git clone https://github.com/folke/snacks.nvim.git ~/.config/nvim/pack/plugins/start/snacks
-fi
-if [ -f ~/.config/nvim/pack/plugins/start/nvim-web-devicons ]; then
-  git clone https://github.com/nvim-tree/nvim-web-devicons.git ~/.config/nvim/pack/plugins/start/nvim-web-devicons
-fi
-if [ -f ~/.config/nvim/pack/plugins/start/plenary ]; then
-  git clone https://github.com/nvim-lua/plenary.nvim.git ~/.config/nvim/pack/plugins/start/plenary
-fi
+download_plugin 'https://github.com/folke/snacks.nvim.git'
+download_plugin 'https://github.com/nvim-tree/nvim-web-devicons.git'
+download_plugin 'https://github.com/nvim-lua/plenary.nvim.git'
 if [ "$os" == "fedora" ]; then
   sudo dnf install -y ripgrep fd
 else
   sudo apt install -y ripgrep fd-find
 fi
+
 # CCC
-if [ -f ~/.config/nvim/pack/plugins/start/ccc ]; then
-  git clone https://github.com/uga-rosa/ccc.nvim.git ~/.config/nvim/pack/plugins/start/ccc
-fi
+download_plugin 'https://github.com/uga-rosa/ccc.nvim.git'
+
 # Which Key
-if [ -f ~/.config/nvim/pack/plugins/start/which-key ]; then
-  git clone https://github.com/folke/which-key.nvim.git ~/.config/nvim/pack/plugins/start/which-key
-fi
+download_plugin 'https://github.com/folke/which-key.nvim.git'
+
 # Tokyonight colorscheme
-if [ -f ~/.config/nvim/pack/plugins/start/tokyonight ]; then
-  git clone https://github.com/folke/tokyonight.nvim.git ~/.config/nvim/pack/plugins/start/tokyonight
-fi
+download_plugin 'https://github.com/folke/tokyonight.nvim.git'
+
 # Conform
-if [ -f ~/.config/nvim/pack/plugins/start/conform ]; then
-  git clone https://github.com/stevearc/conform.nvim.git ~/.config/nvim/pack/plugins/start/conform
-fi
+download_plugin 'https://github.com/stevearc/conform.nvim.git'
+
 # Nvim-Cmp
-if [ -f ~/.config/nvim/pack/plugins/start/nvim-cmp ]; then
-  git clone https://github.com/hrsh7th/nvim-cmp.git ~/.config/nvim/pack/plugins/start/nvim-cmp
-fi
+download_plugin 'https://github.com/hrsh7th/nvim-cmp.git'
+
 # Lualine
-if [ -f ~/.config/nvim/pack/plugins/start/lualine ]; then
-  git clone https://github.com/nvim-lualine/lualine.nvim.git ~/.config/nvim/pack/plugins/start/lualine
-fi
+download_plugin 'https://github.com/nvim-lualine/lualine.nvim.git'
+
 # Trouble
-if [ -f ~/.config/nvim/pack/plugins/start/trouble ]; then
-  git clone https://github.com/folke/trouble.nvim.git ~/.config/nvim/pack/plugins/start/trouble
-fi
+download_plugin 'https://github.com/folke/trouble.nvim.git'
+
 # Treesitter
-if [ -f ~/.config/nvim/pack/plugins/start/nvim-treesitter ]; then
-  git clone https://github.com/nvim-treesitter/nvim-treesitter.git ~/.config/nvim/pack/plugins/start/nvim-treesitter
-fi
+download_plugin 'https://github.com/nvim-treesitter/nvim-treesitter.git'
+
 # Todo-comments
-if [ -f ~/.config/nvim/pack/plugins/start/todo-comments ]; then
-  git clone https://github.com/folke/todo-comments.nvim.git ~/.config/nvim/pack/plugins/start/todo-comments
-fi
+download_plugin 'https://github.com/folke/todo-comments.nvim.git'
+
 # Nvim-lint
-if [ -f ~/.config/nvim/pack/plugins/start/nvim-lint ]; then
-  git clone https://github.com/mfussenegger/nvim-lint.git ~/.config/nvim/pack/plugins/start/nvim-lint
-fi
+download_plugin 'https://github.com/mfussenegger/nvim-lint.git'
 
 #
 # Formatter/linters
 # just the global formatters that are not used in specific applications
 #
 
+header_log "Installing lsps/formatters"
 # Shellcheck and shellformat
 if [ "$os" == "fedora" ]; then
   sudo dnf install -y shellcheck shfmt
@@ -120,22 +138,22 @@ else
   sudo apt install -y shellcheck shfmt
 fi
 
-# Luals
-wget -O "$TEMP_DIR/lua-ls.tar.gz" https://github.com/LuaLS/lua-language-server/releases/download/3.14.0/lua-language-server-3.14.0-linux-x64.tar.gz
-mkdir -p ~/programs/lua-ls
-tar -xvzf "$TEMP_DIR/lua-ls.tar.gz" -C ~/programs/lua-ls
-ln -s ~/programs/lua-ls/bin/lua-language-server ~/.local/bin
+sudo npm install -g bash-language-server vscode-css-languageservice vscode-languageserver eslint_d typescript-language-server vscode-langservers-extracted
 
-sudo npm install -g bash-language-server
-sudo npm install -g vscode-css-languageservice
-sudo npm install -g vscode-langserver-languageservice
-sudo npm install -g eslint_d
-sudo npm install -g typescript-language-server
-sudo npm install -g vscode-langservers-extracted
+# Luals
+if [ ! -e ~/.local/bin/lua-language-server ]; then
+  echo ""
+  echo "Installing lua-language-server"
+  wget -O "$TEMP_DIR/lua-ls.tar.gz" https://github.com/LuaLS/lua-language-server/releases/download/3.14.0/lua-language-server-3.14.0-linux-x64.tar.gz
+  mkdir -p ~/programs/lua-ls
+  tar -xvzf "$TEMP_DIR/lua-ls.tar.gz" -C ~/programs/lua-ls
+  ln -s ~/programs/lua-ls/bin/lua-language-server ~/.local/bin
+fi
 
 #
 # Config
 #
+
 ln -s "$(realpath ./init.lua)" ~/.config/nvim/init.lua
 ln -s "$(realpath ./lua)" ~/.config/nvim/lua
 ln -s "$(realpath ./lsp)" ~/.config/nvim/lsp
