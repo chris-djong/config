@@ -23,6 +23,3 @@ fi
 
 # User specific environment
 PATH="./node_modules/.bin:$HOME/.local/bin:$PATH"
-
-export PATH
-. "$HOME/.cargo/env"
