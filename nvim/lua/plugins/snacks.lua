@@ -32,8 +32,8 @@ vim.keymap.set("n", "<leader>fb", snacks.picker.buffers, { desc = "Search buffer
 vim.keymap.set("n", "<leader>fn", snacks.picker.notifications, { desc = "Search notifications" })
 vim.keymap.set("n", "<leader>fh", snacks.picker.command_history, { desc = "Search command history" })
 
-vim.keymap.set("n", "gd", snacks.picker.lsp_declarations, { desc = "Show LSP declarations" })
-vim.keymap.set("n", "gD", snacks.picker.lsp_definitions, { desc = "Show LSP definitions" })
+vim.keymap.set("n", "gD", snacks.picker.lsp_declarations, { desc = "Show LSP declarations" })
+vim.keymap.set("n", "gd", snacks.picker.lsp_definitions, { desc = "Show LSP definitions" })
 vim.keymap.set("n", "gr", snacks.picker.lsp_references, { desc = "Show LSP references" })
 vim.keymap.set("n", "gi", snacks.picker.lsp_implementations, { desc = "Show LSP implementations" })
 
