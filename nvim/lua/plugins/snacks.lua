@@ -17,6 +17,7 @@ snacks.setup({
 
 -- Explorer
 vim.keymap.set("n", "<leader>ee", snacks.explorer.open, { desc = "Toggle file explorer" })
+vim.keymap.set("n", "<leader>ef", snacks.explorer.reveal, { desc = "Reveal file explorer" })
 
 -- Picker
 vim.keymap.set("n", "<leader>ff", snacks.picker.smart, { desc = "Fuzzy search" })

@@ -77,10 +77,16 @@ fi
 download_plugin() {
   PLUGIN_NAME=$(basename "$1" .git)
   PLUGIN_PATH="$HOME/.config/nvim/pack/plugins/start/$PLUGIN_NAME"
+  BRANCH_NAME="$2"
   if [ ! -e "$PLUGIN_PATH" ]; then
     echo ""
     echo "Downloading $1"
-    git clone "$1" "$PLUGIN_PATH"
+    if [ -n "$BRANCH_NAME" ]; then
+      echo "Downloading branch $BRANCH_NAME"
+      git clone --branch "$BRANCH_NAME" --single-branch "$1" "$PLUGIN_PATH"
+    else
+      git clone "$1" "$PLUGIN_PATH"
+    fi
   fi
 }
 
@@ -107,8 +113,8 @@ download_plugin 'https://github.com/folke/tokyonight.nvim.git'
 # Conform
 download_plugin 'https://github.com/stevearc/conform.nvim.git'
 
-# Nvim-Cmp
-download_plugin 'https://github.com/hrsh7th/nvim-cmp.git'
+# Blink cmp
+download_plugin 'https://github.com/Saghen/blink.cmp.git' 'v1.4.0'
 
 # Lualine
 download_plugin 'https://github.com/nvim-lualine/lualine.nvim.git'
