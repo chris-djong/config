@@ -45,7 +45,7 @@ local function get_lsp()
     end
     return '  ' .. table.concat(clientNames, ' ')
   end
-  return '  No Lsp Active'
+  return '  No Lsp'
 end
 
 local function get_formatter()
@@ -67,7 +67,7 @@ local function get_formatter()
   if not vim.tbl_isempty(lsp_clients) then
     return '󰷈 LSP Formatter'
   end
-  return '󰷈  No Formatter active'
+  return '󰷈  No Formatter'
 end
 
 -- configure lualine with modified theme
