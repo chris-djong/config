@@ -21,5 +21,10 @@ if [ -f "$HOME/.bash_specific" ]; then
   . "$HOME/.bash_specific"
 fi
 
+# GIT autocompletion for branches
+if [ -f "/usr/share/bash-completion/completions/git" ]; then
+  . "/usr/share/bash-completion/completions/git"
+fi
+
 # User specific environment
 PATH="./node_modules/.bin:$HOME/.local/bin:$PATH"

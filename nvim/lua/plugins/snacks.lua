@@ -1,7 +1,7 @@
 local snacks = require("snacks");
 snacks.setup({
   indent = { enabled = true },
-  bigfile = { enabled = true },   -- files larger than 1.5 Mbs are apparently opened differently
+  -- bigfile = { enabled = true },   -- files larger than 1.5 Mbs are apparently opened differently
   notifier = { enabled = true },  -- notification toasts. I have not seem them yet, but might be nice
   picker = { enabled = true },    -- replaces telescope (pick files)
   input = { enabled = true },     -- replaces dressing (better input fields)
