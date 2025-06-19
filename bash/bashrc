@@ -9,6 +9,8 @@ fi
 # in front of it that is responsible for storing the visited paths
 eval "$(zoxide init bash)"
 
+eval "$(fzf --bash)"
+
 if [ -f "$HOME/.bash_aliases" ]; then
   . "$HOME/.bash_aliases"
 fi

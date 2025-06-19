@@ -24,7 +24,7 @@ debian)
   ;;
 fedora)
   echo "🟣 Running Fedora install.."
-  sudo dnf install -y gnome-tweaks tmux bat zoxide
+  sudo dnf install -y fzf gnome-tweaks tmux bat zoxide
   ;;
 *)
   echo "❌ Error: Invalid OS '$os'"
@@ -32,6 +32,13 @@ fedora)
   exit 1
   ;;
 esac
+
+if [ -f ~/.fzf ]; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  "$HOME/.fzf/install --bin"
+  ln -s "$HOME/.fzf/bin/fzf" "$HOME/.local/bin/"
+
+fi
 
 if [ -f ~/.tmux/plugins/tpm ]; then
   echo "‼️ Don't forget to install your tmux plugins using <PREFIX> + I"
