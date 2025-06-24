@@ -9,8 +9,6 @@ fi
 # in front of it that is responsible for storing the visited paths
 eval "$(zoxide init bash)"
 
-eval "$(fzf --bash)"
-
 if [ -f "$HOME/.bash_aliases" ]; then
   . "$HOME/.bash_aliases"
 fi
@@ -30,3 +28,6 @@ fi
 
 # User specific environment
 PATH="./node_modules/.bin:$HOME/.local/bin:$PATH"
+
+# FZF is in .local/bin hence should be after the PATH was set
+eval "$(fzf --bash)"
