@@ -29,5 +29,7 @@ fi
 # User specific environment
 PATH="./node_modules/.bin:$HOME/.local/bin:$PATH"
 
+export EDITOR='nvim'
+
 # FZF is in .local/bin hence should be after the PATH was set
 eval "$(fzf --bash)"
