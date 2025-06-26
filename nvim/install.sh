@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e  # Exit immediately if a command exits with a non-zero status
 
 if [ "$EUID" -eq 0 ]; then
   echo "❌ Please do NOT run this script as root or with sudo."
@@ -31,43 +32,54 @@ header_log() {
 # Temporary folder to store any downloads
 TEMP_DIR=$(mktemp -d)
 
-if [ ! command -v nvim ] >/dev/null 2>&1; then
+if ! command -v nvim >/dev/null 2>&1
+then
   echo ""
-  echo " Installing nvim"
+  echo "Neovim not found, trying installation"
   if [ "$os" == "fedora" ]; then
     sudo dnf install -y nvim
-  else
-    echo "⚠️ Warning: Latest nvim version can not be installed automatically in debian."
-    echo "Please download the binaries manually from https://github.com/neovim/neovim/releases"
+  else 
+    echo "⚠️ Warning: Downloading nvim version 0.11.2 manually please check for updates"
+    read -p "Would you like to proceed? [y/N] " confirm  
+    if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
+        echo "Aborting installation" 
+	exit 1
+    fi
+    wget -O "$TEMP_DIR/nvim.tar.gz" https://github.com/neovim/neovim/releases/download/v0.11.2/nvim-linux-x86_64.tar.gz
+    mkdir -p "$HOME/programs" 
+    tar xzvf "$TEMP_DIR/nvim.tar.gz" -C "$HOME/programs" 
+    mv "$HOME/programs/nvim-linux-x86_64" "$HOME/programs/nvim" 
+    rm "$TEMP_DIR/nvim.tar.gz"
+    ln -sf "$HOME/programs/nvim/bin/nvim" "$HOME/.local/bin" 
   fi
 else
   echo ""
   echo "nvim command found. Skipping installation"
 fi
 
-# Some required tools
-if [ "$os" == "debian" ]; then
-  sudo apt install -y xsel
-fi
 
 #
 # Font
 #
+#
+read -p "Install fonts? [y/N] " confirm
 
-# Check if the font is already installed
-FONT_NAME="IosevkaNerdFont-Medium.ttf"
-FONT_PATH="$HOME/.local/share/fonts/$FONT_NAME"
-if [ ! -e "$FONT_PATH" ]; then
-  header_log "Downloading font"
-  FONT_URL=https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Iosevka.zip
-  wget -O "$TEMP_DIR/font.zip" "$FONT_URL"
-  unzip "$TEMP_DIR/font.zip" -d "$TEMP_DIR"
-  mkdir -p ~/.local/share/fonts
-  mv "$TEMP_DIR"/*.{ttf,otf} ~/.local/share/fonts
-  fc-cache -f -v
-else
-  echo ""
-  echo "$FONT_NAME is already installed. Skipping download"
+if [[ "$confirm" == "y" || "$confirm" == "Y" ]]; then
+  # Check if the font is already installed
+  FONT_NAME="IosevkaNerdFont-Medium.ttf"
+  FONT_PATH="$HOME/.local/share/fonts/$FONT_NAME"
+  if [ ! -e "$FONT_PATH" ]; then
+    header_log "Downloading font"
+    FONT_URL=https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/Iosevka.zip
+    wget -O "$TEMP_DIR/font.zip" "$FONT_URL"
+    unzip "$TEMP_DIR/font.zip" -d "$TEMP_DIR"
+    mkdir -p ~/.local/share/fonts
+    mv "$TEMP_DIR"/*.{ttf,otf} ~/.local/share/fonts
+    fc-cache -f -v
+  else
+    echo ""
+    echo "$FONT_NAME is already installed. Skipping download"
+  fi
 fi
 
 #
@@ -160,9 +172,9 @@ fi
 # Config
 #
 
-ln -s "$(realpath ./init.lua)" ~/.config/nvim/init.lua
-ln -s "$(realpath ./lua)" ~/.config/nvim/lua
-ln -s "$(realpath ./lsp)" ~/.config/nvim/lsp
+ln -sf "$(realpath ./init.lua)" ~/.config/nvim/init.lua
+ln -sf "$(realpath ./lua)" ~/.config/nvim/lua
+ln -sf "$(realpath ./lsp)" ~/.config/nvim/lsp
 
 # Cleanup
 rm -rf "$TEMP_DIR"

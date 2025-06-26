@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e  # Exit immediately if a command exits with a non-zero status
 
 if [ "$EUID" -eq 0 ]; then
   echo "❌ Please do NOT run this script as root or with sudo."
@@ -20,7 +21,7 @@ proxy_url="$2"
 case "$os" in
 debian)
   echo "🔵 Running Debian install.."
-  sudo apt install -y tmux bat zoxide
+  sudo apt install -y tmux bat zoxide curl unzip xsel
   ;;
 fedora)
   echo "🟣 Running Fedora install.."
@@ -33,15 +34,16 @@ fedora)
   ;;
 esac
 
-if [ -f ~/.fzf ]; then
+if [ ! -d ~/.fzf ]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
-  "$HOME/.fzf/install --bin"
-  ln -s "$HOME/.fzf/bin/fzf" "$HOME/.local/bin/"
+  "$HOME/.fzf/install" --bin
+  ln -sf "$HOME/.fzf/bin/fzf" "$HOME/.local/bin/"
 
 fi
 
-if [ -f ~/.tmux/plugins/tpm ]; then
-  echo "‼️ Don't forget to install your tmux plugins using <PREFIX> + I"
+if [ ! -d ~/.tmux/plugins/tpm ]; then 
+  echo "Installing tmux plugin manager" 
+  read -p "‼️ Don't forget to install your tmux plugins using <PREFIX> + I" 
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
