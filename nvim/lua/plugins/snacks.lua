@@ -1,11 +1,11 @@
 local snacks = require("snacks");
 snacks.setup({
   indent = { enabled = true },
-  notifier = { enabled = true },                              -- notification toasts. I have not seem them yet, but might be nice
-  picker = { enabled = true, ignored = true, hidden = true }, -- replaces telescope (pick files)
-  input = { enabled = true },                                 -- replaces dressing (better input fields)
-  terminal = { enabted = true },                              -- open a terminal in neovim
-  explorer = { enabled = true, },                             -- replaces nvim tree (file explorer)
+  notifier = { enabled = true }, -- notification toasts. I have not seem them yet, but might be nice
+  input = { enabled = true },    -- replaces dressing (better input fields)
+  terminal = { enabled = true }, -- open a terminal in neovim
+  explorer = { enabled = true }, -- replaces nvim tree (file explorer)
+  picker = { enabled = true },   -- replaces telescope (pick files)
   styles = {
     input = {
       relative = "cursor", -- show the input on the cursor and not in the center
