@@ -156,7 +156,10 @@ else
   sudo apt install -y shellcheck shfmt
 fi
 
-sudo npm install -g @fsouza/prettierd prettier-plugin-tailwindcss @tailwindcss/language-server bash-language-server vscode-css-languageservice vscode-languageserver eslint_d typescript-language-server vscode-langservers-extracted
+sudo npm install -g @fsouza/prettierd bash-language-server vscode-css-languageservice vscode-languageserver eslint_d typescript-language-server vscode-langservers-extracted
+
+read -p 'Some language servers need to be installed on a per project basis. See code for details'
+echo 'npm install prettier-plugin-tailwindcss @taildwindcss/language-server'
 
 # Luals
 if [ ! -e ~/.local/bin/lua-language-server ]; then
