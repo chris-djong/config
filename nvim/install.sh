@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e  # Exit immediately if a command exits with a non-zero status
+set -e # Exit immediately if a command exits with a non-zero status
 
 if [ "$EUID" -eq 0 ]; then
   echo "❌ Please do NOT run this script as root or with sudo."
@@ -32,31 +32,29 @@ header_log() {
 # Temporary folder to store any downloads
 TEMP_DIR=$(mktemp -d)
 
-if ! command -v nvim >/dev/null 2>&1
-then
+if ! command -v nvim >/dev/null 2>&1; then
   echo ""
   echo "Neovim not found, trying installation"
   if [ "$os" == "fedora" ]; then
     sudo dnf install -y nvim
-  else 
+  else
     echo "⚠️ Warning: Downloading nvim version 0.11.2 manually please check for updates"
-    read -p "Would you like to proceed? [y/N] " confirm  
+    read -p "Would you like to proceed? [y/N] " confirm
     if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
-        echo "Aborting installation" 
-	exit 1
+      echo "Aborting installation"
+      exit 1
     fi
     wget -O "$TEMP_DIR/nvim.tar.gz" https://github.com/neovim/neovim/releases/download/v0.11.2/nvim-linux-x86_64.tar.gz
-    mkdir -p "$HOME/programs" 
-    tar xzvf "$TEMP_DIR/nvim.tar.gz" -C "$HOME/programs" 
-    mv "$HOME/programs/nvim-linux-x86_64" "$HOME/programs/nvim" 
+    mkdir -p "$HOME/programs"
+    tar xzvf "$TEMP_DIR/nvim.tar.gz" -C "$HOME/programs"
+    mv "$HOME/programs/nvim-linux-x86_64" "$HOME/programs/nvim"
     rm "$TEMP_DIR/nvim.tar.gz"
-    ln -sf "$HOME/programs/nvim/bin/nvim" "$HOME/.local/bin" 
+    ln -sf "$HOME/programs/nvim/bin/nvim" "$HOME/.local/bin"
   fi
 else
   echo ""
   echo "nvim command found. Skipping installation"
 fi
-
 
 #
 # Font
@@ -156,10 +154,10 @@ else
   sudo apt install -y shellcheck shfmt
 fi
 
-sudo npm install -g @fsouza/prettierd bash-language-server vscode-css-languageservice vscode-languageserver eslint_d typescript-language-server vscode-langservers-extracted
+sudo npm install -g @fsouza/prettierd @taildwindcss/language-server bash-language-server vscode-css-languageservice vscode-languageserver eslint_d typescript-language-server vscode-langservers-extracted
 
 read -p 'Some language servers need to be installed on a per project basis. See code for details'
-echo 'npm install prettier-plugin-tailwindcss @taildwindcss/language-server'
+echo 'npm install prettier-plugin-tailwindcss '
 
 # Luals
 if [ ! -e ~/.local/bin/lua-language-server ]; then
