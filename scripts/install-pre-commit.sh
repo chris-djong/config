@@ -32,10 +32,22 @@ done
 
 mapfile -t NO_COMMITS < <(grep -l NOCOMMIT "\${CHANGED_FILES[@]}" | xargs -r realpath)
 if [[ \${#NO_COMMITS[@]} -gt 0 ]]; then
-  echo "The following files contain NOCOMMITS: "
+  echo "The following files contain NOCOMMITS"
   echo " - \${NO_COMMITS[@]}"
   EXIT_STATUS=1
 fi
+
+##########################################################################
+#                                BIG FILE                                #
+##########################################################################
+
+mapfile -t LARGE_FILES < <(find . -type f -size +50M -print0 | xargs -0 -r realpath)
+if [[ \${#LARGE_FILES[@]} -gt 0 ]]; then
+  echo "The following files are larger than 50Mb"
+  echo " - \${LARGE_FILES[@]}"
+  EXIT_STATUS=1
+fi
+
 
 ##########################################################################
 #                             PYTHON CHECKS                              #
