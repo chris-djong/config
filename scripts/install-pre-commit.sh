@@ -41,13 +41,18 @@ fi
 #                                BIG FILE                                #
 ##########################################################################
 
-mapfile -t LARGE_FILES < <(find . -type f -size +50M -print0 | xargs -0 -r realpath)
+mapfile -t LARGE_FILES < <(
+  for file in "\${CHANGED_FILES[@]}"; do
+    if [[ -f "\$file" ]] && [[ \$(stat -c%s "\$file") -gt \$((1 * 1024 * 1024)) ]]; then
+      realpath "\$file"
+    fi
+  done
+)
 if [[ \${#LARGE_FILES[@]} -gt 0 ]]; then
-  echo "The following files are larger than 50Mb"
+  echo "The following files are larger than 1Mb"
   echo " - \${LARGE_FILES[@]}"
   EXIT_STATUS=1
 fi
-
 
 ##########################################################################
 #                             PYTHON CHECKS                              #
