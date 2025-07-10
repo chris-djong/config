@@ -1,5 +1,5 @@
 #!/bin/bash
-set -e  # Exit immediately if a command exits with a non-zero status
+set -e # Exit immediately if a command exits with a non-zero status
 
 if [ "$EUID" -eq 0 ]; then
   echo "❌ Please do NOT run this script as root or with sudo."
@@ -21,11 +21,11 @@ proxy_url="$2"
 case "$os" in
 debian)
   echo "🔵 Running Debian install.."
-  sudo apt install -y tmux bat zoxide curl unzip xsel
+  sudo apt install -y tmux bat zoxide curl unzip xclip
   ;;
 fedora)
   echo "🟣 Running Fedora install.."
-  sudo dnf install -y fzf gnome-tweaks tmux bat zoxide
+  sudo dnf install -y fzf gnome-tweaks tmux bat zoxide xclip
   ;;
 *)
   echo "❌ Error: Invalid OS '$os'"
@@ -41,9 +41,9 @@ if [ ! -d ~/.fzf ]; then
 
 fi
 
-if [ ! -d ~/.tmux/plugins/tpm ]; then 
-  echo "Installing tmux plugin manager" 
-  read -p "‼️ Don't forget to install your tmux plugins using <PREFIX> + I" 
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+  echo "Installing tmux plugin manager"
+  read -p "‼️ Don't forget to install your tmux plugins using <PREFIX> + I"
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
