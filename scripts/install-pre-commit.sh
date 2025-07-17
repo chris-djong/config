@@ -3,7 +3,7 @@ read -e -p "Please provide a repo: " GIT_FOLDER
 read -e -p "Please provide the frontend folder (frontend): " FRONTEND_DIR
 read -e -p "Please provide the backend folder (backend): " BACKEND_DIR
 FRONTEND_DIR=${FRONTEND_DIR:-frontend}
-BACKEND_DIR=${BACKEND_DIR:-frontend}
+BACKEND_DIR=${BACKEND_DIR:-backend}
 
 # Check if the folder exists
 if [ ! -d "$GIT_FOLDER/.git" ]; then
