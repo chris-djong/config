@@ -123,6 +123,9 @@ download_plugin 'https://github.com/folke/tokyonight.nvim.git'
 # Conform
 download_plugin 'https://github.com/stevearc/conform.nvim.git'
 
+# Nvim blame
+download_plugin "https://github.com/f-person/git-blame.nvim.git"
+
 # Blink cmp
 download_plugin 'https://github.com/Saghen/blink.cmp.git' 'v1.4.0'
 
