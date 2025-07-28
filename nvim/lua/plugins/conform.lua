@@ -23,6 +23,7 @@ conform.setup({
     bash = { "shfmt" },
     sh = { "shfmt" },
     zsh = { "shfmt" },
+    xml = { "xmllint" },
   },
   format_on_save = {
     lsp_fallback = true,
