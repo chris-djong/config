@@ -127,7 +127,7 @@ download_plugin 'https://github.com/stevearc/conform.nvim.git'
 download_plugin "https://github.com/f-person/git-blame.nvim.git"
 
 # Blink cmp
-download_plugin 'https://github.com/Saghen/blink.cmp.git' 'v1.4.0'
+download_plugin 'https://github.com/Saghen/blink.cmp.git' 'v1.6.0'
 
 # Lualine
 download_plugin 'https://github.com/nvim-lualine/lualine.nvim.git'
